@@ -7,45 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="800" Background="White" Foreground="White">
     <Window.Resources>
-        <ResourceDictionary>
-
-            <Style x:Key="RadiusButton" TargetType="Button">
-                <Setter Property="Background" Value="#403273"/>
-                <Setter Property="Foreground" Value="White" />
-
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="15" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                                </ContentPresenter>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="RoundButton" TargetType="Button">
-                <Setter Property="Background" Value="#403273"/>
-                <Setter Property="Foreground" Value="White" />
-
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="66" Background="{TemplateBinding Background}">
-                                <Button Content="Button"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries >
+                <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+ 
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF2F1F40" Offset="0"/>
                 <GradientStop Color="White" Offset="0.651"/>
             </LinearGradientBrush>
         </Grid.Background>
