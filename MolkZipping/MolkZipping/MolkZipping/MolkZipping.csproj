@@ -95,18 +95,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\facebook.png" />
-    <Resource Include="Assets\instagram.png" />
-    <Resource Include="Assets\Pack.png" />
-    <Resource Include="Assets\question.png" />
-    <Resource Include="Assets\unpack.png" />
-    <Resource Include="Assets\web.png" />
+    <Resource Include="Assets\SocialIcons\facebook.png" />
+    <Resource Include="Assets\SocialIcons\instagram.png" />
+    <Resource Include="Assets\OrientationIcons\Pack.png" />
+    <Resource Include="Assets\OrientationIcons\question.png" />
+    <Resource Include="Assets\OrientationIcons\unpack.png" />
+    <Resource Include="Assets\SocialIcons\web.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\molk.png" />
+    <Resource Include="Assets\Images\molk.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\gear.png" />
+    <Resource Include="Assets\OrientationIcons\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\ZippingText.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

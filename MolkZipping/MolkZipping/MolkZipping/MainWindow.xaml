@@ -51,18 +51,20 @@
         </Grid.Background>
 
         <Button  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="492,214,100,0">
-            <Image Source="Assets/unpack.png" Width="88"/>
+            <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
         </Button>
         <Button  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0">
-            <Image Source="Assets/Pack.png" Width="88"/>
+            <Image Source="Assets/OrientationIcons/Pack.png" Width="88"/>
         </Button>
-        <Image Source="Assets/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64"/>
-        <Image Source="Assets/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,400,0,0" VerticalAlignment="Top" Width="28"/>
-        <Image Source="Assets/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,440,0,0" VerticalAlignment="Top" Width="28"/>
-        <Image Source="Assets/web.png" HorizontalAlignment="Left" Height="28" Margin="10,480,0,0" VerticalAlignment="Top" Width="28"/>
-        <Image Source="Assets/molk.png" HorizontalAlignment="Left" Height="100" Margin="199,25,0,0" VerticalAlignment="Top" Width="200"/>
-        <Image Source="Assets/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="62,66,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
+        <Image Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64"/>
+        <Image Source="Assets/OrientationIcons/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White"/>
+
+        <Image Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,400,0,0" VerticalAlignment="Top" Width="28"/>
+        <Image Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,440,0,0" VerticalAlignment="Top" Width="28"/>
+        <Image Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,480,0,0" VerticalAlignment="Top" Width="28"/>
+        <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="157,75,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -71,6 +73,11 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="463,53,0,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
+            </TextBlock.Effect>
         </TextBlock>
 
     </Grid>
