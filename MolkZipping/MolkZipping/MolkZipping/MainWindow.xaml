@@ -5,15 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MolkZipping"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800" Background="White" Foreground="White">
+        Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White">
     <Window.Resources>
-        <ResourceDictionary >
-            <ResourceDictionary.MergedDictionaries >
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="InstagramIcon">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.411"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.304"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5.75"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="4.25"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
- 
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="image">
+            <BeginStoryboard x:Name="InstagramIcon_BeginStoryboard" Storyboard="{StaticResource InstagramIcon}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="image">
+            <RemoveStoryboard BeginStoryboardName="InstagramIcon_BeginStoryboard"/>
+        </EventTrigger>
+    </Window.Triggers>
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -30,7 +52,16 @@
         <Image Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64"/>
         <Image Source="Assets/OrientationIcons/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White"/>
 
-        <Image Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,400,0,0" VerticalAlignment="Top" Width="28"/>
+        <Image x:Name="image" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,400,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
         <Image Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,440,0,0" VerticalAlignment="Top" Width="28"/>
         <Image Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,480,0,0" VerticalAlignment="Top" Width="28"/>
         <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>

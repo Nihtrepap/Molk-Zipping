@@ -110,13 +110,13 @@
     <Resource Include="Assets\Images\molk.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\gear.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Images\ZippingText.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\AttributeIcons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\OrientationIcons\gear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
