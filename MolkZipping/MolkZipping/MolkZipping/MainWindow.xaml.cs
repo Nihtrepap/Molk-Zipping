@@ -37,8 +37,7 @@ namespace MolkZipping
             {
                 if (btnImage.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
                 else if(btnImage.Name == "BtnBackUnpack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
-                else if(btnImage.Name == "question") { System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/"); }
             }
-        }  
+        }
     }
 }

@@ -147,7 +147,7 @@
                 </Button.RenderTransform>
                 <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
             </Button>
-            <Button Click="Button_Click" x:Name="BtnPack" Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0" RenderTransformOrigin="0.5,0.5">
+            <Button Click="Button_Click" x:Name="BtnPack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0" RenderTransformOrigin="0.5,0.5">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -158,11 +158,6 @@
                 </Button.RenderTransform>
                 <Image Source="Assets/OrientationIcons/Pack.png" Width="88"/>
             </Button>
-
-            <Image MouseDown="Button_Click" x:Name="question" Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.5,0.5"/>
-            <Image x:Name="Gear" Source="Assets/OrientationIcons/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5"/>
-            
-
             <Image x:Name="question" Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="365,407,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -197,7 +192,6 @@
                 </Image.RenderTransform>
 
             </Image>
-
 
             <Image x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
@@ -246,15 +240,11 @@
                     <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
                 </TextBlock.Effect>
             </TextBlock>
-
-       
-
             <TextBlock x:Name="PackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="70" Visibility="Visible" Opacity="0" Width="141"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" "/><Run Text="  "/><Run Text="pack files"/></TextBlock>
             <TextBlock x:Name="UnpackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="74" Visibility="Visible" Opacity="0"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" unpack files"/></TextBlock>
 
 
             <TextBlock x:Name="HelpText" Margin="298,357,294,117" TextWrapping="Wrap" Width="200" Foreground="#FFD1521B" FontFamily="Microsoft New Tai Lue" FontSize="20" Opacity="0"  ><Run Text="       "/><Run Text="Press for help!"/></TextBlock>
-
 
 
 
@@ -277,7 +267,7 @@
                    FontSize="38" FontWeight="Thin" 
                    Padding="0"/>
             <Image x:Name="BtnBackPack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
-               Height="100" Margin="10,405,0,0" 
+               Height="100" Margin="10,409,0,0" 
                VerticalAlignment="Top" Width="100"
                MouseDown="Button_Click" Cursor="Hand"/>
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
@@ -298,7 +288,7 @@
             <Button x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
-                <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
+                <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
             </Button>
             <Button x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
@@ -312,7 +302,7 @@
                    FontSize="38" FontWeight="Thin" 
                    Padding="0"/>
             <Image x:Name="BtnBackUnpack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
-               Height="100" Margin="10,405,0,0" 
+               Height="100" Margin="10,409,0,0" 
                VerticalAlignment="Top" Width="100"
                MouseDown="Button_Click" Cursor="Hand"/>
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
@@ -328,6 +318,8 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+        </Grid>
+        <Grid Name="Information" Visibility="Hidden">
         </Grid>
     </Grid>
 </Window>
