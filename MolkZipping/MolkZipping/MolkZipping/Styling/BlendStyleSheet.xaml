@@ -1,0 +1,130 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MolkZipping.Styling">
+
+
+
+    <Storyboard x:Key="GearIcon">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Gear">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.969"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Gear">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.656"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Gear">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-15.5"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Gear">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="10.5"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="InstagramIcon">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Instagram">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.411"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Instagram">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.304"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Instagram">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5.75"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Instagram">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="4.25"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="FacebookIcon">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Facebook">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.464"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Facebook">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.375"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Facebook">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5.75"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Facebook">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="4.25"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="Webicon">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Web">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.375"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Web">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1.411"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Web">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="5.75"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Web">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="4.25"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="question">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="question">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-10.788"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="11.848"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-14.189"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="11.4"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.092"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+            <EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FF403273"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnUnpack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-30"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-30"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rectangle">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.798"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="10.5"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="2.653"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="4"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontFamily)" Storyboard.TargetName="textBlock">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3">
+                <DiscreteObjectKeyFrame.Value>
+                    <FontFamily>Gadugi</FontFamily>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.4">
+                <DiscreteObjectKeyFrame.Value>
+                    <FontFamily>Gadugi</FontFamily>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.6">
+                <DiscreteObjectKeyFrame.Value>
+                    <FontFamily>Gadugi</FontFamily>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+        </ObjectAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="15"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="15"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="15"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.6">
+                <DiscreteObjectKeyFrame.Value>
+                    <FontWeight>Normal</FontWeight>
+                </DiscreteObjectKeyFrame.Value>
+            </DiscreteObjectKeyFrame>
+        </ObjectAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="textBlock">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="5"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="textBlock">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="2"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+
+</ResourceDictionary>
