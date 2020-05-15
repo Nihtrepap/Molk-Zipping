@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace MolkZipping
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Pack.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Pack : Page
     {
-        public MainWindow()
+        public Pack()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-
-            if(button.Name == "BtnPack")
-            {
-                Pack test = new Pack();
-                this.Content = test.Content;
-            }
         }
     }
 }
