@@ -6,15 +6,16 @@
         xmlns:local="clr-namespace:MolkZipping"
         mc:Ignorable="d"
         Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White">
+    
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
                 <ResourceDictionary Source="Styling/BlendStyleSheet.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-         
         </ResourceDictionary>
     </Window.Resources>
+    
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Instagram">
             <BeginStoryboard x:Name="InstagramIcon_BeginStoryboard" Storyboard="{StaticResource InstagramIcon}"/>
@@ -35,137 +36,168 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Web">
             <RemoveStoryboard BeginStoryboardName="Webicon_BeginStoryboard"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="question">
-            <BeginStoryboard x:Name="question_BeginStoryboard" Storyboard="{StaticResource question}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="question">
-            <RemoveStoryboard BeginStoryboardName="question_BeginStoryboard"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Gear">
-            <BeginStoryboard x:Name="GearIcon_BeginStoryboard" Storyboard="{StaticResource GearIcon}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Gear">
-            <RemoveStoryboard BeginStoryboardName="GearIcon_BeginStoryboard"/>
-        </EventTrigger>
     </Window.Triggers>
-
+    
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White" Offset="0.651"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+        <Grid Name="Main" Visibility="Visible">
 
-        <Button x:Name="BtnUnpack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="492,214,100,0" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
-        </Button>
-        <Button Click="Button_Click" x:Name="BtnPack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <Image Source="Assets/OrientationIcons/Pack.png" Width="88"/>
-        </Button>
-        <Image x:Name="question" Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="Gear" Source="Assets/OrientationIcons/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0.651"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
-        <Image x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,432,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,471,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
+            <Button Click="Button_Click" x:Name="BtnUnpack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="492,214,100,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
+            </Button>
+            <Button Click="Button_Click" x:Name="BtnPack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/Pack.png" Width="88"/>
+            </Button>
+            <Image x:Name="question" Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.5,0.5">
+      
+            </Image>
+            <Image x:Name="Gear" Source="Assets/OrientationIcons/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5">
+            
+            </Image>
 
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="157,75,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.396"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="463,53,0,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0">
-            <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
-            </TextBlock.Effect>
-        </TextBlock>
-        <Rectangle x:Name="rectangle" Fill="#FFFFFF" HorizontalAlignment="Left" Height="104" Margin="339,301,0,0"  VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="49" Margin="256,337,0,0" TextWrapping="Wrap" Text="Do you need any help? Just klick and we will answer all your questions.." VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
+            <Image x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,432,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,471,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
 
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="157,75,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.396"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="463,53,0,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0">
+                <TextBlock.Effect>
+                    <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
+                </TextBlock.Effect>
+            </TextBlock>
+       
+       
+
+        </Grid>
+        <Grid Name="Pack" Visibility="Hidden">
+            <Button x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="662,387,10,0">
+                <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
+            </Button>
+            <Button x:Name="BtnChoosePackFile" Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="527,387,135,0">
+                <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
+                   VerticalAlignment="Top" Height="81" 
+                   Width="214" Foreground="#FF251240" 
+                   Text="PACK FILES" FontFamily="Tahoma"
+                   FontSize="38" FontWeight="Thin" 
+                   Padding="0"/>
+            <Image x:Name="BtnBackPack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
+               Height="100" Margin="10,409,0,0" 
+               VerticalAlignment="Top" Width="100"
+               MouseDown="Button_Click" Cursor="Hand"/>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
+               Height="100" Margin="25,20,0,0" 
+               VerticalAlignment="Top" Width="100"/>
+            <ListView x:Name="PackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="NAME"/>
+                        <GridViewColumn Header="DATE"/>
+                        <GridViewColumn Header="SIZE"/>
+                        <GridViewColumn Header="FILETYPE"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Name="Unpack" Visibility="Hidden">
+            <Button x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="662,387,10,0">
+                <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
+            </Button>
+            <Button x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="527,387,135,0">
+                <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
+                   VerticalAlignment="Top" Height="81" 
+                   Width="214" Foreground="#FF251240" 
+                   Text="PACK FILES" FontFamily="Tahoma"
+                   FontSize="38" FontWeight="Thin" 
+                   Padding="0"/>
+            <Image x:Name="BtnBackUnpack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
+               Height="100" Margin="10,409,0,0" 
+               VerticalAlignment="Top" Width="100"
+               MouseDown="Button_Click" Cursor="Hand"/>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
+               Height="100" Margin="25,20,0,0" 
+               VerticalAlignment="Top" Width="100"/>
+            <ListView x:Name="UnpackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="NAME"/>
+                        <GridViewColumn Header="DATE"/>
+                        <GridViewColumn Header="SIZE"/>
+                        <GridViewColumn Header="FILETYPE"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Name="Information" Visibility="Hidden">
+        </Grid>
     </Grid>
 </Window>
