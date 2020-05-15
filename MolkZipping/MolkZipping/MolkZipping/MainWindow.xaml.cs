@@ -20,19 +20,23 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
+        private void Button_Click(object sender, RoutedEventArgs e) {
 
-            if(button.Name == "BtnPack")
+            if (sender is Button btn)
             {
-                Pack test = new Pack();
-                this.Content = test.Content;
+                if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
+                else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
+            }
+            else if (sender is Image btnImage)
+            {
+                if (btnImage.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
+                else if(btnImage.Name == "BtnBackUnpack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
             }
         }
     }

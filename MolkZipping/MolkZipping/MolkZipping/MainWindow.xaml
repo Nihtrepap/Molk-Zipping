@@ -6,15 +6,87 @@
         xmlns:local="clr-namespace:MolkZipping"
         mc:Ignorable="d"
         Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White">
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
                 <ResourceDictionary Source="Styling/BlendStyleSheet.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-         
+            <Storyboard x:Key="BtnPack">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnUnpack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="316.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="question">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="112.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Instagram">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-46.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Facebook">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-45"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Web">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-43.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Exit">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="108"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Gear">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="99"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PackText">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnPack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnUnpack">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-330"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Instagram">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-63"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Facebook">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-63"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Web">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-61.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="question">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="117"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Exit">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="102"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Gear">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="94.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="UnpackText">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnUnpack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnQuestion">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="question">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="22.235"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-15.444"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="17.799"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-12.728"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-0.434"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="HelpText">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
+
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Instagram">
             <BeginStoryboard x:Name="InstagramIcon_BeginStoryboard" Storyboard="{StaticResource InstagramIcon}"/>
@@ -35,137 +107,219 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Web">
             <RemoveStoryboard BeginStoryboardName="Webicon_BeginStoryboard"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnPack">
+            <BeginStoryboard x:Name="BtnPack_BeginStoryboard" Storyboard="{StaticResource BtnPack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnPack">
+            <RemoveStoryboard BeginStoryboardName="BtnPack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnUnpack">
+            <BeginStoryboard x:Name="BtnUnpack_BeginStoryboard" Storyboard="{StaticResource BtnUnpack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnUnpack">
+            <RemoveStoryboard BeginStoryboardName="BtnUnpack_BeginStoryboard"/>
+        </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="question">
-            <BeginStoryboard x:Name="question_BeginStoryboard" Storyboard="{StaticResource question}"/>
+            <BeginStoryboard x:Name="BtnQuestion_BeginStoryboard" Storyboard="{StaticResource BtnQuestion}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="question">
-            <RemoveStoryboard BeginStoryboardName="question_BeginStoryboard"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Gear">
-            <BeginStoryboard x:Name="GearIcon_BeginStoryboard" Storyboard="{StaticResource GearIcon}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Gear">
-            <RemoveStoryboard BeginStoryboardName="GearIcon_BeginStoryboard"/>
+            <RemoveStoryboard BeginStoryboardName="BtnQuestion_BeginStoryboard"/>
         </EventTrigger>
     </Window.Triggers>
 
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White" Offset="0.651"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+        <Grid Name="Main" Visibility="Visible">
 
-        <Button x:Name="BtnUnpack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="492,214,100,0" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
-        </Button>
-        <Button Click="Button_Click" x:Name="BtnPack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <Image Source="Assets/OrientationIcons/Pack.png" Width="88"/>
-        </Button>
-        <Image x:Name="question" Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="Gear" Source="Assets/OrientationIcons/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0.651"/>
+                </LinearGradientBrush>
+            </Grid.Background>
 
-        <Image x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,432,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,471,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
+            <Button Click="Button_Click" x:Name="BtnUnpack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="492,214,100,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
+            </Button>
+            <Button Click="Button_Click" x:Name="BtnPack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/Pack.png" Width="88"/>
+            </Button>
+            <Image x:Name="question" Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="64" Margin="365,407,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
 
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="157,75,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.396"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="463,53,0,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0">
-            <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
-            </TextBlock.Effect>
-        </TextBlock>
-        <Rectangle x:Name="rectangle" Fill="#FFFFFF" HorizontalAlignment="Left" Height="104" Margin="339,301,0,0"  VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="49" Margin="256,337,0,0" TextWrapping="Wrap" Text="Do you need any help? Just klick and we will answer all your questions.." VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
+            </Image>
+            <Image x:Name="Gear" Source="Assets/OrientationIcons/gear.png" HorizontalAlignment="Left" Height="32" Margin="710,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
 
+            </Image>
+
+            <Image x:Name="Exit" Source="Assets/OrientationIcons/exit.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+
+            </Image>
+
+            <Image x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,432,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,471,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
+
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="157,75,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.396"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="463,53,0,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0">
+                <TextBlock.Effect>
+                    <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock x:Name="PackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="70" Visibility="Visible" Opacity="0" Width="141"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" "/><Run Text="  "/><Run Text="pack files"/></TextBlock>
+            <TextBlock x:Name="UnpackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="74" Visibility="Visible" Opacity="0"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" unpack files"/></TextBlock>
+
+
+            <TextBlock x:Name="HelpText" Margin="298,357,294,117" TextWrapping="Wrap" Width="200" Foreground="#FFD1521B" FontFamily="Microsoft New Tai Lue" FontSize="20" Opacity="0"  ><Run Text="       "/><Run Text="Press for help!"/></TextBlock>
+
+
+
+        </Grid>
+        <Grid Name="Pack" Visibility="Hidden">
+            <Button x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="662,387,10,0">
+                <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
+            </Button>
+            <Button x:Name="BtnChoosePackFile" Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="527,387,135,0">
+                <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
+                   VerticalAlignment="Top" Height="81" 
+                   Width="214" Foreground="#FF251240" 
+                   Text="PACK FILES" FontFamily="Tahoma"
+                   FontSize="38" FontWeight="Thin" 
+                   Padding="0"/>
+            <Image x:Name="BtnBackPack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
+               Height="100" Margin="10,409,0,0" 
+               VerticalAlignment="Top" Width="100"
+               MouseDown="Button_Click" Cursor="Hand"/>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
+               Height="100" Margin="25,20,0,0" 
+               VerticalAlignment="Top" Width="100"/>
+            <ListView x:Name="PackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="NAME"/>
+                        <GridViewColumn Header="DATE"/>
+                        <GridViewColumn Header="SIZE"/>
+                        <GridViewColumn Header="FILETYPE"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Name="Unpack" Visibility="Hidden">
+            <Button x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="662,387,10,0">
+                <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
+            </Button>
+            <Button x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="527,387,135,0">
+                <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
+                   VerticalAlignment="Top" Height="81" 
+                   Width="214" Foreground="#FF251240" 
+                   Text="PACK FILES" FontFamily="Tahoma"
+                   FontSize="38" FontWeight="Thin" 
+                   Padding="0"/>
+            <Image x:Name="BtnBackUnpack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
+               Height="100" Margin="10,409,0,0" 
+               VerticalAlignment="Top" Width="100"
+               MouseDown="Button_Click" Cursor="Hand"/>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
+               Height="100" Margin="25,20,0,0" 
+               VerticalAlignment="Top" Width="100"/>
+            <ListView x:Name="UnpackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="NAME"/>
+                        <GridViewColumn Header="DATE"/>
+                        <GridViewColumn Header="SIZE"/>
+                        <GridViewColumn Header="FILETYPE"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Name="Information" Visibility="Hidden">
+        </Grid>
     </Grid>
 </Window>
