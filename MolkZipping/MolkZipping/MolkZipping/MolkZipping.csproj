@@ -129,5 +129,10 @@
   <ItemGroup>
     <Resource Include="Assets\OrientationIcons\gear.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\OrientationIcons\backBtn.png" />
+    <Resource Include="Assets\OrientationIcons\exit.png" />
+    <Resource Include="Assets\OrientationIcons\hem.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
