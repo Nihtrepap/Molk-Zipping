@@ -319,7 +319,20 @@
                 </ListView.View>
             </ListView>
         </Grid>
-        <Grid Name="Information" Visibility="Hidden">
+        <Grid Name="Advanced" Visibility="Visible" Margin="0,0,87,491">
+            <Menu Background="#C0BCC4">
+                <MenuItem Background="#C0BCC4" Header="Color theme">
+                    <MenuItem  Background="#C0BCC4" IsCheckable="True" Header="Dark"/>
+                    <MenuItem Background="#C0BCC4" IsCheckable="True" Header="Light"/>
+                </MenuItem>
+                <MenuItem Background="#C0BCC4" Header="Settings">
+                    <MenuItem Background="#C0BCC4" Header="Language">
+                        <MenuItem Background="#C0BCC4" IsCheckable="True" Header="Swedish"></MenuItem>
+                        <MenuItem Background="#C0BCC4" IsCheckable="True" Header="English"></MenuItem>
+                        <MenuItem Background="#C0BCC4" IsCheckable="True" Header="Japanese"></MenuItem>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
         </Grid>
     </Grid>
 </Window>
