@@ -95,6 +95,16 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-327"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
+            <Storyboard x:Key="BtnPackBack">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnBackPack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnBackUnpack">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnBackUnPack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -142,13 +152,22 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Exit">
             <RemoveStoryboard BeginStoryboardName="BtnExit_BeginStoryboard"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource LogoStart}"/>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnBackPack">
+            <BeginStoryboard x:Name="BtnPackBack_BeginStoryboard" Storyboard="{StaticResource BtnPackBack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnBackPack">
+            <RemoveStoryboard BeginStoryboardName="BtnPackBack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnBackUnPack">
+            <BeginStoryboard x:Name="BtnBackUnpack_BeginStoryboard" Storyboard="{StaticResource BtnBackUnpack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnBackUnPack">
+            <RemoveStoryboard BeginStoryboardName="BtnBackUnpack_BeginStoryboard"/>
         </EventTrigger>
     </Window.Triggers>
 
     <Grid>
-        <Grid Name="Main" Visibility="Visible">
+        <Grid Name="Main" Visibility="Hidden">
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -285,17 +304,21 @@
                    Text="PACK FILES" FontFamily="Tahoma"
                    FontSize="38" FontWeight="Thin" 
                    Padding="0"/>
-            <Image x:Name="BtnBackPack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
-               Height="100" Margin="10,409,0,0" 
-               VerticalAlignment="Top" Width="100"
-               MouseDown="Button_Click" Cursor="Hand"/>
+
+            <Button x:Name="BtnBackPack" HorizontalAlignment="Left" 
+               Height="80" Margin="25,409,0,0" 
+               VerticalAlignment="Top" Width="80"
+               Click="Button_Click" Cursor="Hand"
+                    Style="{StaticResource RadiusButton}">
+                <Image Source="Assets/OrientationIcons/backBtn.png" Width="68" OpacityMask="Black"/>
+            </Button>
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
             <DataGrid x:Name="GridPack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
 
         </Grid>
-        <Grid Name="Unpack" Visibility="Hidden">
+        <Grid Name="Unpack" Visibility="Visible">
             <Button x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
@@ -312,10 +335,13 @@
                    Text="UNPACK FILES" FontFamily="Tahoma"
                    FontSize="38" FontWeight="Thin" 
                    Padding="0"/>
-            <Image x:Name="BtnBackUnpack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
-               Height="100" Margin="10,409,0,0" 
-               VerticalAlignment="Top" Width="100"
-               MouseDown="Button_Click" Cursor="Hand"/>
+            <Button x:Name="BtnBackUnPack" HorizontalAlignment="Left" 
+               Height="80" Margin="25,409,0,0"
+               VerticalAlignment="Top" Width="80"
+               Click="Button_Click" Cursor="Hand"
+                    Style="{StaticResource RadiusButton}">
+                <Image Source="Assets/OrientationIcons/backBtn.png" Width="68" OpacityMask="Black"/>
+            </Button>
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
