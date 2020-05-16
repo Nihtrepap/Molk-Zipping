@@ -35,9 +35,10 @@
     <Style
     x:Key="MenuItemStyle"
     TargetType="{x:Type MenuItem}">
-        <Setter Property="Background" Value="#C0BCC4"  />
+        <Setter Property="Background" Value="#D1521B"  />
         <Setter Property="Foreground" Value="#251240" />
         <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="BorderBrush" Value="#D1521B"/>
         <Style.Triggers>
             <Trigger Property="IsHighlighted" Value="True">
                 <Setter Property="Foreground" Value="#D1521B" /> 

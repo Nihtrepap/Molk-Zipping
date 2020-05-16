@@ -262,13 +262,13 @@
 
             <TextBlock x:Name="HelpText" Margin="298,357,294,117" TextWrapping="Wrap" Width="200" Foreground="#FFD1521B" FontFamily="Microsoft New Tai Lue" FontSize="20" Opacity="0"  ><Run Text="       "/><Run Text="Press for help!"/></TextBlock>
             <TextBlock x:Name="ExitText" HorizontalAlignment="Left" Margin="753,47,0,0" TextWrapping="Wrap" Text="Exit" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FFD1521B" FontSize="16" Opacity="0"/>
-            <Button x:Name="BtnMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="28" Height="28" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}"  >
+            <Button Click="Button_Click" x:Name="BtnMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="28" Height="28" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}"  >
                 <Image Source="Assets/OrientationIcons/menu.png" Width="28" Height="28"/>
             </Button>
 
 
         </Grid>
-        <Grid Name="Pack" Visibility="Visible">
+        <Grid Name="Pack" Visibility="Hidden">
             <Button x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
@@ -323,7 +323,7 @@
 
         </Grid>
         <Grid Name="Advanced" Visibility="Hidden" Margin="0,0,87,491">
-            <Menu x:Name="MenuBar"  Background="#C0BCC4" Margin="0,0,485,0">
+            <Menu x:Name="MenuBar" Background="#D1521B"  Margin="0,0,485,0" >
                 <MenuItem Style="{StaticResource MenuItemStyle}"  Header="Color theme">
                     <MenuItem Style="{StaticResource MenuItemStyle}"   IsCheckable="True" Header="Dark"/>
                     <MenuItem Style="{StaticResource MenuItemStyle}"  IsCheckable="True" Header="Light"/>

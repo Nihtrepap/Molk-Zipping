@@ -34,6 +34,10 @@ namespace MolkZipping
             {
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
+                else if (btn.Name == "BtnMenu") {
+                    if (!gearClick) { Advanced.Visibility = Visibility.Visible; gearClick = true; }
+                    else { Advanced.Visibility = Visibility.Hidden; gearClick = false; }
+                }
             }
             else if (sender is Image btnImage)
             {
@@ -41,10 +45,6 @@ namespace MolkZipping
                 else if (btnImage.Name == "BtnBackUnpack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btnImage.Name == "question") { System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/"); }
                 else if (btnImage.Name == "Exit") { Application.Current.Shutdown(); }
-                else if (btnImage.Name == "Gear") {
-                    if (!gearClick) { Advanced.Visibility = Visibility.Visible; gearClick = true; }
-                    else { Advanced.Visibility = Visibility.Hidden; gearClick = false; }
-                }
                 else if(btnImage.Name == "Instagram") { System.Diagnostics.Process.Start("https://www.instagram.com/molkutbildning/"); }
                 else if(btnImage.Name == "Facebook") { System.Diagnostics.Process.Start("https://www.facebook.com/molkutbildning/"); }
                 else if(btnImage.Name == "Web") { System.Diagnostics.Process.Start("https://www.molk.se/"); }
