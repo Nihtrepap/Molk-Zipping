@@ -11,17 +11,16 @@
                 <ControlTemplate TargetType="Button">
                     <Border CornerRadius="15" Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-
                         </ContentPresenter>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="RoundButton" TargetType="Button">
         <Setter Property="Background" Value="#403273"/>
         <Setter Property="Foreground" Value="White" />
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -31,5 +30,18 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style
+    x:Key="MenuItemStyle"
+    TargetType="{x:Type MenuItem}">
+        <Setter Property="Background" Value="#C0BCC4"  />
+        <Setter Property="Foreground" Value="#251240" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Style.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Foreground" Value="#D1521B" /> 
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

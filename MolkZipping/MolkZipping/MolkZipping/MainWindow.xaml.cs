@@ -20,13 +20,15 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool gearClick = false;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
             if (sender is Button btn)
             {
@@ -36,9 +38,13 @@ namespace MolkZipping
             else if (sender is Image btnImage)
             {
                 if (btnImage.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
-                else if(btnImage.Name == "BtnBackUnpack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
-                else if(btnImage.Name == "question") {System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/");
- }
+                else if (btnImage.Name == "BtnBackUnpack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
+                else if (btnImage.Name == "question") { System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/"); }
+                else if (btnImage.Name == "Gear") {
+                    if (!gearClick) { Advanced.Visibility = Visibility.Visible; gearClick = true; }
+                    else { Advanced.Visibility = Visibility.Hidden; gearClick = false; }
+                }
+
             }
         }
     }
