@@ -202,7 +202,7 @@
 
             </Image>
 
-            <Image x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+            <Image MouseDown="Button_Click" x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -212,7 +212,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,432,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+            <Image MouseDown="Button_Click" x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,432,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -222,7 +222,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,471,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+            <Image MouseDown="Button_Click" x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,471,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -260,7 +260,6 @@
             <TextBlock x:Name="PackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="70" Visibility="Visible" Opacity="0" Width="141"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" "/><Run Text="  "/><Run Text="pack files"/></TextBlock>
             <TextBlock x:Name="UnpackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="74" Visibility="Visible" Opacity="0"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" unpack files"/></TextBlock>
 
-
             <TextBlock x:Name="HelpText" Margin="298,357,294,117" TextWrapping="Wrap" Width="200" Foreground="#FFD1521B" FontFamily="Microsoft New Tai Lue" FontSize="20" Opacity="0"  ><Run Text="       "/><Run Text="Press for help!"/></TextBlock>
             <TextBlock x:Name="ExitText" HorizontalAlignment="Left" Margin="753,47,0,0" TextWrapping="Wrap" Text="Exit" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FFD1521B" FontSize="16" Opacity="0"/>
             <Button x:Name="BtnMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="28" Height="28" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}"  >
@@ -268,10 +267,8 @@
             </Button>
 
 
-
-
         </Grid>
-        <Grid Name="Pack" Visibility="Hidden">
+        <Grid Name="Pack" Visibility="Visible">
             <Button x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
@@ -295,16 +292,8 @@
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
-            <ListView x:Name="PackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="NAME"/>
-                        <GridViewColumn Header="DATE"/>
-                        <GridViewColumn Header="SIZE"/>
-                        <GridViewColumn Header="FILETYPE"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <DataGrid x:Name="GridPack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
+
         </Grid>
         <Grid Name="Unpack" Visibility="Hidden">
             <Button x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
@@ -330,16 +319,8 @@
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
-            <ListView  x:Name="UnpackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="NAME"/>
-                        <GridViewColumn Header="DATE"/>
-                        <GridViewColumn Header="SIZE"/>
-                        <GridViewColumn Header="FILETYPE"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
+
         </Grid>
         <Grid Name="Advanced" Visibility="Hidden" Margin="0,0,87,491">
             <Menu x:Name="MenuBar"  Background="#C0BCC4" Margin="0,0,485,0">
