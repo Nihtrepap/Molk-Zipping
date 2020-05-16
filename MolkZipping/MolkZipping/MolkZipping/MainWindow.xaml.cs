@@ -44,7 +44,6 @@ namespace MolkZipping
                     if (!gearClick) { Advanced.Visibility = Visibility.Visible; gearClick = true; }
                     else { Advanced.Visibility = Visibility.Hidden; gearClick = false; }
                 }
-
             }
         }
     }

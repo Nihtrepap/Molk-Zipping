@@ -139,7 +139,7 @@
     </Window.Triggers>
 
     <Grid>
-        <Grid Name="Main" Visibility="Visible">
+        <Grid Name="Main" Visibility="Hidden">
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -285,11 +285,11 @@
                 </ListView.View>
             </ListView>
         </Grid>
-        <Grid Name="Unpack" Visibility="Hidden">
+        <Grid Name="Unpack" Visibility="Visible">
             <Button x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
-                <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
+                <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
             </Button>
             <Button x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
@@ -298,8 +298,8 @@
             </Button>
             <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
                    VerticalAlignment="Top" Height="81" 
-                   Width="214" Foreground="#FF251240" 
-                   Text="PACK FILES" FontFamily="Tahoma"
+                   Width="287" Foreground="#FF251240" 
+                   Text="UNPACK FILES" FontFamily="Tahoma"
                    FontSize="38" FontWeight="Thin" 
                    Padding="0"/>
             <Image x:Name="BtnBackUnpack" Source="Assets/OrientationIcons/backBtn.png" HorizontalAlignment="Left" 
@@ -309,7 +309,7 @@
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
-            <ListView x:Name="UnpackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
+            <ListView  x:Name="UnpackList" HorizontalAlignment="Left" Height="307" Margin="28,79,0,0" VerticalAlignment="Top" Width="496" BorderBrush="#FF2F1F40">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="NAME"/>
