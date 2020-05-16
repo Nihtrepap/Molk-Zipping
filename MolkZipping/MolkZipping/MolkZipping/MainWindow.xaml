@@ -13,7 +13,53 @@
                 <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
                 <ResourceDictionary Source="Styling/BlendStyleSheet.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-           
+            <Storyboard x:Key="LoadingBallOne">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-3.758"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.017"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="58"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-31"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-141"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-139"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-77"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="36"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="59"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-4"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="101"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="191"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="113"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-84"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-143"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-127"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-3"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image2">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="6"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="102"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="171"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="73"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-125"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-170"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-136"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image2">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="58"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-49"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-141"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-140"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-62"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="55"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="59"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -75,6 +121,7 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard x:Name="LogoStart_BeginStoryboard" Storyboard="{StaticResource LogoStart}"/>
+            <BeginStoryboard Storyboard="{StaticResource LoadingBallOne}"/>
         </EventTrigger>
     </Window.Triggers>
 
@@ -262,6 +309,41 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
+        </Grid>
+        <Grid Name="Loading" Visibility="Hidden">
+            <Image x:Name="image" Source="Assets/Images/molkLoading.png" Margin="269,192,269,191" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="image1" Source="Assets/Images/loadingOne.png" Width="20" Height="20" Margin="375,292,397,207" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="image2" Source="Assets/Images/loadingTwo.png" Width="20" Height="20" Margin="395,292,377,207" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+
+
         </Grid>
     </Grid>
 </Window>
