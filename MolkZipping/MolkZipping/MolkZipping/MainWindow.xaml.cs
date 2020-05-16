@@ -44,6 +44,9 @@ namespace MolkZipping
                     if (!gearClick) { Advanced.Visibility = Visibility.Visible; gearClick = true; }
                     else { Advanced.Visibility = Visibility.Hidden; gearClick = false; }
                 }
+                else if(btnImage.Name == "Instagram") { System.Diagnostics.Process.Start("https://www.instagram.com/molkutbildning/"); }
+                else if(btnImage.Name == "Facebook") { System.Diagnostics.Process.Start("https://www.facebook.com/molkutbildning/"); }
+                else if(btnImage.Name == "Web") { System.Diagnostics.Process.Start("https://www.molk.se/"); }
             }
         }
     }
