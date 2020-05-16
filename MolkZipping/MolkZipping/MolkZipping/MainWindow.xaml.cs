@@ -40,11 +40,13 @@ namespace MolkZipping
                 if (btnImage.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
                 else if (btnImage.Name == "BtnBackUnpack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btnImage.Name == "question") { System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/"); }
+                else if (btnImage.Name == "Exit") { Application.Current.Shutdown(); }
                 else if (btnImage.Name == "Gear") {
                     if (!gearClick) { Advanced.Visibility = Visibility.Visible; gearClick = true; }
                     else { Advanced.Visibility = Visibility.Hidden; gearClick = false; }
                 }
             }
         }
+
     }
 }

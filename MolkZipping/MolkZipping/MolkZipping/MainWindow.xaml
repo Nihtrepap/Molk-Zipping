@@ -89,6 +89,12 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0.333"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
+            <Storyboard x:Key="LogoStart">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="textBlock">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-372"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-327"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -136,10 +142,13 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Exit">
             <RemoveStoryboard BeginStoryboardName="BtnExit_BeginStoryboard"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource LogoStart}"/>
+        </EventTrigger>
     </Window.Triggers>
 
     <Grid>
-        <Grid Name="Main" Visibility="Hidden">
+        <Grid Name="Main" Visibility="Visible">
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -181,7 +190,7 @@
 
             </Image>
 
-            <Image x:Name="Exit" Source="Assets/OrientationIcons/exit.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="Exit" Source="Assets/OrientationIcons/exit.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White" RenderTransformOrigin="0.5,0.5" MouseDown="Button_Click">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -235,7 +244,15 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Left" Margin="463,53,0,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0">
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="809,53,-231,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
                 <TextBlock.Effect>
                     <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
                 </TextBlock.Effect>
@@ -246,6 +263,10 @@
 
             <TextBlock x:Name="HelpText" Margin="298,357,294,117" TextWrapping="Wrap" Width="200" Foreground="#FFD1521B" FontFamily="Microsoft New Tai Lue" FontSize="20" Opacity="0"  ><Run Text="       "/><Run Text="Press for help!"/></TextBlock>
             <TextBlock x:Name="ExitText" HorizontalAlignment="Left" Margin="753,47,0,0" TextWrapping="Wrap" Text="Exit" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FFD1521B" FontSize="16" Opacity="0"/>
+            <Button x:Name="BtnMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="28" Height="28" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}"  >
+                <Image Source="Assets/OrientationIcons/menu.png" Width="28" Height="28"/>
+            </Button>
+
 
 
 
@@ -285,7 +306,7 @@
                 </ListView.View>
             </ListView>
         </Grid>
-        <Grid Name="Unpack" Visibility="Visible">
+        <Grid Name="Unpack" Visibility="Hidden">
             <Button x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
