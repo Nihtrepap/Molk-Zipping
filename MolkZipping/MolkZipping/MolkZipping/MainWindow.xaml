@@ -202,36 +202,9 @@
 
             </Image>
 
-            <Image MouseDown="Button_Click" x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,392,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-            <Image MouseDown="Button_Click" x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,432,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-            <Image MouseDown="Button_Click" x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,471,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
+            
+            
+            
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
 
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="157,75,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
@@ -322,20 +295,37 @@
             <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
 
         </Grid>
-        <Grid Name="Advanced" Visibility="Hidden" Margin="0,0,87,491">
-            <Menu x:Name="MenuBar" Background="#D1521B"  Margin="0,0,485,0" >
-                <MenuItem Style="{StaticResource MenuItemStyle}"  Header="Color theme">
-                    <MenuItem Style="{StaticResource MenuItemStyle}"   IsCheckable="True" Header="Dark"/>
-                    <MenuItem Style="{StaticResource MenuItemStyle}"  IsCheckable="True" Header="Light"/>
-                </MenuItem>
-                <MenuItem Style="{StaticResource MenuItemStyle}"  Header="Settings">
-                    <MenuItem Style="{StaticResource MenuItemStyle}"  Header="Language">
-                        <MenuItem Style="{StaticResource MenuItemStyle}"  IsCheckable="True" Header="Swedish"></MenuItem>
-                        <MenuItem Style="{StaticResource MenuItemStyle}"  IsCheckable="True" Header="English"></MenuItem>
-                        <MenuItem Style="{StaticResource MenuItemStyle}" IsCheckable="True" Header="Japanese"></MenuItem>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
+        <Grid Name="Advanced" Visibility="Hidden" Margin="0,0,600,0" Background="#7F403273" MouseLeave="Mouse_Leave_Menu"  >
+            <Image MouseDown="Button_Click" x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,380,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image MouseDown="Button_Click" x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,420,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image MouseDown="Button_Click" x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,460,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
         </Grid>
     </Grid>
 </Window>
