@@ -20,7 +20,7 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool gearClick = false;
+        private bool menuClick = false;
 
         public MainWindow()
         {
@@ -35,8 +35,7 @@ namespace MolkZipping
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnMenu") {
-                    if (!gearClick) { Advanced.Visibility = Visibility.Visible; gearClick = true; }
-                    else { Advanced.Visibility = Visibility.Hidden; gearClick = false; }
+                    if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
@@ -51,5 +50,10 @@ namespace MolkZipping
             }
         }
 
+        private void Mouse_Leave_Menu(object sender, MouseEventArgs e)
+        {
+            Advanced.Visibility = Visibility.Hidden;
+            menuClick = false;
+        }
     }
 }
