@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +22,13 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
 
         public MainWindow()
         {
             InitializeComponent();
+            packList.Add(new Pack("Testing", "txt", 124.3));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,6 +43,7 @@ namespace MolkZipping
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
             }
             else if (sender is Image btnImage)
             {
@@ -54,6 +59,44 @@ namespace MolkZipping
         {
             Advanced.Visibility = Visibility.Hidden;
             menuClick = false;
+        }
+
+        private void Open_File_Dialog()
+        {
+            string opened;
+
+            OpenFileDialog openFileWindow = new OpenFileDialog();
+
+            openFileWindow.ShowDialog();
+
+
+            opened = openFileWindow.FileName.ToString();
+
+            Cmd_run(opened);
+
+
+
+        }
+
+        private void Cmd_run(string fileOpen)
+        {
+            string command = fileOpen;
+
+            Process processCmd = new Process();
+
+            processCmd.StartInfo.FileName = "cmd.exe";
+            processCmd.StartInfo.RedirectStandardInput = true;
+            processCmd.StartInfo.RedirectStandardOutput = true;
+            processCmd.StartInfo.RedirectStandardError = true;
+            processCmd.StartInfo.CreateNoWindow = true;
+            processCmd.StartInfo.UseShellExecute = false;
+            processCmd.Start();
+            processCmd.StandardInput.WriteLine($"{command} > tmp.txt");
+
+            processCmd.StandardInput.Flush();
+            processCmd.StandardInput.Close();
+            processCmd.WaitForExit();
+
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿<Window x:Class="MolkZipping.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MolkZipping"
+        x:Class="MolkZipping.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White" MaxWidth="800" MaxHeight="550" MinHeight="550" MinWidth="800">
+        Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -142,7 +143,9 @@
     </Window.Triggers>
 
     <Grid>
-        <Grid Name="Main" Visibility="Visible">
+        <!-- THIS IS THE MAIN PAGE SECTION -->
+
+        <Grid x:Name="Main" Visibility="Visible">
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -198,7 +201,7 @@
 
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="165,75,0,0" RenderTransformOrigin="0.5,0.5" Width="106" Foreground="#FFC0BCC4" FontSize="16" FontWeight="Bold">
+            <TextBlock Width="78" VerticalAlignment="Top" Text="WECLOME TO" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="157,75,0,0" HorizontalAlignment="Left" Foreground="#FFC0BCC4">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -231,14 +234,15 @@
             </Button>
 
         </Grid>
-        <Grid Name="Pack" Visibility="Hidden">
+        <!-- THIS IS THE PACK SECTION -->
+        <Grid x:Name="Pack" Visibility="Hidden">
             <Button Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0"
                     >
                 <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
             </Button>
-            <Button Cursor="Hand" x:Name="BtnChoosePackFile" Style="{StaticResource RadiusButton}" 
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnChoosePackFile" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="527,387,135,0" >
                 <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88" />
@@ -264,7 +268,8 @@
             <DataGrid x:Name="GridPack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
 
         </Grid>
-        <Grid Name="Unpack" Visibility="Hidden">
+        <!-- THIS IS THE UNPACK SECTION -->
+        <Grid x:Name="Unpack" Visibility="Hidden">
             <Button Cursor="Hand" x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
@@ -294,7 +299,8 @@
             <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
 
         </Grid>
-        <Grid Name="Advanced" Visibility="Hidden" Margin="0,0,600,0" Background="#7F403273" MouseLeave="Mouse_Leave_Menu"  >
+        <!-- THIS IS THE ADVANCED SECTION -->
+        <Grid x:Name="Advanced" Visibility="Hidden" Margin="0,0,600,0" Background="#7F403273" MouseLeave="Mouse_Leave_Menu"  >
             <Image MouseDown="Button_Click" Cursor="Hand" x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,380,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
@@ -326,8 +332,11 @@
                 </Image.RenderTransform>
             </Image>
         </Grid>
-        <Grid Name="Loading" Visibility="Hidden">
-            <TextBlock x:Name="TxtLoading" Margin="249,10,249,0"  VerticalAlignment="Top" Height="131" Foreground="#FF251240" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0"><Run Text="Working files"/><Run Text=","/><Run Text=" "/><LineBreak/><Run Text="p"/><Run Text="lease wait..."/></TextBlock>
+        
+        <!-- THIS IS THE LOADING SCREEN SECTION -->
+
+        <Grid x:Name="Loading" Visibility="Hidden">
+            <TextBlock x:Name="TxtLoading" Margin="249,10,249,0"  VerticalAlignment="Top" Height="131" Foreground="#FF251240" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0"><Run Text="Molking files"/><Run Text=","/><Run Text=" "/><LineBreak/><Run Text="p"/><Run Text="lease wait..."/></TextBlock>
 
             <Image x:Name="image" Source="Assets/Images/molkLoading.png" Margin="269,192,269,191" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
