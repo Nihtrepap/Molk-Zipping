@@ -29,7 +29,8 @@ namespace MolkZipping
         public MainWindow()
         {
             InitializeComponent();
-            packList.Add(new Pack("Testing", "txt", 124.3));
+
+        
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -65,53 +66,86 @@ namespace MolkZipping
         private void Open_File_Dialog()
         {
             string opened;
-
             OpenFileDialog openFileWindow = new OpenFileDialog();
-
+            
             openFileWindow.ShowDialog();
-
-
-            opened = openFileWindow.FileName.ToString();
-
+            opened = openFileWindow.FileName;
             Cmd_run(opened);
-
-
 
         }
 
         private void Cmd_run(string fileOpen)
         {
-            string command = fileOpen;
-            string tmp = @".\tmp.txt";
+            try
+            {
+                string tmp = @"tmp.txt";
 
-            Process processCmd = new Process();
+                Process processCmd = new Process();
 
-            processCmd.StartInfo.FileName = "cmd.exe";
-            processCmd.StartInfo.RedirectStandardInput = true;
-            processCmd.StartInfo.RedirectStandardOutput = true;
-            processCmd.StartInfo.RedirectStandardError = true;
-            processCmd.StartInfo.CreateNoWindow = true;
-            processCmd.StartInfo.UseShellExecute = false;
-            processCmd.Start();
-            processCmd.StandardInput.WriteLine($"{command} > {tmp}");
-            processCmd.StandardInput.Flush();
-            File_Reader(tmp);
-            processCmd.StandardInput.Close();
-            processCmd.WaitForExit();
+                processCmd.StartInfo.FileName = "cmd.exe";
+                processCmd.StartInfo.RedirectStandardInput = true;
+                processCmd.StartInfo.RedirectStandardOutput = true;
+                processCmd.StartInfo.RedirectStandardError = true;
+                processCmd.StartInfo.CreateNoWindow = true;
+                processCmd.StartInfo.UseShellExecute = false;
+                processCmd.Start();
 
+                processCmd.StandardInput.WriteLine($"dir \"{fileOpen}\" > {tmp}");
+                textBlocktest.Text = $"dir {fileOpen} > {tmp}";
+                processCmd.StandardInput.Flush();
+                processCmd.StandardInput.Close();
+                processCmd.WaitForExit();
+
+                File_Reader(tmp);
+
+                Get_Fileinfo(tmp);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("WRONG\n"+e);
+            }
         }
 
         private void File_Reader(string tmp)
         {
             string read;
-
             read = File.ReadAllText(tmp, Encoding.UTF8);
-
-            if (read == null) textBlocktest.Text = $"{read}sheisse";
-
             textBlocktest.Text = read;
 
+        }
 
+        private void Get_Fileinfo(string tmp)
+        {
+            string line;
+            FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
+            StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
+
+            
+               // streamR.ReadLine();
+               // streamR.ReadLine().Skip(5).Take(1).First();
+           // }
+
+            //string testText = streamR.ReadToEnd();
+
+            while ((line = streamR.ReadLine()) != null)
+            {
+                if (System.Text.RegularExpressions.Regex.IsMatch(line,"^\\d{2}/\\d{2}/\\d{4}"))
+                {
+                    string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string date = split[0];
+                    string time = split[1];
+                    string am = split[2];
+                    string size = split[3] + " kb";
+                    string name = split[4];
+                  
+                    packList.Add(new Pack(name, size, time, date));
+                    GridPack.Items.Refresh();
+                    
+                }
+
+            }
+            fStream.Close();
         }
     }
 }

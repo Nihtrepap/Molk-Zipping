@@ -9,14 +9,16 @@ namespace MolkZipping
     public class Pack
     {
         public string Name { get; private set; }
-        public string Type { get; private set; }
-        public double Size { get; private set; }
+        public string Size { get; private set; }
+        public string Date { get; private set; }
+        public string Time { get; private set; }
 
-        public Pack(string name, string type, double size)
+        public Pack(string name, string size, string date, string time)
         {
             Name = name;
-            Type = type;
             Size = size;
+            Date = date;
+            Time = time;
         }
     }
 }
