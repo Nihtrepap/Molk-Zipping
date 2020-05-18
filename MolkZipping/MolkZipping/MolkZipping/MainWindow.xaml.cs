@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,7 @@ namespace MolkZipping
         private void Cmd_run(string fileOpen)
         {
             string command = fileOpen;
+            string tmp = @".\tmp.txt";
 
             Process processCmd = new Process();
 
@@ -91,11 +93,24 @@ namespace MolkZipping
             processCmd.StartInfo.CreateNoWindow = true;
             processCmd.StartInfo.UseShellExecute = false;
             processCmd.Start();
-            processCmd.StandardInput.WriteLine($"{command} > tmp.txt");
-
+            processCmd.StandardInput.WriteLine($"{command} > {tmp}");
             processCmd.StandardInput.Flush();
+            File_Reader(tmp);
             processCmd.StandardInput.Close();
             processCmd.WaitForExit();
+
+        }
+
+        private void File_Reader(string tmp)
+        {
+            string read;
+
+            read = File.ReadAllText(tmp, Encoding.UTF8);
+
+            if (read == null) textBlocktest.Text = $"{read}sheisse";
+
+            textBlocktest.Text = read;
+
 
         }
     }

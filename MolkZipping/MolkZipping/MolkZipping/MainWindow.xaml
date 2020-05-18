@@ -145,7 +145,7 @@
     <Grid>
         <!-- THIS IS THE MAIN PAGE SECTION -->
 
-        <Grid x:Name="Main" Visibility="Visible">
+        <Grid x:Name="Main" Visibility="hidden">
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -235,7 +235,7 @@
 
         </Grid>
         <!-- THIS IS THE PACK SECTION -->
-        <Grid x:Name="Pack" Visibility="Hidden">
+        <Grid x:Name="Pack" Visibility="Visible">
             <Button Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0"
@@ -266,6 +266,7 @@
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
             <DataGrid x:Name="GridPack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
+            <TextBlock x:Name="textBlocktest" HorizontalAlignment="Left" Margin="576,120,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="194" Width="165" Foreground="#FF0C0B0B"/>
 
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
