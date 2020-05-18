@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.WindowsAPICodePack.Dialogs;
+
 
 namespace MolkZipping
 {
@@ -66,8 +68,7 @@ namespace MolkZipping
         private void Open_File_Dialog()
         {
             string opened;
-            OpenFileDialog openFileWindow = new OpenFileDialog();
-            
+            CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
             openFileWindow.ShowDialog();
             opened = openFileWindow.FileName;
             Cmd_run(opened);
@@ -130,7 +131,8 @@ namespace MolkZipping
 
             while ((line = streamR.ReadLine()) != null)
             {
-                if (System.Text.RegularExpressions.Regex.IsMatch(line,"^\\d{2}/\\d{2}/\\d{4}"))
+                if ((System.Text.RegularExpressions.Regex.IsMatch(line,"\\d{2}:\\d{2}")))    //"/\\d{4}" ))
+                   // || System.Text.RegularExpressions.Regex.IsMatch(line, "^\\d{4}-\\d{2}-\\d{2}"))
                 {
                     string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     string date = split[0];
