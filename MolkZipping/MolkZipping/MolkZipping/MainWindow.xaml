@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MolkZipping"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White">
+        Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White" MaxWidth="800" MaxHeight="550" MinHeight="550" MinWidth="800">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -135,7 +135,7 @@
 
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
 
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="157,75,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="165,75,0,0" RenderTransformOrigin="0.5,0.5" Width="106" Foreground="#FFC0BCC4" FontSize="16" FontWeight="Bold">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
