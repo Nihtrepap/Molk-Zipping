@@ -27,10 +27,12 @@ namespace MolkZipping
     {
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
+        private bool folderPick = true;
 
         public MainWindow()
         {
             InitializeComponent();
+            
 
         
         }
@@ -59,6 +61,18 @@ namespace MolkZipping
             }
         }
 
+        private void Radiobutton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (SelectFolder.IsChecked == true)
+            {
+                folderPick = true;
+            }
+            else if (SelectFile.IsChecked == true)
+            {
+                folderPick = false;
+            }
+        }
+
         private void Mouse_Leave_Menu(object sender, MouseEventArgs e)
         {
             Advanced.Visibility = Visibility.Hidden;
@@ -69,6 +83,7 @@ namespace MolkZipping
         {
             string opened;
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
+            openFileWindow.IsFolderPicker = folderPick;
             openFileWindow.ShowDialog();
             opened = openFileWindow.FileName;
             Cmd_run(opened);
@@ -91,8 +106,9 @@ namespace MolkZipping
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
 
-                processCmd.StandardInput.WriteLine($"dir \"{fileOpen}\" > {tmp}");
-                textBlocktest.Text = $"dir {fileOpen} > {tmp}";
+                string cmd = $"dir \"{fileOpen}\" > {tmp}";
+                
+                processCmd.StandardInput.WriteLine(cmd);
                 processCmd.StandardInput.Flush();
                 processCmd.StandardInput.Close();
                 processCmd.WaitForExit();
@@ -112,7 +128,7 @@ namespace MolkZipping
         {
             string read;
             read = File.ReadAllText(tmp, Encoding.UTF8);
-            textBlocktest.Text = read;
+            
 
         }
 
@@ -137,9 +153,8 @@ namespace MolkZipping
                     string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     string date = split[0];
                     string time = split[1];
-                    string am = split[2];
-                    string size = split[3] + " kb";
-                    string name = split[4];
+                    string size = split[2] + " kb";
+                    string name = split[3];
                   
                     packList.Add(new Pack(name, size, time, date));
                     GridPack.Items.Refresh();
@@ -149,5 +164,6 @@ namespace MolkZipping
             }
             fStream.Close();
         }
+
     }
 }

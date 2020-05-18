@@ -266,7 +266,11 @@
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
             <DataGrid x:Name="GridPack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
-            <TextBlock x:Name="textBlocktest" HorizontalAlignment="Left" Margin="576,120,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="194" Width="165" Foreground="#FF0C0B0B"/>
+            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFolder" Content="Folder" HorizontalAlignment="Left" Margin="548,95,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273" />
+            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFile" Content="File" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273"/>
+            <TextBlock HorizontalAlignment="Left" Margin="548,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SelectChoose" Text="Choos to open." Foreground="#FF403273"/>
+
+
 
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
