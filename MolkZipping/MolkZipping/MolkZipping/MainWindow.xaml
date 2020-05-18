@@ -13,7 +13,69 @@
                 <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
                 <ResourceDictionary Source="Styling/BlendStyleSheet.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-           
+            <Storyboard x:Key="LoadingBalls">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="3.499"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.051"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.934"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.053"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallOne">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="57"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="56"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-10"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-80"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-138"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-142"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-113.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-36"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="51.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="56.666"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0.666"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BallOne">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="107"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="207"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="192.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="106.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-41.001"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-131.668"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-145.001"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-121.668"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0.332"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-3.001"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallTwo">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="56.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="55"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-35.667"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-104.334"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-143.667"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-142.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-88.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-10.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="52.334"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="56.334"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1.001"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BallTwo">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="107.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="180.167"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="159.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="54.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-93.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-167.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-169.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-120.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="2.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-1.167"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
         </ResourceDictionary>
     </Window.Resources>
 
@@ -75,6 +137,7 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard x:Name="LogoStart_BeginStoryboard" Storyboard="{StaticResource LogoStart}"/>
+            <BeginStoryboard Storyboard="{StaticResource LoadingBalls}"/>
         </EventTrigger>
     </Window.Triggers>
 
@@ -253,6 +316,40 @@
                 </Image.RenderTransform>
             </Image>
             <Image MouseDown="Button_Click" Cursor="Hand" x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,460,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+        <Grid Name="Loading" Visibility="Hidden">
+            <TextBlock x:Name="TxtLoading" Margin="249,10,249,0"  VerticalAlignment="Top" Height="131" Foreground="#FF251240" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0"><Run Text="Working files"/><Run Text=","/><Run Text=" "/><LineBreak/><Run Text="p"/><Run Text="lease wait..."/></TextBlock>
+
+            <Image x:Name="image" Source="Assets/Images/molkLoading.png" Margin="269,192,269,191" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="BallOne" Source="Assets/Images/loadingOne.png" Margin="368,289,393,203" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="BallTwo" Source="Assets/Images/loadingTwo.png" Margin="394,289,368,203" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
