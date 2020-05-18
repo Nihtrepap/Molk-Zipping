@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +23,14 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
 
         public MainWindow()
         {
             InitializeComponent();
+
+        
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,6 +45,7 @@ namespace MolkZipping
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
             }
             else if (sender is Image btnImage)
             {
@@ -54,6 +61,91 @@ namespace MolkZipping
         {
             Advanced.Visibility = Visibility.Hidden;
             menuClick = false;
+        }
+
+        private void Open_File_Dialog()
+        {
+            string opened;
+            OpenFileDialog openFileWindow = new OpenFileDialog();
+            
+            openFileWindow.ShowDialog();
+            opened = openFileWindow.FileName;
+            Cmd_run(opened);
+
+        }
+
+        private void Cmd_run(string fileOpen)
+        {
+            try
+            {
+                string tmp = @"tmp.txt";
+
+                Process processCmd = new Process();
+
+                processCmd.StartInfo.FileName = "cmd.exe";
+                processCmd.StartInfo.RedirectStandardInput = true;
+                processCmd.StartInfo.RedirectStandardOutput = true;
+                processCmd.StartInfo.RedirectStandardError = true;
+                processCmd.StartInfo.CreateNoWindow = true;
+                processCmd.StartInfo.UseShellExecute = false;
+                processCmd.Start();
+
+                processCmd.StandardInput.WriteLine($"dir \"{fileOpen}\" > {tmp}");
+                textBlocktest.Text = $"dir {fileOpen} > {tmp}";
+                processCmd.StandardInput.Flush();
+                processCmd.StandardInput.Close();
+                processCmd.WaitForExit();
+
+                File_Reader(tmp);
+
+                Get_Fileinfo(tmp);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("WRONG\n"+e);
+            }
+        }
+
+        private void File_Reader(string tmp)
+        {
+            string read;
+            read = File.ReadAllText(tmp, Encoding.UTF8);
+            textBlocktest.Text = read;
+
+        }
+
+        private void Get_Fileinfo(string tmp)
+        {
+            string line;
+            FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
+            StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
+
+            
+               // streamR.ReadLine();
+               // streamR.ReadLine().Skip(5).Take(1).First();
+           // }
+
+            //string testText = streamR.ReadToEnd();
+
+            while ((line = streamR.ReadLine()) != null)
+            {
+                if (System.Text.RegularExpressions.Regex.IsMatch(line,"^\\d{2}/\\d{2}/\\d{4}"))
+                {
+                    string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string date = split[0];
+                    string time = split[1];
+                    string am = split[2];
+                    string size = split[3] + " kb";
+                    string name = split[4];
+                  
+                    packList.Add(new Pack(name, size, time, date));
+                    GridPack.Items.Refresh();
+                    
+                }
+
+            }
+            fStream.Close();
         }
     }
 }
