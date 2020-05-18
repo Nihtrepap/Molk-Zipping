@@ -138,5 +138,14 @@
   <ItemGroup>
     <Resource Include="Assets\OrientationIcons\menu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\molkLoading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\loadingOne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\loadingTwo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
