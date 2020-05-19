@@ -33,8 +33,6 @@ namespace MolkZipping
         {
             InitializeComponent();
             
-
-        
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -84,7 +82,9 @@ namespace MolkZipping
             string opened;
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
             openFileWindow.IsFolderPicker = folderPick;
+            
             openFileWindow.ShowDialog();
+            if (openFileWindow.ShowDialog() != CommonFileDialogResult.Ok) return;
             opened = openFileWindow.FileName;
             Cmd_run(opened);
 
@@ -137,13 +137,7 @@ namespace MolkZipping
             string line;
             FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
             StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
-
-            
-               // streamR.ReadLine();
-               // streamR.ReadLine().Skip(5).Take(1).First();
-           // }
-
-            //string testText = streamR.ReadToEnd();
+          
 
             while ((line = streamR.ReadLine()) != null)
             {
@@ -160,10 +154,8 @@ namespace MolkZipping
                     GridPack.Items.Refresh();
                     
                 }
-
             }
             fStream.Close();
         }
-
     }
 }
