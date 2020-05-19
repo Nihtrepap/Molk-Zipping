@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.WindowsAPICodePack.Dialogs;
-
+using System.Windows.Threading;
 
 namespace MolkZipping
 {
@@ -28,7 +28,10 @@ namespace MolkZipping
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
         private bool folderPick = true;
+        private string saveTo;
         private string opened;
+        DispatcherTimer loadingTimer = new DispatcherTimer();
+
 
         public MainWindow()
         {
@@ -82,7 +85,7 @@ namespace MolkZipping
 
         private void Save_File_Dialog()
         {
-            string saveTo;
+            
             CommonOpenFileDialog openSaveTo = new CommonOpenFileDialog();
             openSaveTo.IsFolderPicker = true;
 
@@ -180,39 +183,61 @@ namespace MolkZipping
         {
             try
             {
-                string chosenName = "fishy";
-                string _directory = "-r";
-                string filename = "testZipMolk.molk";
-              //  string saveTo = $@"H:\monogame\{chosenName}";
+                //string chosenName = "fishy";
+                //string _directory = "-r";
+                //string filename = "testZipMolk.molk";
+                //saveTo += $"\\{chosenName}";
 
-                //string tmp = @"tmp.txt";
+                ////string tmp = @"tmp.txt";
 
-                Process processCmd = new Process();
+                //Process processCmd = new Process();
 
-                processCmd.StartInfo.FileName = "cmd.exe";
-                processCmd.StartInfo.RedirectStandardInput = true;
-                processCmd.StartInfo.RedirectStandardOutput = true;
-                processCmd.StartInfo.RedirectStandardError = true;
-                processCmd.StartInfo.CreateNoWindow = true;
-                processCmd.StartInfo.UseShellExecute = false;
-                processCmd.Start();
+                //processCmd.StartInfo.FileName = "cmd.exe";
+                //processCmd.StartInfo.RedirectStandardInput = true;
+                //processCmd.StartInfo.RedirectStandardOutput = true;
+                //processCmd.StartInfo.RedirectStandardError = true;
+                //processCmd.StartInfo.CreateNoWindow = true;
+                //processCmd.StartInfo.UseShellExecute = false;
+                //processCmd.Start();
 
-                string cmd = $@"molk {_directory} {saveTo}.molk {opened}";
+                //string cmd = $@"molk {_directory} {saveTo}.molk {opened}";
 
-                processCmd.StandardInput.WriteLine(cmd);
-                processCmd.StandardInput.Flush();
-                processCmd.StandardInput.Close();
-                processCmd.WaitForExit();
+                //processCmd.StandardInput.WriteLine(cmd);
+                //processCmd.StandardInput.Flush();
+                //processCmd.StandardInput.Close();
+                //processCmd.WaitForExit();
 
                 //File_Reader(tmp);
 
                 //Get_Fileinfo(tmp);
+                Loading_Screen();
 
             }
             catch (Exception e)
             {
                 MessageBox.Show("WRONG\n" + e);
             }
+        }
+        private void Loading_Screen()
+        {
+ 
+            Pack.Visibility = Visibility.Hidden;
+            Loading.Visibility = Visibility.Visible;
+            loadingTimer.Tick += Animate_Loading;
+            loadingTimer.Interval = new TimeSpan(0,0,2);       
+            loadingTimer.Start();
+            loadingTimer.IsEnabled = true;
+        
+
+            
+        }
+
+        private void Animate_Loading(object timer, EventArgs e)
+        {
+            loadingTimer.IsEnabled = false;
+            loadingTimer.Stop();
+            Pack.Visibility = Visibility.Visible;
+            Loading.Visibility = Visibility.Hidden;
         }
     }
 }
