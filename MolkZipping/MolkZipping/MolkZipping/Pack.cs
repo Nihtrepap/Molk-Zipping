@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace MolkZipping
 {
-    /// <summary>
-    /// Used to get filename and filetype.
-    /// </summary>
     public class Pack
     {
         public string Name { get; private set; }
-        public string Type { get; private set; }
+        public string Size { get; private set; }
+        public string Date { get; private set; }
+        public string Time { get; private set; }
 
-        public Pack(string name, string type)
+        public Pack(string name, string size, string date, string time)
         {
             Name = name;
-            Type = type;
+            Size = size;
+            Date = date;
+            Time = time;
         }
     }
 }
