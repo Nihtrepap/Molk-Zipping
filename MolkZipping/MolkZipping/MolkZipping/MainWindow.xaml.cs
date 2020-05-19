@@ -32,7 +32,6 @@ namespace MolkZipping
         private string opened;
         DispatcherTimer loadingTimer = new DispatcherTimer();
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -46,7 +45,6 @@ namespace MolkZipping
         /// <param name="e">Click event</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             if (sender is Button btn)
             {
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
@@ -60,15 +58,20 @@ namespace MolkZipping
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
                 else if(btn.Name == "BtnPackFiles") 
                 {
-                    
-                   MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
-                   switch(answer) 
+                    if (opened != null || opened == "")
                     {
-                        case MessageBoxResult.Yes:
-                            Cmd_Pack();
-                            break;
+                        MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                        switch (answer)
+                        {
+                            case MessageBoxResult.Yes:
+                                Cmd_Pack();
+                                break;
+                        }
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Could not find any files to pack.\n Please check files and try again.", "Molk did not pack", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             }
             else if (sender is Image btnImage)
@@ -124,7 +127,7 @@ namespace MolkZipping
             openSaveFile.ShowDialog();
             saveTo = openSaveFile.FileName + ".molk";
             SaveToText.Text = $"{saveTo}";
-            MessageBox.Show(saveTo);
+ 
         }
 
         /// <summary>
@@ -169,7 +172,7 @@ namespace MolkZipping
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
 
-                string cmd = $"dir \"{fileOpen}\" > {tmp}";
+                string cmd = $"dir /B \"{fileOpen}\" > {tmp}";
                 
                 processCmd.StandardInput.WriteLine(cmd);
                 processCmd.StandardInput.Flush();
@@ -183,7 +186,7 @@ namespace MolkZipping
             }
             catch (Exception e)
             {
-                MessageBox.Show("WRONG\n"+e);
+                MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -207,38 +210,31 @@ namespace MolkZipping
         /// <param name="tmp">Contains tmp.txt data</param>
         private void Get_Fileinfo(string tmp)
         {
-            string line;
-            FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
-            StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
-          
-
-            while ((line = streamR.ReadLine()) != null)
+            try
             {
-                if ((System.Text.RegularExpressions.Regex.IsMatch(line,"\\d{2}:\\d{2}"))) 
+                string line;
+                FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
+                StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
+
+                while ((line = streamR.ReadLine()) != null)
                 {
-                    string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    string date = split[0];
-                    string time = split[1];
-                    string size = split[2] + " kb";
-                    string name = split[3];
-                  
-                    packList.Add(new Pack(name, size, date, time));
+
+                    string[] split = line.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                    string name = split[0];
+                    string type = split[1];
+
+                    packList.Add(new Pack(name, type));
                     GridPack.Items.Refresh();
                 }
-            }
-            fStream.Close();
+                fStream.Close();
+            }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the developers ===>\n"+e,"Molk found error",MessageBoxButton.OK,MessageBoxImage.Error); }
         }
 
         private void Cmd_Pack()
         {
             try
             {
-                //string chosenName = "fishy";
                 string _directory = "";
-               // string filename = "testZipMolk.molk";
-                //saveTo += $"\\{chosenName}";
-
-                //string tmp = @"tmp.txt";
 
                 Process processCmd = new Process();
 
@@ -261,21 +257,31 @@ namespace MolkZipping
             }
             catch (Exception e)
             {
-                MessageBox.Show("WRONG\n" + e);
+                MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        
+        /// <summary>
+        /// Handles screen switch when loading.
+        /// Starts a timer.
+        /// </summary>
         private void Loading_Screen()
         {
             Pack.Visibility = Visibility.Hidden;
             Loading.Visibility = Visibility.Visible;
-            loadingTimer.Tick += Animate_Loading;           
+            loadingTimer.Tick += Done_Loading;           
             loadingTimer.Interval = new TimeSpan(0,0,3);       
 
             loadingTimer.Start();
             loadingTimer.IsEnabled = true;
         }
 
-        private void Animate_Loading(object timer, EventArgs e)
+        /// <summary>
+        /// Handles events to occure when loading is done.
+        /// </summary>
+        /// <param name="timer"></param>
+        /// <param name="e"></param>
+        private void Done_Loading(object timer, EventArgs e)
         {
             loadingTimer.IsEnabled = false;
             loadingTimer.Stop();
@@ -283,7 +289,8 @@ namespace MolkZipping
             GridPack.Items.Refresh();
             Main.Visibility = Visibility.Visible;
             Loading.Visibility = Visibility.Hidden;
-            MessageBox.Show("File succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
+            opened = "";
+            MessageBox.Show("File(s) succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
