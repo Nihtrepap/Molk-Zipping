@@ -1,77 +1,478 @@
-﻿<Window x:Class="MolkZipping.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MolkZipping"
+        x:Class="MolkZipping.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800" Background="White" Foreground="White">
+        Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White" MaxWidth="800" MaxHeight="550" MinHeight="550" MinWidth="800">
+
     <Window.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
+                <ResourceDictionary Source="Styling/BlendStyleSheet.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="LoadingBalls" RepeatBehavior="Forever">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="3.499"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.051"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.934"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.053"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallOne">
 
-            <Style x:Key="RadiusButton" TargetType="Button">
-                <Setter Property="Background" Value="#403273"/>
-                <Setter Property="Foreground" Value="White" />
-
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="15" Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                                </ContentPresenter>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="RoundButton" TargetType="Button">
-                <Setter Property="Background" Value="#403273"/>
-                <Setter Property="Foreground" Value="White" />
-
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="66" Background="{TemplateBinding Background}">
-                                <Button Content="Button"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="57"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="56"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-10"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-80"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-138"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-142"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-113.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-36"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="51.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="56.666"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0.666"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BallOne">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="107"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="207"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="192.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="106.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-41.001"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-131.668"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-145.001"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-121.668"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0.332"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-3.001"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallTwo">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="56.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="55"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-35.667"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-104.334"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-143.667"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-142.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-88.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-10.333"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="52.334"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="56.334"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1.001"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BallTwo">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="107.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="180.167"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="159.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="54.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-93.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-167.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-169.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-120.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="2.833"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-1.167"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnChooseFilePack">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChoosePackFile">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnPackChoosenFile">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnPackFiles">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnSaveTo">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnSaveTo">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="RadioFolder">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFolder">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="RadioFile">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFile">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
         </ResourceDictionary>
     </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Instagram">
+            <BeginStoryboard x:Name="InstagramIcon_BeginStoryboard" Storyboard="{StaticResource InstagramIcon}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Instagram">
+            <RemoveStoryboard BeginStoryboardName="InstagramIcon_BeginStoryboard"/>
+            <RemoveStoryboard BeginStoryboardName="InstagramIcon_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Facebook">
+            <RemoveStoryboard BeginStoryboardName="FacebookIcon_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Facebook">
+            <BeginStoryboard x:Name="FacebookIcon_BeginStoryboard" Storyboard="{StaticResource FacebookIcon}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Web">
+            <BeginStoryboard x:Name="Webicon_BeginStoryboard" Storyboard="{StaticResource Webicon}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Web">
+            <RemoveStoryboard BeginStoryboardName="Webicon_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnPack">
+            <BeginStoryboard x:Name="BtnPack_BeginStoryboard" Storyboard="{StaticResource BtnPack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnPack">
+            <RemoveStoryboard BeginStoryboardName="BtnPack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnUnpack">
+            <BeginStoryboard x:Name="BtnUnpack_BeginStoryboard" Storyboard="{StaticResource BtnUnpack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnUnpack">
+            <RemoveStoryboard BeginStoryboardName="BtnUnpack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="question">
+            <BeginStoryboard x:Name="BtnQuestion_BeginStoryboard" Storyboard="{StaticResource BtnQuestion}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="question">
+            <RemoveStoryboard BeginStoryboardName="BtnQuestion_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="Exit">
+            <BeginStoryboard x:Name="BtnExit_BeginStoryboard" Storyboard="{StaticResource BtnExit}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Exit">
+            <RemoveStoryboard BeginStoryboardName="BtnExit_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnBackPack">
+            <BeginStoryboard x:Name="BtnPackBack_BeginStoryboard" Storyboard="{StaticResource BtnPackBack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnBackPack">
+            <RemoveStoryboard BeginStoryboardName="BtnPackBack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnBackUnPack">
+            <BeginStoryboard x:Name="BtnBackUnpack_BeginStoryboard" Storyboard="{StaticResource BtnBackUnpack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnBackUnPack">
+            <RemoveStoryboard BeginStoryboardName="BtnBackUnpack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Loading">
+            <BeginStoryboard x:Name="LoadingBalls_BeginStoryboard1" Storyboard="{StaticResource LoadingBalls}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnPackFiles">
+            <BeginStoryboard x:Name="BtnPackChoosenFile_BeginStoryboard" Storyboard="{StaticResource BtnPackChoosenFile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnPackFiles">
+            <RemoveStoryboard BeginStoryboardName="BtnPackChoosenFile_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChoosePackFile">
+            <BeginStoryboard x:Name="BtnChooseFilePack_BeginStoryboard" Storyboard="{StaticResource BtnChooseFilePack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnChoosePackFile">
+            <RemoveStoryboard BeginStoryboardName="BtnChooseFilePack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnSaveTo">
+            <BeginStoryboard x:Name="BtnSaveTo_BeginStoryboard1" Storyboard="{StaticResource BtnSaveTo}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnSaveTo">
+            <RemoveStoryboard BeginStoryboardName="BtnSaveTo_BeginStoryboard1"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SelectFile">
+            <BeginStoryboard x:Name="RadioFile_BeginStoryboard" Storyboard="{StaticResource RadioFile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="SelectFile">
+            <RemoveStoryboard BeginStoryboardName="RadioFile_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SelectFolder">
+            <BeginStoryboard x:Name="RadioFolder_BeginStoryboard" Storyboard="{StaticResource RadioFolder}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="SelectFolder">
+            <RemoveStoryboard BeginStoryboardName="RadioFolder_BeginStoryboard"/>
+        </EventTrigger>
+    </Window.Triggers>
+
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF2F1F40" Offset="0"/>
-                <GradientStop Color="White" Offset="0.651"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+        <!-- THIS IS THE MAIN PAGE SECTION -->
 
-        <Button  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="492,214,100,0">
-            <Image Source="Assets/unpack.png" Width="88"/>
-        </Button>
-        <Button  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0">
-            <Image Source="Assets/Pack.png" Width="88"/>
-        </Button>
-        <Image Source="Assets/question.png" HorizontalAlignment="Left" Height="64" Margin="368,420,0,0" VerticalAlignment="Top" Width="64"/>
-        <Image Source="Assets/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,400,0,0" VerticalAlignment="Top" Width="28"/>
-        <Image Source="Assets/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,440,0,0" VerticalAlignment="Top" Width="28"/>
-        <Image Source="Assets/web.png" HorizontalAlignment="Left" Height="28" Margin="10,480,0,0" VerticalAlignment="Top" Width="28"/>
-        <Image Source="Assets/molk.png" HorizontalAlignment="Left" Height="100" Margin="199,25,0,0" VerticalAlignment="Top" Width="200"/>
-        <Image Source="Assets/gear.png" HorizontalAlignment="Left" Height="32" Margin="750,10,0,0" VerticalAlignment="Top" Width="32" OpacityMask="White"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="WECLOME TO" VerticalAlignment="Top" Margin="62,66,0,0" RenderTransformOrigin="0.5,0.5" Width="78" Foreground="#FFC0BCC4">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.396"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
+        <Grid x:Name="Main" Visibility="Visible">
 
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0.651"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnUnpack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="492,214,100,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
+            </Button>
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnPack"  Style="{StaticResource RadiusButton}" VerticalAlignment="Top" Height="122" Background="#403273" Margin="100,214,492,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/Pack.png" Width="88"/>
+            </Button>
+            <Image MouseDown="Button_Click" Cursor="Hand" x:Name="question" Source="Assets/OrientationIcons/question.png" HorizontalAlignment="Left" Height="45" Margin="720,20,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+
+            </Image>
+
+            <Image x:Name="Exit" Cursor="Hand" Source="Assets/OrientationIcons/exit.png" HorizontalAlignment="Left" Height="48" Margin="720,450,0,0" VerticalAlignment="Top" Width="56" OpacityMask="White" RenderTransformOrigin="0.5,0.5" MouseDown="Button_Click">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+
+            </Image>
+
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" Height="100" Margin="298,34,0,0" VerticalAlignment="Top" Width="200"/>
+
+            <TextBlock Width="78" VerticalAlignment="Top" Text="WECLOME TO" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="157,75,0,0" HorizontalAlignment="Left" Foreground="#FFC0BCC4">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.396"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="809,53,-231,0"  VerticalAlignment="Top" Height="81" Width="214" Foreground="#FF251240" Text="ZIPPING" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0" RenderTransformOrigin="0.5,0.5">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+                <TextBlock.Effect>
+                    <DropShadowEffect ShadowDepth="1" Color="White" BlurRadius="2"/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock x:Name="PackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="70" Visibility="Visible" Opacity="0" Width="141"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" "/><Run Text="  "/><Run Text="pack files"/></TextBlock>
+            <TextBlock x:Name="UnpackText" HorizontalAlignment="Left" Margin="326,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" FontFamily="Microsoft New Tai Lue" FontWeight="Bold" FontSize="24" Height="74" Visibility="Visible" Opacity="0"><Run Text="   "/><Run Text="Press to"/><LineBreak/><Run Text=" unpack files"/></TextBlock>
+
+            <TextBlock x:Name="HelpText" Margin="520,33,72,441" TextWrapping="Wrap" Width="200" Foreground="#FFD1521B" FontFamily="Microsoft New Tai Lue" FontSize="20" Opacity="0" FontWeight="Bold"  ><Run Text="       "/><Run Text="Press for help!"/></TextBlock>
+            <TextBlock x:Name="ExitText" HorizontalAlignment="Left" Margin="731,421,0,0" TextWrapping="Wrap" Text="Exit" VerticalAlignment="Top" FontFamily="Tahoma" Foreground="#FFD1521B" FontSize="16" Opacity="0"/>
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnMenu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="28" Height="28" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}"  >
+                <Image Source="Assets/OrientationIcons/menu.png" Width="28" Height="28"/>
+            </Button>
+
+        </Grid>
+        <!-- THIS IS THE PACK SECTION -->
+        <Grid x:Name="Pack" Visibility="Hidden">
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="662,387,10,0"
+                    >
+                <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
+            </Button>
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnChoosePackFile" Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="527,387,135,0" >
+                <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88" />
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
+                   VerticalAlignment="Top" Height="81" 
+                   Width="214" Foreground="#FF251240" 
+                   Text="PACK FILES" FontFamily="Tahoma"
+                   FontSize="38" FontWeight="Thin" 
+                   Padding="0"/>
+
+            <Button Cursor="Hand" x:Name="BtnBackPack" HorizontalAlignment="Left" 
+               Height="80" Margin="25,409,0,0" 
+               VerticalAlignment="Top" Width="80"
+               Click="Button_Click"
+                    Style="{StaticResource RadiusButton}"
+                    >
+                <Image Source="Assets/OrientationIcons/backBtn.png" Width="68" OpacityMask="Black"/>
+            </Button>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
+               Height="100" Margin="25,20,0,0" 
+               VerticalAlignment="Top" Width="100"/>
+            <DataGrid x:Name="GridPack" HorizontalAlignment="Left"  
+                      Height="304" VerticalAlignment="Top" 
+                      Width="502" Margin="25,78,0,0"
+                      Background="#C0BCC4" Foreground="Black"
+                      AlternatingRowBackground="White" FontSize="14"
+                      FontStyle="Normal" BorderBrush="White"
+                      GridLinesVisibility="Vertical"
+                      RowBackground="#C0BCC4" RowHeaderWidth="0"/>
+
+            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFolder" Content="Folder" HorizontalAlignment="Left" Margin="548,95,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273" />
+            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFile" Content="File" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273"/>
+            <TextBlock HorizontalAlignment="Left" Margin="548,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SelectChoose" Text="Choose how to open:" Foreground="#FF403273"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="548,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SaveToBigText" Text="Save to directory." Foreground="#FF403273"/>
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnSaveTo"  
+                VerticalAlignment="Top" Height="30" 
+                Background="#403273" Margin="548,168,174,0" 
+                    Style="{StaticResource RadiusButton}">
+                <Image Source="Assets/OrientationIcons/save.png" Width="20" />
+            </Button>
+            <TextBlock x:Name="SaveToText" HorizontalAlignment="Left" Margin="548,198,0,0" Text="Select a folder to save your molk file" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" Width="226" Height="42" FontSize="11"/>
+
+
+        </Grid>
+        <!-- THIS IS THE UNPACK SECTION -->
+        <Grid x:Name="Unpack" Visibility="Hidden">
+            <Button Cursor="Hand" x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="662,387,10,0">
+                <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
+            </Button>
+            <Button Cursor="Hand" x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
+                VerticalAlignment="Top" Height="122" 
+                Background="#403273" Margin="527,387,135,0">
+                <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
+                   VerticalAlignment="Top" Height="81" 
+                   Width="287" Foreground="#FF251240" 
+                   Text="UNPACK FILES" FontFamily="Tahoma"
+                   FontSize="38" FontWeight="Thin" 
+                   Padding="0"/>
+            <Button Cursor="Hand" x:Name="BtnBackUnPack" HorizontalAlignment="Left" 
+               Height="80" Margin="25,409,0,0"
+               VerticalAlignment="Top" Width="80"
+               Click="Button_Click" 
+                    Style="{StaticResource RadiusButton}">
+                <Image Source="Assets/OrientationIcons/backBtn.png" Width="68" OpacityMask="Black"/>
+            </Button>
+            <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
+               Height="100" Margin="25,20,0,0" 
+               VerticalAlignment="Top" Width="100"/>
+            <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
+
+        </Grid>
+        <!-- THIS IS THE ADVANCED SECTION -->
+        <Grid x:Name="Advanced" Visibility="Hidden" Margin="0,0,600,0" Background="#7F403273" MouseLeave="Mouse_Leave_Menu"  >
+            <Image MouseDown="Button_Click" Cursor="Hand" x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,380,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image MouseDown="Button_Click" Cursor="Hand" x:Name="Facebook" Source="Assets/SocialIcons/facebook.png" HorizontalAlignment="Left" Height="28" Margin="10,420,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image MouseDown="Button_Click" Cursor="Hand" x:Name="Web" Source="Assets/SocialIcons/web.png" HorizontalAlignment="Left" Height="28" Margin="10,460,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <TextBlock HorizontalAlignment="Left" Margin="15,50,0,0" TextWrapping="Wrap" Text="Language" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+            <ComboBox HorizontalAlignment="Left" Margin="15,75,0,0" VerticalAlignment="Top" Width="100">
+                <ComboBoxItem IsSelected="True">English</ComboBoxItem>
+                <ComboBoxItem>Swedish</ComboBoxItem>
+                <ComboBoxItem>Russian</ComboBoxItem>
+                <ComboBoxItem>German</ComboBoxItem>
+                <ComboBoxItem>Spanish</ComboBoxItem>
+            </ComboBox>
+            <TextBlock HorizontalAlignment="Left" Margin="15,110,0,0" TextWrapping="Wrap" Text="Theme" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+            <ComboBox HorizontalAlignment="Left" Margin="15,135,0,0" VerticalAlignment="Top" Width="100">
+                <ComboBoxItem IsSelected="True" Content="Mölk"/>
+                <ComboBoxItem Content="Dark"/>
+                <ComboBoxItem Content="Light"/>
+            </ComboBox>
+        </Grid>
+
+        <!-- THIS IS THE LOADING SCREEN SECTION -->
+
+        <Grid x:Name="Loading" Visibility="Hidden">
+            <TextBlock x:Name="TxtLoading" Margin="249,10,249,0"  VerticalAlignment="Top" Height="131" Foreground="#FF251240" FontFamily="Tahoma" FontSize="48" FontWeight="Thin" Padding="0"><Run Text="Molking files"/><Run Text=","/><Run Text=" "/><LineBreak/><Run Text="p"/><Run Text="lease wait..."/></TextBlock>
+
+            <Image x:Name="image" Source="Assets/Images/molkLoading.png" Margin="269,192,269,191" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="BallOne" Source="Assets/Images/loadingOne.png" Margin="368,289,393,203" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="BallTwo" Source="Assets/Images/loadingTwo.png" Margin="394,289,368,203" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
     </Grid>
 </Window>
