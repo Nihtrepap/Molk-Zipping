@@ -220,16 +220,12 @@ namespace MolkZipping
         }
         private void Loading_Screen()
         {
- 
             Pack.Visibility = Visibility.Hidden;
             Loading.Visibility = Visibility.Visible;
             loadingTimer.Tick += Animate_Loading;
-            loadingTimer.Interval = new TimeSpan(0,0,2);       
+            loadingTimer.Interval = new TimeSpan(0,0,3);       
             loadingTimer.Start();
             loadingTimer.IsEnabled = true;
-        
-
-            
         }
 
         private void Animate_Loading(object timer, EventArgs e)
@@ -238,6 +234,7 @@ namespace MolkZipping
             loadingTimer.Stop();
             Pack.Visibility = Visibility.Visible;
             Loading.Visibility = Visibility.Hidden;
+            MessageBox.Show("File succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

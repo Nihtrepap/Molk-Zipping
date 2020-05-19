@@ -14,7 +14,7 @@
                 <ResourceDictionary Source="Styling/StyleSheet.xaml"/>
                 <ResourceDictionary Source="Styling/BlendStyleSheet.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Storyboard x:Key="LoadingBalls">
+            <Storyboard x:Key="LoadingBalls" RepeatBehavior="Forever">
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
                     <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="3.499"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.051"/>
@@ -22,6 +22,7 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.053"/>
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallOne">
+                    
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="57"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="56"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-10"/>
@@ -136,9 +137,8 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnBackUnPack">
             <RemoveStoryboard BeginStoryboardName="BtnBackUnpack_BeginStoryboard"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard x:Name="LogoStart_BeginStoryboard" Storyboard="{StaticResource LogoStart}"/>
-            <BeginStoryboard Storyboard="{StaticResource LoadingBalls}"/>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Loading">
+            <BeginStoryboard x:Name="LoadingBalls_BeginStoryboard1" Storyboard="{StaticResource LoadingBalls}"/>
         </EventTrigger>
     </Window.Triggers>
 
