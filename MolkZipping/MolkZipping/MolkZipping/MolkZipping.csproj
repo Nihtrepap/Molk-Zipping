@@ -155,5 +155,8 @@
   <ItemGroup>
     <Resource Include="Assets\Images\loadingTwo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\OrientationIcons\save.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

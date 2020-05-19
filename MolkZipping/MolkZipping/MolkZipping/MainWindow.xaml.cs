@@ -42,6 +42,7 @@ namespace MolkZipping
             {
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
+                else if (btn.Name == "BtnSaveTo") { Save_File_Dialog(); }
                 else if (btn.Name == "BtnMenu") {
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
@@ -75,6 +76,23 @@ namespace MolkZipping
         {
             Advanced.Visibility = Visibility.Hidden;
             menuClick = false;
+        }
+
+        private void Save_File_Dialog()
+        {
+            string saveTo;
+            CommonOpenFileDialog openSaveTo = new CommonOpenFileDialog();
+            openSaveTo.IsFolderPicker = true;
+
+            if (openSaveTo.ShowDialog() != CommonFileDialogResult.Ok)
+            {
+                SaveToText.Text = "You have not selected any folder.";
+                return;
+            }
+            else saveTo = openSaveTo.FileName;
+
+            SaveToText.Text = $"{saveTo}";
+
         }
 
         private void Open_File_Dialog()

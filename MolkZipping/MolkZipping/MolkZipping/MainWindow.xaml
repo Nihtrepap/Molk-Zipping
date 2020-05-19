@@ -266,10 +266,18 @@
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
             <DataGrid x:Name="GridPack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
+
             <RadioButton GroupName="Select_Folder_File" x:Name="SelectFolder" Content="Folder" HorizontalAlignment="Left" Margin="548,95,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273" />
             <RadioButton GroupName="Select_Folder_File" x:Name="SelectFile" Content="File" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273"/>
             <TextBlock HorizontalAlignment="Left" Margin="548,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SelectChoose" Text="Choos to open." Foreground="#FF403273"/>
 
+            <TextBlock HorizontalAlignment="Left" Margin="548,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SaveToBigText" Text="Save to." Foreground="#FF403273"/>
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnSaveTo"  
+                VerticalAlignment="Top" Height="23" 
+                Background="#403273" Margin="548,168,174,0" >
+                <Image Source="Assets/OrientationIcons/save.png" Width="20" />
+            </Button>
+            <TextBlock x:Name="SaveToText" HorizontalAlignment="Left" Margin="548,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" Width="226" Height="42" FontSize="11"/>
 
 
         </Grid>
@@ -337,7 +345,7 @@
                 </Image.RenderTransform>
             </Image>
         </Grid>
-        
+
         <!-- THIS IS THE LOADING SCREEN SECTION -->
 
         <Grid x:Name="Loading" Visibility="Hidden">
