@@ -219,7 +219,6 @@ namespace MolkZipping
 
                 while ((line = streamR.ReadLine()) != null)
                 {
-
                     string[] split = line.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     string name = split[0];
                     if (split.Length != 2) { type = "folder"; }
@@ -236,7 +235,7 @@ namespace MolkZipping
         {
             try
             {
-                string _directory = "";
+                string _directory;
 
                 Process processCmd = new Process();
 
