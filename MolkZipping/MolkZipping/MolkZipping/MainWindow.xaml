@@ -236,7 +236,7 @@
         </Grid>
         <!-- THIS IS THE PACK SECTION -->
         <Grid x:Name="Pack" Visibility="Visible">
-            <Button Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0"
                     >

@@ -28,6 +28,7 @@ namespace MolkZipping
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
         private bool folderPick = true;
+        private string opened;
 
         public MainWindow()
         {
@@ -49,6 +50,7 @@ namespace MolkZipping
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
+                else if(btn.Name == "BtnPackFiles") { Cmd_Pack(); }
             }
             else if (sender is Image btnImage)
             {
@@ -97,7 +99,6 @@ namespace MolkZipping
 
         private void Open_File_Dialog()
         {
-            string opened;
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
             openFileWindow.IsFolderPicker = folderPick;
             
@@ -112,6 +113,7 @@ namespace MolkZipping
         {
             try
             {
+                
                 string tmp = @"tmp.txt";
 
                 Process processCmd = new Process();
@@ -159,8 +161,7 @@ namespace MolkZipping
 
             while ((line = streamR.ReadLine()) != null)
             {
-                if ((System.Text.RegularExpressions.Regex.IsMatch(line,"\\d{2}:\\d{2}")))    //"/\\d{4}" ))
-                   // || System.Text.RegularExpressions.Regex.IsMatch(line, "^\\d{4}-\\d{2}-\\d{2}"))
+                if ((System.Text.RegularExpressions.Regex.IsMatch(line,"\\d{2}:\\d{2}"))) 
                 {
                     string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     string date = split[0];
@@ -170,10 +171,48 @@ namespace MolkZipping
                   
                     packList.Add(new Pack(name, size, time, date));
                     GridPack.Items.Refresh();
-                    
                 }
             }
             fStream.Close();
+        }
+
+        private void Cmd_Pack()
+        {
+            try
+            {
+                string chosenName = "fishy";
+                string _directory = "-r";
+                string filename = "testZipMolk.molk";
+              //  string saveTo = $@"H:\monogame\{chosenName}";
+
+                //string tmp = @"tmp.txt";
+
+                Process processCmd = new Process();
+
+                processCmd.StartInfo.FileName = "cmd.exe";
+                processCmd.StartInfo.RedirectStandardInput = true;
+                processCmd.StartInfo.RedirectStandardOutput = true;
+                processCmd.StartInfo.RedirectStandardError = true;
+                processCmd.StartInfo.CreateNoWindow = true;
+                processCmd.StartInfo.UseShellExecute = false;
+                processCmd.Start();
+
+                string cmd = $@"molk {_directory} {saveTo}.molk {opened}";
+
+                processCmd.StandardInput.WriteLine(cmd);
+                processCmd.StandardInput.Flush();
+                processCmd.StandardInput.Close();
+                processCmd.WaitForExit();
+
+                //File_Reader(tmp);
+
+                //Get_Fileinfo(tmp);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("WRONG\n" + e);
+            }
         }
     }
 }
