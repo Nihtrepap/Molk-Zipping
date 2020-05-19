@@ -213,6 +213,7 @@ namespace MolkZipping
             try
             {
                 string line;
+                string type = "";
                 FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
                 StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
 
@@ -221,7 +222,8 @@ namespace MolkZipping
 
                     string[] split = line.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
                     string name = split[0];
-                    string type = split[1];
+                    if (split.Length != 2) { type = "folder"; }
+                    else { type = split[1]; }
 
                     packList.Add(new Pack(name, type));
                     GridPack.Items.Refresh();
