@@ -83,11 +83,11 @@ namespace MolkZipping
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
             openFileWindow.IsFolderPicker = folderPick;
             
-            openFileWindow.ShowDialog();
             if (openFileWindow.ShowDialog() != CommonFileDialogResult.Ok) return;
-            opened = openFileWindow.FileName;
+            else opened = openFileWindow.FileName;
+        
             Cmd_run(opened);
-
+            
         }
 
         private void Cmd_run(string fileOpen)
