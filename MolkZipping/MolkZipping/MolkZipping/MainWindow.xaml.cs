@@ -227,7 +227,7 @@ namespace MolkZipping
                     GridPack.Items.Refresh();
                 }
                 fStream.Close();
-            }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the developers ===>\n"+e,"Molk found error",MessageBoxButton.OK,MessageBoxImage.Error); }
+            }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n"+e,"Molk found error",MessageBoxButton.OK,MessageBoxImage.Error); }
         }
 
         private void Cmd_Pack()
