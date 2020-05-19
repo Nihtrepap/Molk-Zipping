@@ -45,4 +45,10 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Background" Value="#2F1F40" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="0,0,1,0"/>
+    </Style>
 </ResourceDictionary>

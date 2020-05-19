@@ -77,6 +77,46 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-1.167"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
+            <Storyboard x:Key="BtnChooseFilePack">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChoosePackFile">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnPackChoosenFile">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnPackFiles">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnSaveTo">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnSaveTo">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="RadioFolder">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFolder">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="RadioFile">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFile">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
         </ResourceDictionary>
     </Window.Resources>
@@ -139,6 +179,36 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Loading">
             <BeginStoryboard x:Name="LoadingBalls_BeginStoryboard1" Storyboard="{StaticResource LoadingBalls}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnPackFiles">
+            <BeginStoryboard x:Name="BtnPackChoosenFile_BeginStoryboard" Storyboard="{StaticResource BtnPackChoosenFile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnPackFiles">
+            <RemoveStoryboard BeginStoryboardName="BtnPackChoosenFile_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChoosePackFile">
+            <BeginStoryboard x:Name="BtnChooseFilePack_BeginStoryboard" Storyboard="{StaticResource BtnChooseFilePack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnChoosePackFile">
+            <RemoveStoryboard BeginStoryboardName="BtnChooseFilePack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnSaveTo">
+            <BeginStoryboard x:Name="BtnSaveTo_BeginStoryboard1" Storyboard="{StaticResource BtnSaveTo}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnSaveTo">
+            <RemoveStoryboard BeginStoryboardName="BtnSaveTo_BeginStoryboard1"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SelectFile">
+            <BeginStoryboard x:Name="RadioFile_BeginStoryboard" Storyboard="{StaticResource RadioFile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="SelectFile">
+            <RemoveStoryboard BeginStoryboardName="RadioFile_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SelectFolder">
+            <BeginStoryboard x:Name="RadioFolder_BeginStoryboard" Storyboard="{StaticResource RadioFolder}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="SelectFolder">
+            <RemoveStoryboard BeginStoryboardName="RadioFolder_BeginStoryboard"/>
         </EventTrigger>
     </Window.Triggers>
 
@@ -265,16 +335,24 @@
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
-            <DataGrid x:Name="GridPack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
+            <DataGrid x:Name="GridPack" HorizontalAlignment="Left"  
+                      Height="304" VerticalAlignment="Top" 
+                      Width="502" Margin="25,78,0,0"
+                      Background="#C0BCC4" Foreground="Black"
+                      AlternatingRowBackground="White" FontSize="14"
+                      FontStyle="Normal" BorderBrush="White"
+                      GridLinesVisibility="Vertical"
+                      RowBackground="#C0BCC4" RowHeaderWidth="0"/>
 
             <RadioButton GroupName="Select_Folder_File" x:Name="SelectFolder" Content="Folder" HorizontalAlignment="Left" Margin="548,95,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273" />
             <RadioButton GroupName="Select_Folder_File" x:Name="SelectFile" Content="File" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273"/>
-            <TextBlock HorizontalAlignment="Left" Margin="548,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SelectChoose" Text="Choos to open." Foreground="#FF403273"/>
+            <TextBlock HorizontalAlignment="Left" Margin="548,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SelectChoose" Text="Choose how to open:" Foreground="#FF403273"/>
 
-            <TextBlock HorizontalAlignment="Left" Margin="548,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SaveToBigText" Text="Save to." Foreground="#FF403273"/>
+            <TextBlock HorizontalAlignment="Left" Margin="548,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SaveToBigText" Text="Save to directory." Foreground="#FF403273"/>
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnSaveTo"  
-                VerticalAlignment="Top" Height="23" 
-                Background="#403273" Margin="548,168,174,0" >
+                VerticalAlignment="Top" Height="30" 
+                Background="#403273" Margin="548,168,174,0" 
+                    Style="{StaticResource RadiusButton}">
                 <Image Source="Assets/OrientationIcons/save.png" Width="20" />
             </Button>
             <TextBlock x:Name="SaveToText" HorizontalAlignment="Left" Margin="548,198,0,0" Text="Select a folder to save your molk file" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" Width="226" Height="42" FontSize="11"/>
