@@ -53,7 +53,18 @@ namespace MolkZipping
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
-                else if(btn.Name == "BtnPackFiles") { Cmd_Pack(); }
+                else if(btn.Name == "BtnPackFiles") 
+                {
+                    
+                   MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                   switch(answer) 
+                    {
+                        case MessageBoxResult.Yes:
+                            Cmd_Pack();
+                            break;
+                    }
+
+                }
             }
             else if (sender is Image btnImage)
             {
@@ -222,7 +233,11 @@ namespace MolkZipping
             Pack.Visibility = Visibility.Hidden;
             Loading.Visibility = Visibility.Visible;
             loadingTimer.Tick += Animate_Loading;
-            loadingTimer.Interval = new TimeSpan(0, 0, 2);
+
+            
+
+            loadingTimer.Interval = new TimeSpan(0,0,3);       
+
             loadingTimer.Start();
             loadingTimer.IsEnabled = true;
         }
@@ -233,6 +248,7 @@ namespace MolkZipping
             loadingTimer.Stop();
             Pack.Visibility = Visibility.Visible;
             Loading.Visibility = Visibility.Hidden;
+            MessageBox.Show("File succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
