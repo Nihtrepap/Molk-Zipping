@@ -96,18 +96,13 @@ namespace MolkZipping
 
         private void Save_File_Dialog()
         {
-
             SaveFileDialog openSaveFile = new SaveFileDialog();
-            
             openSaveFile.Filter = "molk files (*.molk)|*.molk*";
             openSaveFile.FilterIndex = 1;
             openSaveFile.FileName = "Molkzipping";
             openSaveFile.ShowDialog();
             saveTo = openSaveFile.FileName + ".molk";
             SaveToText.Text = $"{saveTo}";
-            MessageBox.Show(saveTo);
-            
-
         }
 
         private void Open_File_Dialog()
