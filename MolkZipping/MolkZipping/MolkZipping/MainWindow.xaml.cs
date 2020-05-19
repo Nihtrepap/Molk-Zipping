@@ -39,6 +39,11 @@ namespace MolkZipping
             
         }
 
+        /// <summary>
+        /// Handles all click events
+        /// </summary>
+        /// <param name="sender">The clicking object</param>
+        /// <param name="e">Click event</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -76,6 +81,11 @@ namespace MolkZipping
             }
         }
 
+        /// <summary>
+        /// Method for all radiobuttons
+        /// </summary>
+        /// <param name="sender">radiobutton</param>
+        /// <param name="e"></param>
         private void Radiobutton_Checked(object sender, RoutedEventArgs e)
         {
             if (SelectFolder.IsChecked == true)
@@ -88,17 +98,26 @@ namespace MolkZipping
             }
         }
 
+        /// <summary>
+        /// Method is used when mouse leaves the menu bar.
+        /// Closes the menubar automaticly
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Mouse_Leave_Menu(object sender, MouseEventArgs e)
         {
             Advanced.Visibility = Visibility.Hidden;
             menuClick = false;
         }
 
+        /// <summary>
+        /// This method saves the file path into a string
+        /// and adds .molk extension. 
+        /// Also only make it possible for the user to save into molk extension.
+        /// </summary>
         private void Save_File_Dialog()
         {
-
             SaveFileDialog openSaveFile = new SaveFileDialog();
-            
             openSaveFile.Filter = "molk files (*.molk)|*.molk*";
             openSaveFile.FilterIndex = 1;
             openSaveFile.FileName = "Molkzipping";
@@ -106,10 +125,13 @@ namespace MolkZipping
             saveTo = openSaveFile.FileName + ".molk";
             SaveToText.Text = $"{saveTo}";
             MessageBox.Show(saveTo);
-            
-
         }
 
+        /// <summary>
+        /// Used to open a file dialog.
+        /// Saves the chosen file path.
+        /// </summary>
+        /// <seealso cref="Cmd_run(string)"/>
         private void Open_File_Dialog()
         {
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
@@ -122,15 +144,23 @@ namespace MolkZipping
             
         }
 
+        /// <summary>
+        /// Takes information about the chosen file from
+        /// file dialog window.
+        /// Information gained: 
+        /// -Filename
+        /// -Date
+        /// -Size
+        /// -Time
+        /// </summary>
+        /// <param name="fileOpen">Chosen file from file dialog window</param>
         private void Cmd_run(string fileOpen)
         {
             try
-            {
-                
+            {              
                 string tmp = @"tmp.txt";
 
                 Process processCmd = new Process();
-
                 processCmd.StartInfo.FileName = "cmd.exe";
                 processCmd.StartInfo.RedirectStandardInput = true;
                 processCmd.StartInfo.RedirectStandardOutput = true;
@@ -157,14 +187,24 @@ namespace MolkZipping
             }
         }
 
+        /// <summary>
+        /// Simple ReadAllText method from File class.
+        /// Reads programs tmp.txt file to get value into string.
+        /// </summary>
+        /// <param name="tmp">Path for program tmp file</param>
         private void File_Reader(string tmp)
         {
             string read;
             read = File.ReadAllText(tmp, Encoding.UTF8);
             
-
         }
 
+        /// <summary>
+        /// Reads the programs tmp file to gain information from
+        /// the chosen file in the file dialog window.
+        /// Adds the info into the datagrid view.
+        /// </summary>
+        /// <param name="tmp">Contains tmp.txt data</param>
         private void Get_Fileinfo(string tmp)
         {
             string line;
@@ -182,7 +222,7 @@ namespace MolkZipping
                     string size = split[2] + " kb";
                     string name = split[3];
                   
-                    packList.Add(new Pack(name, size, time, date));
+                    packList.Add(new Pack(name, size, date, time));
                     GridPack.Items.Refresh();
                 }
             }
@@ -194,34 +234,30 @@ namespace MolkZipping
             try
             {
                 //string chosenName = "fishy";
-                string _directory = "-r";
-                //string filename = "testZipMolk.molk";
+                string _directory = "";
+               // string filename = "testZipMolk.molk";
                 //saveTo += $"\\{chosenName}";
 
-                ////string tmp = @"tmp.txt";
+                //string tmp = @"tmp.txt";
 
-                //Process processCmd = new Process();
+                Process processCmd = new Process();
 
-                //processCmd.StartInfo.FileName = "cmd.exe";
-                //processCmd.StartInfo.RedirectStandardInput = true;
-                //processCmd.StartInfo.RedirectStandardOutput = true;
-                //processCmd.StartInfo.RedirectStandardError = true;
-                //processCmd.StartInfo.CreateNoWindow = true;
-                //processCmd.StartInfo.UseShellExecute = false;
-                //processCmd.Start();
+                processCmd.StartInfo.FileName = "cmd.exe";
+                processCmd.StartInfo.RedirectStandardInput = true;
+                processCmd.StartInfo.RedirectStandardOutput = true;
+                processCmd.StartInfo.RedirectStandardError = true;
+                processCmd.StartInfo.CreateNoWindow = true;
+                processCmd.StartInfo.UseShellExecute = false;
+                processCmd.Start();
 
                 string cmd = $@"molk {_directory} {saveTo} {opened}";
 
-                //processCmd.StandardInput.WriteLine(cmd);
-                //processCmd.StandardInput.Flush();
-                //processCmd.StandardInput.Close();
-                //processCmd.WaitForExit();
+                processCmd.StandardInput.WriteLine(cmd);
+                processCmd.StandardInput.Flush();
+                processCmd.StandardInput.Close();
+                processCmd.WaitForExit();
 
-                //File_Reader(tmp);
-
-                //Get_Fileinfo(tmp);
                 Loading_Screen();
-
             }
             catch (Exception e)
             {
@@ -232,10 +268,7 @@ namespace MolkZipping
         {
             Pack.Visibility = Visibility.Hidden;
             Loading.Visibility = Visibility.Visible;
-            loadingTimer.Tick += Animate_Loading;
-
-            
-
+            loadingTimer.Tick += Animate_Loading;           
             loadingTimer.Interval = new TimeSpan(0,0,3);       
 
             loadingTimer.Start();
@@ -246,7 +279,9 @@ namespace MolkZipping
         {
             loadingTimer.IsEnabled = false;
             loadingTimer.Stop();
-            Pack.Visibility = Visibility.Visible;
+            packList.Clear();
+            GridPack.Items.Refresh();
+            Main.Visibility = Visibility.Visible;
             Loading.Visibility = Visibility.Hidden;
             MessageBox.Show("File succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
         }
