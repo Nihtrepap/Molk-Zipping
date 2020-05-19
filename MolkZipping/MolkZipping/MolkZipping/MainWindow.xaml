@@ -277,7 +277,7 @@
                 Background="#403273" Margin="548,168,174,0" >
                 <Image Source="Assets/OrientationIcons/save.png" Width="20" />
             </Button>
-            <TextBlock x:Name="SaveToText" HorizontalAlignment="Left" Margin="548,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" Width="226" Height="42" FontSize="11"/>
+            <TextBlock x:Name="SaveToText" HorizontalAlignment="Left" Margin="548,198,0,0" Text="Select a folder to save your molk file" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" Width="226" Height="42" FontSize="11"/>
 
 
         </Grid>
