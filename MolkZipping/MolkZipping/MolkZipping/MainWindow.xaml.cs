@@ -96,18 +96,17 @@ namespace MolkZipping
 
         private void Save_File_Dialog()
         {
+
+            SaveFileDialog openSaveFile = new SaveFileDialog();
             
-            CommonOpenFileDialog openSaveTo = new CommonOpenFileDialog();
-            openSaveTo.IsFolderPicker = true;
-
-            if (openSaveTo.ShowDialog() != CommonFileDialogResult.Ok)
-            {
-                SaveToText.Text = "You have not selected any folder.";
-                return;
-            }
-            else saveTo = openSaveTo.FileName;
-
+            openSaveFile.Filter = "molk files (*.molk)|*.molk*";
+            openSaveFile.FilterIndex = 1;
+            openSaveFile.FileName = "Molkzipping";
+            openSaveFile.ShowDialog();
+            saveTo = openSaveFile.FileName + ".molk";
             SaveToText.Text = $"{saveTo}";
+            MessageBox.Show(saveTo);
+            
 
         }
 
@@ -195,7 +194,7 @@ namespace MolkZipping
             try
             {
                 //string chosenName = "fishy";
-                //string _directory = "-r";
+                string _directory = "-r";
                 //string filename = "testZipMolk.molk";
                 //saveTo += $"\\{chosenName}";
 
@@ -211,7 +210,7 @@ namespace MolkZipping
                 //processCmd.StartInfo.UseShellExecute = false;
                 //processCmd.Start();
 
-                //string cmd = $@"molk {_directory} {saveTo}.molk {opened}";
+                string cmd = $@"molk {_directory} {saveTo} {opened}";
 
                 //processCmd.StandardInput.WriteLine(cmd);
                 //processCmd.StandardInput.Flush();
@@ -234,7 +233,11 @@ namespace MolkZipping
             Pack.Visibility = Visibility.Hidden;
             Loading.Visibility = Visibility.Visible;
             loadingTimer.Tick += Animate_Loading;
+
+            
+
             loadingTimer.Interval = new TimeSpan(0,0,3);       
+
             loadingTimer.Start();
             loadingTimer.IsEnabled = true;
         }
