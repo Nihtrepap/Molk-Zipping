@@ -9,8 +9,8 @@
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnUnpack">
             <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="316.5"/>
         </DoubleAnimationUsingKeyFrames>
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="question">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="112.5"/>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="question">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="200"/>
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Instagram">
             <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-46.5"/>
@@ -44,8 +44,8 @@
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Web">
             <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-61.5"/>
         </DoubleAnimationUsingKeyFrames>
-        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="question">
-            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="117"/>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="question">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="200"/>
         </DoubleAnimationUsingKeyFrames>
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Exit">
             <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="102"/>
