@@ -313,7 +313,7 @@
 
         </Grid>
         <!-- THIS IS THE ADVANCED SECTION -->
-        <Grid x:Name="Advanced" Visibility="Visible" Margin="0,0,600,0" Background="#7F403273" MouseLeave="Mouse_Leave_Menu"  >
+        <Grid x:Name="Advanced" Visibility="Hidden" Margin="0,0,600,0" Background="#7F403273" MouseLeave="Mouse_Leave_Menu"  >
             <Image MouseDown="Button_Click" Cursor="Hand" x:Name="Instagram" Source="Assets/SocialIcons/instagram.png" HorizontalAlignment="Left" Height="28" Margin="10,380,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
