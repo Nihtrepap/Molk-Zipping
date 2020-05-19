@@ -235,7 +235,7 @@ namespace MolkZipping
         {
             try
             {
-                string _directory;
+                string _directory = " ";
 
                 Process processCmd = new Process();
 
