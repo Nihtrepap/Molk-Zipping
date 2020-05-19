@@ -22,7 +22,7 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.053"/>
                 </DoubleAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallOne">
-                    
+
                     <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="57"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="56"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-10"/>
@@ -76,6 +76,16 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="2.833"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-1.167"/>
                 </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnChooseFilePack">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChoosePackFile">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnPackChoosenFile">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnPackFiles">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
             </Storyboard>
 
         </ResourceDictionary>
@@ -139,6 +149,18 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Loading">
             <BeginStoryboard x:Name="LoadingBalls_BeginStoryboard1" Storyboard="{StaticResource LoadingBalls}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnPackFiles">
+            <BeginStoryboard x:Name="BtnPackChoosenFile_BeginStoryboard" Storyboard="{StaticResource BtnPackChoosenFile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnPackFiles">
+            <RemoveStoryboard BeginStoryboardName="BtnPackChoosenFile_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChoosePackFile">
+            <BeginStoryboard x:Name="BtnChooseFilePack_BeginStoryboard" Storyboard="{StaticResource BtnChooseFilePack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnChoosePackFile">
+            <RemoveStoryboard BeginStoryboardName="BtnChooseFilePack_BeginStoryboard"/>
         </EventTrigger>
     </Window.Triggers>
 
