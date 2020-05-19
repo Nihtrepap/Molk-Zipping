@@ -92,6 +92,28 @@
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
+            <Storyboard x:Key="RadioFolder">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFolder">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="RadioFile">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFile">
+                    <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
 
         </ResourceDictionary>
     </Window.Resources>
@@ -172,6 +194,18 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnSaveTo">
             <RemoveStoryboard BeginStoryboardName="BtnSaveTo_BeginStoryboard1"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SelectFolder">
+            <BeginStoryboard x:Name="RadioFolder_BeginStoryboard1" Storyboard="{StaticResource RadioFolder}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="SelectFolder">
+            <RemoveStoryboard BeginStoryboardName="RadioFolder_BeginStoryboard1"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SelectFolder">
+            <BeginStoryboard x:Name="RadioFile_BeginStoryboard1" Storyboard="{StaticResource RadioFile}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="SelectFolder">
+            <RemoveStoryboard BeginStoryboardName="RadioFile_BeginStoryboard1"/>
         </EventTrigger>
     </Window.Triggers>
 
