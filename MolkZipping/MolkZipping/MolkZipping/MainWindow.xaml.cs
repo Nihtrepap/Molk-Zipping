@@ -1,21 +1,11 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Windows.Threading;
 
 namespace MolkZipping
@@ -27,8 +17,7 @@ namespace MolkZipping
     {
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
-        //private string opened;
-        //private string saveTo;
+        private int whyYouLoop = 0;
         public bool folderPick = true;
 
         DispatcherTimer loadingTimer = new DispatcherTimer();
@@ -54,15 +43,20 @@ namespace MolkZipping
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnSaveTo") { dia.Save_File_Dialog(); }
-                else if (btn.Name == "BtnMenu") {
+                else if (btn.Name == "BtnMenu") 
+                {
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnUnPackFiles") { dia.Save_File_Dialog(); Cmd_UnPack(); }
+                else if (btn.Name == "BtnUnPackFiles") 
+                { 
+                    dia.Save_File_Dialog(); 
+                    if (dia.saveFile == true) { Cmd_UnPack(); whyYouLoop = 0; } 
+                }
                 else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
 
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog(); }              
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog();  }              
                 else if(btn.Name == "BtnPackFiles") 
                 {
                     if (dia.opened != null || dia.opened == "")
@@ -72,6 +66,7 @@ namespace MolkZipping
                         {
                             case MessageBoxResult.Yes:
                                 packMethod.Cmd_Pack();
+                                whyYouLoop = 0;
                                 break;
                         }
                     }
@@ -180,12 +175,12 @@ namespace MolkZipping
             }
             else
             {
+                loadingTimer.Start();
                 Unpack.Visibility = Visibility.Hidden;
                 Loading.Visibility = Visibility.Visible;
                 loadingTimer.Tick += Done_Loading;
                 loadingTimer.Interval = new TimeSpan(0, 0, 3);
 
-                loadingTimer.Start();
                 loadingTimer.IsEnabled = true;
                 packList.Clear();
                 GridUnpack.Items.Refresh();
@@ -199,13 +194,18 @@ namespace MolkZipping
         /// <param name="e"></param>
         public void Done_Loading(object timer, EventArgs e)
         {
-                loadingTimer.IsEnabled = false;
-                loadingTimer.Stop();
+            if (whyYouLoop == 0)
+            {
                 Main.Visibility = Visibility.Visible;
                 Loading.Visibility = Visibility.Hidden;
                 MessageBox.Show($"File(s) succesfully molked!\n File saved at: {dia.saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
                 dia.saveTo = "";
-                dia.opened = "";           
+                dia.opened = "";
+                loadingTimer.IsEnabled = false;
+                loadingTimer.Stop();
+                whyYouLoop++;
+            }
+            else return;
         }
 
         private void Cmd_UnPack()
