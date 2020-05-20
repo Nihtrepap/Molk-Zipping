@@ -27,7 +27,9 @@ namespace MolkZipping
     {
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
+
         public bool folderPick = true;
+
         DispatcherTimer loadingTimer = new DispatcherTimer();
         PackMethod packMethod;
 
@@ -48,13 +50,21 @@ namespace MolkZipping
             {
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
+
                 else if (btn.Name == "BtnSaveTo") { packMethod.Save_File_Dialog(); }
                 else if (btn.Name == "BtnMenu") {
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
+                else if (btn.Name == "BtnUnPackFiles") { Save_File_Dialog(); Cmd_UnPack(); }
+                else if (btn.Name == "BtnChooseUnpackFiles") {  Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
+
+                else if (btn.Name == "BtnSaveTo") { Save_File_Dialog(); }
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
+
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; packMethod.Open_File_Dialog(); }
+
                 else if(btn.Name == "BtnPackFiles") 
                 {
                     if (packMethod.opened != null || packMethod.opened == "")
@@ -126,8 +136,7 @@ namespace MolkZipping
         public void File_Reader(string tmp)
         {
             string read;
-            read = File.ReadAllText(tmp, Encoding.UTF8);
-            
+            read = File.ReadAllText(tmp, Encoding.UTF8);           
         }
 
         /// <summary>
@@ -160,6 +169,8 @@ namespace MolkZipping
         }
 
 
+
+
         
         /// <summary>
         /// Handles screen switch when loading.
@@ -167,13 +178,30 @@ namespace MolkZipping
         /// </summary>
         public void Loading_Screen()
         {
-            Pack.Visibility = Visibility.Hidden;
-            Loading.Visibility = Visibility.Visible;
-            loadingTimer.Tick += Done_Loading;           
-            loadingTimer.Interval = new TimeSpan(0,0,3);       
+            if (Pack.Visibility == Visibility.Visible)
+            {
+                Pack.Visibility = Visibility.Hidden;
+                Loading.Visibility = Visibility.Visible;
+                loadingTimer.Tick += Done_Loading;
+                loadingTimer.Interval = new TimeSpan(0, 0, 3);
 
-            loadingTimer.Start();
-            loadingTimer.IsEnabled = true;
+                loadingTimer.Start();
+                loadingTimer.IsEnabled = true;
+                packList.Clear();
+                GridPack.Items.Refresh();
+            }
+            else
+            {
+                Unpack.Visibility = Visibility.Hidden;
+                Loading.Visibility = Visibility.Visible;
+                loadingTimer.Tick += Done_Loading;
+                loadingTimer.Interval = new TimeSpan(0, 0, 3);
+
+                loadingTimer.Start();
+                loadingTimer.IsEnabled = true;
+                packList.Clear();
+                GridUnpack.Items.Refresh();
+            }
         }
 
         /// <summary>
@@ -183,6 +211,49 @@ namespace MolkZipping
         /// <param name="e"></param>
         public void Done_Loading(object timer, EventArgs e)
         {
+
+                loadingTimer.IsEnabled = false;
+                loadingTimer.Stop();
+                Main.Visibility = Visibility.Visible;
+                Loading.Visibility = Visibility.Hidden;
+                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
+                saveTo = "";
+                opened = "";
+            
+  
+        }
+
+        private void Cmd_UnPack()
+        {
+            try
+            {
+                //string _directory = "-r";
+                //string cmdFile = $@"molk {_directory} {saveTo} {opened}";
+               // string cmdFolder = $@"molk {_directory} {saveTo} {opened}\.*";
+
+                Process processCmd = new Process();
+
+                processCmd.StartInfo.FileName = "cmd.exe";
+                processCmd.StartInfo.RedirectStandardInput = true;
+                processCmd.StartInfo.RedirectStandardOutput = true;
+                processCmd.StartInfo.RedirectStandardError = true;
+                processCmd.StartInfo.CreateNoWindow = true;
+                processCmd.StartInfo.UseShellExecute = false;
+                processCmd.Start();
+
+                processCmd.StandardInput.WriteLine($@"unmolk {opened} -d {saveTo}");//-d {saveTo}");
+             
+                processCmd.StandardInput.Flush();
+                processCmd.StandardInput.Close();
+                processCmd.WaitForExit();
+
+                Loading_Screen();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             loadingTimer.IsEnabled = false;
             loadingTimer.Stop();
             packList.Clear();
@@ -191,6 +262,8 @@ namespace MolkZipping
             Loading.Visibility = Visibility.Hidden;
             packMethod.opened = "";
             MessageBox.Show("File(s) succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
+
     }
 }
