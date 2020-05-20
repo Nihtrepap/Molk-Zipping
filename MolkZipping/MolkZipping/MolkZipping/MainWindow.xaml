@@ -361,12 +361,12 @@
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
         <Grid x:Name="Unpack" Visibility="Hidden">
-            <Button Cursor="Hand" x:Name="BtnUnPackFiles"  Style="{StaticResource RadiusButton}" 
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnUnPackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
                 <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
             </Button>
-            <Button Cursor="Hand" x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="527,387,135,0">
                 <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
@@ -387,7 +387,7 @@
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
-            <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0"/>
+            <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="304" VerticalAlignment="Top" Width="502" Margin="25,78,0,0" Focusable="False" HeadersVisibility="Column"/>
 
         </Grid>
         <!-- THIS IS THE ADVANCED SECTION -->
