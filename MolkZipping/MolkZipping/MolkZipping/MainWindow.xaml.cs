@@ -27,28 +27,31 @@ namespace MolkZipping
     {
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
-        private bool folderPick = false;
-        private string saveTo;
-        private string opened;
+
+        public bool folderPick = true;
+
         DispatcherTimer loadingTimer = new DispatcherTimer();
+        PackMethod packMethod;
 
         public MainWindow()
         {
             InitializeComponent();
-            
+            packMethod = new PackMethod(this); 
         }
-
+        
         /// <summary>
         /// Handles all click events
         /// </summary>
         /// <param name="sender">The clicking object</param>
         /// <param name="e">Click event</param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn)
             {
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
+
+                else if (btn.Name == "BtnSaveTo") { packMethod.Save_File_Dialog(); }
                 else if (btn.Name == "BtnMenu") {
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
@@ -56,17 +59,21 @@ namespace MolkZipping
                 else if (btn.Name == "BtnUnPackFiles") { Save_File_Dialog(); Cmd_UnPack(); }
                 else if (btn.Name == "BtnChooseUnpackFiles") {  Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
+
                 else if (btn.Name == "BtnSaveTo") { Save_File_Dialog(); }
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
+
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; packMethod.Open_File_Dialog(); }
+
                 else if(btn.Name == "BtnPackFiles") 
                 {
-                    if (opened != null || opened == "")
+                    if (packMethod.opened != null || packMethod.opened == "")
                     {
                         MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
                         switch (answer)
                         {
                             case MessageBoxResult.Yes:
-                                Cmd_Pack();
+                                packMethod.Cmd_Pack();
                                 break;
                         }
                     }
@@ -115,89 +122,18 @@ namespace MolkZipping
             menuClick = false;
         }
 
-        /// <summary>
-        /// This method saves the file path into a string
-        /// and adds .molk extension. 
-        /// Also only make it possible for the user to save into molk extension.
-        /// </summary>
-        private void Save_File_Dialog()
-        {
-            SaveFileDialog openSaveFile = new SaveFileDialog();
-            openSaveFile.Filter = "molk files (*.molk)|*.molk*";
-            openSaveFile.FilterIndex = 1;
-            openSaveFile.FileName = "Molkzipping";
-            openSaveFile.ShowDialog();
-            if (Pack.Visibility == Visibility.Visible) saveTo = openSaveFile.FileName + ".molk";
-            else saveTo = openSaveFile.FileName;
-            SaveToText.Text = $"{saveTo}";
-        }
 
-        /// <summary>
-        /// Used to open a file dialog.
-        /// Saves the chosen file path.
-        /// </summary>
-        /// <seealso cref="Cmd_run(string)"/>
-        private void Open_File_Dialog()
-        {
-            if (Unpack.Visibility == Visibility.Visible) { folderPick = false; }
-            CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
-            openFileWindow.IsFolderPicker = folderPick;
-            if (openFileWindow.ShowDialog() != CommonFileDialogResult.Ok) return;
-            //else opened = openFileWindow.FileName;
-            else opened = openFileWindow.FileName;
+
+
+
         
-            Cmd_run(opened);    
-        }
-
-        /// <summary>
-        /// Takes information about the chosen file from
-        /// file dialog window.
-        /// Information gained: 
-        /// -Filename
-        /// -Date
-        /// -Size
-        /// -Time
-        /// </summary>
-        /// <param name="fileOpen">Chosen file from file dialog window</param>
-        private void Cmd_run(string fileOpen)
-        {
-            try
-            {              
-                string tmp = @"tmp.txt";
-
-                Process processCmd = new Process();
-                processCmd.StartInfo.FileName = "cmd.exe";
-                processCmd.StartInfo.RedirectStandardInput = true;
-                processCmd.StartInfo.RedirectStandardOutput = true;
-                processCmd.StartInfo.RedirectStandardError = true;
-                processCmd.StartInfo.CreateNoWindow = true;
-                processCmd.StartInfo.UseShellExecute = false;
-                processCmd.Start();
-
-                string cmd = $"dir /B \"{fileOpen}\" > {tmp}";
-                
-                processCmd.StandardInput.WriteLine(cmd);
-                processCmd.StandardInput.Flush();
-                processCmd.StandardInput.Close();
-                processCmd.WaitForExit();
-
-                File_Reader(tmp);
-
-                Get_Fileinfo(tmp);
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         /// <summary>
         /// Simple ReadAllText method from File class.
         /// Reads programs tmp.txt file to get value into string.
         /// </summary>
         /// <param name="tmp">Path for program tmp file</param>
-        private void File_Reader(string tmp)
+        public void File_Reader(string tmp)
         {
             string read;
             read = File.ReadAllText(tmp, Encoding.UTF8);           
@@ -209,7 +145,7 @@ namespace MolkZipping
         /// Adds the info into the datagrid view.
         /// </summary>
         /// <param name="tmp">Contains tmp.txt data</param>
-        private void Get_Fileinfo(string tmp)
+        public void Get_Fileinfo(string tmp)
         {
             try
             {
@@ -232,43 +168,15 @@ namespace MolkZipping
             }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n"+e,"Molk found error",MessageBoxButton.OK,MessageBoxImage.Error); }
         }
 
-        private void Cmd_Pack()
-        {
-            try
-            {
-                string _directory = "-r";
-                string cmdFile = $@"molk {_directory} {saveTo} {opened}";
-                string cmdFolder = $@"molk {_directory} {saveTo} {opened}\.*";
 
-                Process processCmd = new Process();
 
-                processCmd.StartInfo.FileName = "cmd.exe";
-                processCmd.StartInfo.RedirectStandardInput = true;
-                processCmd.StartInfo.RedirectStandardOutput = true;
-                processCmd.StartInfo.RedirectStandardError = true;
-                processCmd.StartInfo.CreateNoWindow = true;
-                processCmd.StartInfo.UseShellExecute = false;
-                processCmd.Start();
-                if(folderPick == true) { processCmd.StandardInput.WriteLine(cmdFolder); }
-                else { processCmd.StandardInput.WriteLine(cmdFile); }
-                
-                processCmd.StandardInput.Flush();
-                processCmd.StandardInput.Close();
-                processCmd.WaitForExit();
 
-                Loading_Screen();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
         
         /// <summary>
         /// Handles screen switch when loading.
         /// Starts a timer.
         /// </summary>
-        private void Loading_Screen()
+        public void Loading_Screen()
         {
             if (Pack.Visibility == Visibility.Visible)
             {
@@ -301,7 +209,7 @@ namespace MolkZipping
         /// </summary>
         /// <param name="timer"></param>
         /// <param name="e"></param>
-        private void Done_Loading(object timer, EventArgs e)
+        public void Done_Loading(object timer, EventArgs e)
         {
 
                 loadingTimer.IsEnabled = false;
@@ -345,6 +253,16 @@ namespace MolkZipping
             {
                 MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            loadingTimer.IsEnabled = false;
+            loadingTimer.Stop();
+            packList.Clear();
+            GridPack.Items.Refresh();
+            Main.Visibility = Visibility.Visible;
+            Loading.Visibility = Visibility.Hidden;
+            packMethod.opened = "";
+            MessageBox.Show("File(s) succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
 
     }
