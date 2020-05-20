@@ -59,7 +59,7 @@ namespace MolkZipping
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog();  }              
                 else if(btn.Name == "BtnPackFiles") 
                 {
-                    if (dia.opened != null || dia.opened == "")
+                    if (dia.opened != null || dia.opened != "")
                     {
                         MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
                         switch (answer)
