@@ -27,7 +27,7 @@ namespace MolkZipping
     {
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
-        private bool folderPick = true;
+        private bool folderPick;
         private string saveTo;
         private string opened;
         DispatcherTimer loadingTimer = new DispatcherTimer();
@@ -235,7 +235,9 @@ namespace MolkZipping
         {
             try
             {
-                string _directory = " ";
+                string _directory = "-r";
+                string cmdFile = $@"molk {_directory} {saveTo} {opened}";
+                string cmdFolder = $@"molk {_directory} {saveTo} {opened}\.*";
 
                 Process processCmd = new Process();
 
@@ -247,9 +249,9 @@ namespace MolkZipping
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
 
-                string cmd = $@"molk {_directory} {saveTo} {opened}";
-
-                processCmd.StandardInput.WriteLine(cmd);
+                if(folderPick == true) { processCmd.StandardInput.WriteLine(cmdFolder); }
+                else { processCmd.StandardInput.WriteLine(cmdFile); }
+                
                 processCmd.StandardInput.Flush();
                 processCmd.StandardInput.Close();
                 processCmd.WaitForExit();
