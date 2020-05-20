@@ -30,11 +30,13 @@ namespace MolkZipping
         public bool folderPick = true;
         DispatcherTimer loadingTimer = new DispatcherTimer();
         PackMethod packMethod;
+        Dialog dia;
 
         public MainWindow()
         {
             InitializeComponent();
-            packMethod = new PackMethod(this); 
+            dia = new Dialog(this);
+            packMethod = new PackMethod(dia,this);
         }
         
         /// <summary>
@@ -48,16 +50,16 @@ namespace MolkZipping
             {
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
-                else if (btn.Name == "BtnSaveTo") { packMethod.Save_File_Dialog(); }
+                else if (btn.Name == "BtnSaveTo") { dia.Save_File_Dialog(); }
                 else if (btn.Name == "BtnMenu") {
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; packMethod.Open_File_Dialog(); }
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog(); }
                 else if(btn.Name == "BtnPackFiles") 
                 {
-                    if (packMethod.opened != null || packMethod.opened == "")
+                    if (dia.opened != null || dia.opened == "")
                     {
                         MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
                         switch (answer)
@@ -189,7 +191,7 @@ namespace MolkZipping
             GridPack.Items.Refresh();
             Main.Visibility = Visibility.Visible;
             Loading.Visibility = Visibility.Hidden;
-            packMethod.opened = "";
+            dia.opened = "";
             MessageBox.Show("File(s) succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
