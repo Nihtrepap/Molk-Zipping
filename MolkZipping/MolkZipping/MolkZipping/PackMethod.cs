@@ -15,6 +15,8 @@ namespace MolkZipping
         MainWindow main;
         Dialog dia;
 
+        public PackMethod() { }
+
         public PackMethod(Dialog dia, MainWindow main)
         {
             this.dia = dia;
@@ -25,7 +27,7 @@ namespace MolkZipping
         {
             try
             {
-                string _directory = " ";
+                string _directory = "-r";
                 
                 Process processCmd = new Process();
 

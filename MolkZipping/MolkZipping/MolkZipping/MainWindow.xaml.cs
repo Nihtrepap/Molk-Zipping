@@ -27,8 +27,8 @@ namespace MolkZipping
     {
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
-        private string opened;
-        private string saveTo;
+        //private string opened;
+        //private string saveTo;
         public bool folderPick = true;
 
         DispatcherTimer loadingTimer = new DispatcherTimer();
@@ -39,7 +39,7 @@ namespace MolkZipping
         {
             InitializeComponent();
             dia = new Dialog(this);
-            packMethod = new PackMethod(dia,this);
+            packMethod = new PackMethod(dia, this);
         }
         
         /// <summary>
@@ -60,6 +60,7 @@ namespace MolkZipping
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnUnPackFiles") { dia.Save_File_Dialog(); Cmd_UnPack(); }
                 else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
+
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog(); }              
                 else if(btn.Name == "BtnPackFiles") 
@@ -202,9 +203,9 @@ namespace MolkZipping
                 loadingTimer.Stop();
                 Main.Visibility = Visibility.Visible;
                 Loading.Visibility = Visibility.Hidden;
-                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
-                saveTo = "";
-                opened = "";           
+                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {dia.saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
+                dia.saveTo = "";
+                dia.opened = "";           
         }
 
         private void Cmd_UnPack()
@@ -225,7 +226,7 @@ namespace MolkZipping
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
 
-                processCmd.StandardInput.WriteLine($@"unmolk {opened} -d {saveTo}");//-d {saveTo}");
+                processCmd.StandardInput.WriteLine($@"unmolk {dia.opened} -d {dia.saveTo}");//-d {saveTo}");
              
                 processCmd.StandardInput.Flush();
                 processCmd.StandardInput.Close();
@@ -237,15 +238,6 @@ namespace MolkZipping
             {
                 MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            loadingTimer.IsEnabled = false;
-            loadingTimer.Stop();
-            packList.Clear();
-            GridPack.Items.Refresh();
-            Main.Visibility = Visibility.Visible;
-            Loading.Visibility = Visibility.Hidden;
-            dia.opened = "";
-            MessageBox.Show("File(s) succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

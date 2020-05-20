@@ -33,6 +33,7 @@ namespace MolkZipping
             openSaveFile.FilterIndex = 1;
             openSaveFile.FileName = "Molkzipping";
             openSaveFile.ShowDialog();
+            
             saveTo = openSaveFile.FileName + ".molk";
             main.SaveToText.Text = $"{saveTo}";
         }
@@ -43,10 +44,13 @@ namespace MolkZipping
         /// </summary>
         /// <seealso cref="Cmd_run(string)"/>
         public void Open_File_Dialog()
-        {
+        {           
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
-            openFileWindow.IsFolderPicker = main.folderPick;
-
+            openFileWindow.EnsureFileExists = true;
+            
+            openFileWindow.Title = "Choose file(s) or folder(s)";
+            if (main.Pack.Visibility == Visibility.Visible) { openFileWindow.IsFolderPicker = main.folderPick; }
+            else { openFileWindow.IsFolderPicker = false; openFileWindow.Filters.Add(new CommonFileDialogFilter("molk Files","*.molk")); }
             if (openFileWindow.ShowDialog() != CommonFileDialogResult.Ok) return;
             else opened = openFileWindow.FileName;
 
