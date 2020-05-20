@@ -53,21 +53,15 @@ namespace MolkZipping
             {
                 if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
-
                 else if (btn.Name == "BtnSaveTo") { dia.Save_File_Dialog(); }
-
                 else if (btn.Name == "BtnMenu") {
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnUnPackFiles") { packMethod.Save_File_Dialog(); Cmd_UnPack(); }
-                else if (btn.Name == "BtnChooseUnpackFiles") { packMethod.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
+                else if (btn.Name == "BtnUnPackFiles") { dia.Save_File_Dialog(); Cmd_UnPack(); }
+                else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
-
-                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog(); }
-
-
-               
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog(); }              
                 else if(btn.Name == "BtnPackFiles") 
                 {
                     if (dia.opened != null || dia.opened == "")
@@ -125,12 +119,6 @@ namespace MolkZipping
             menuClick = false;
         }
 
-
-
-
-
-        
-
         /// <summary>
         /// Simple ReadAllText method from File class.
         /// Reads programs tmp.txt file to get value into string.
@@ -171,10 +159,6 @@ namespace MolkZipping
             }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n"+e,"Molk found error",MessageBoxButton.OK,MessageBoxImage.Error); }
         }
 
-
-
-
-        
         /// <summary>
         /// Handles screen switch when loading.
         /// Starts a timer.
@@ -214,16 +198,13 @@ namespace MolkZipping
         /// <param name="e"></param>
         public void Done_Loading(object timer, EventArgs e)
         {
-
                 loadingTimer.IsEnabled = false;
                 loadingTimer.Stop();
                 Main.Visibility = Visibility.Visible;
                 Loading.Visibility = Visibility.Hidden;
                 MessageBox.Show($"File(s) succesfully molked!\n File saved at: {saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
                 saveTo = "";
-                opened = "";
-            
-  
+                opened = "";           
         }
 
         private void Cmd_UnPack()
@@ -265,8 +246,6 @@ namespace MolkZipping
             Loading.Visibility = Visibility.Hidden;
             dia.opened = "";
             MessageBox.Show("File(s) succesfully molked! ","Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
-
         }
-
     }
 }
