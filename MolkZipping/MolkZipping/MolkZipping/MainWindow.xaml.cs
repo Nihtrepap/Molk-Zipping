@@ -27,7 +27,8 @@ namespace MolkZipping
     {
         List<Pack> packList = new List<Pack>();
         private bool menuClick = false;
-
+        private string opened;
+        private string saveTo;
         public bool folderPick = true;
 
         DispatcherTimer loadingTimer = new DispatcherTimer();
@@ -56,12 +57,12 @@ namespace MolkZipping
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
                 else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnUnPackFiles") { Save_File_Dialog(); Cmd_UnPack(); }
-                else if (btn.Name == "BtnChooseUnpackFiles") {  Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
+                else if (btn.Name == "BtnUnPackFiles") { packMethod.Save_File_Dialog(); Cmd_UnPack(); }
+                else if (btn.Name == "BtnChooseUnpackFiles") { packMethod.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
 
-                else if (btn.Name == "BtnSaveTo") { Save_File_Dialog(); }
-                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; Open_File_Dialog(); }
+                else if (btn.Name == "BtnSaveTo") { packMethod.Save_File_Dialog(); }
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; packMethod.Open_File_Dialog(); }
 
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; packMethod.Open_File_Dialog(); }
 
