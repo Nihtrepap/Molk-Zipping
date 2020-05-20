@@ -117,6 +117,16 @@
                     <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
+            <Storyboard x:Key="BtnChooseUnpack">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChooseUnpackFiles">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnUnpacking">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnUnPackFiles">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
 
         </ResourceDictionary>
     </Window.Resources>
@@ -210,12 +220,24 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="SelectFolder">
             <RemoveStoryboard BeginStoryboardName="RadioFolder_BeginStoryboard"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChooseUnpackFiles">
+            <BeginStoryboard x:Name="BtnChooseUnpack_BeginStoryboard" Storyboard="{StaticResource BtnChooseUnpack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnChooseUnpackFiles">
+            <RemoveStoryboard BeginStoryboardName="BtnChooseUnpack_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnUnPackFiles">
+            <BeginStoryboard x:Name="BtnUnpacking_BeginStoryboard" Storyboard="{StaticResource BtnUnpacking}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnUnPackFiles">
+            <RemoveStoryboard BeginStoryboardName="BtnUnpacking_BeginStoryboard"/>
+        </EventTrigger>
     </Window.Triggers>
 
     <Grid>
         <!-- THIS IS THE MAIN PAGE SECTION -->
 
-        <Grid x:Name="Main" Visibility="Visible">
+        <Grid x:Name="Main" Visibility="Hidden">
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -360,7 +382,7 @@
 
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
-        <Grid x:Name="Unpack" Visibility="Hidden">
+        <Grid x:Name="Unpack" Visibility="Visible">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnUnPackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
