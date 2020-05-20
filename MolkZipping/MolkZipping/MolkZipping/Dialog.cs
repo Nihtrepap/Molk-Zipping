@@ -14,6 +14,7 @@ namespace MolkZipping
     {
         public string saveTo;
         public string opened;
+        public Nullable<bool> saveFile;
         MainWindow main;
 
         public Dialog(MainWindow main)
@@ -32,7 +33,8 @@ namespace MolkZipping
             openSaveFile.Filter = "molk files (*.molk)|*.molk*";
             openSaveFile.FilterIndex = 1;
             openSaveFile.FileName = "Molkzipping";
-            openSaveFile.ShowDialog();
+            saveFile = openSaveFile.ShowDialog();
+            if (saveFile != true) return;
             
             saveTo = openSaveFile.FileName + ".molk";
             main.SaveToText.Text = $"{saveTo}";
