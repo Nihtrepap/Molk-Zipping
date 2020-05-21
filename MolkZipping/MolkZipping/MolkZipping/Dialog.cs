@@ -83,10 +83,10 @@ namespace MolkZipping
                 processCmd.StartInfo.CreateNoWindow = true;
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
+                if (main.Unpack.Visibility == Visibility.Visible) { string cmd = $"unmolk -l \"{fileOpen}\" > {tmp}"; processCmd.StandardInput.WriteLine(cmd); }
+                else { string cmd = $"dir /B \"{fileOpen}\" > {tmp}"; processCmd.StandardInput.WriteLine(cmd); }
 
-                string cmd = $"dir /B \"{fileOpen}\" > {tmp}";
-
-                processCmd.StandardInput.WriteLine(cmd);
+              //  string cmd = $"dir /B \"{fileOpen}\" > {tmp}"; processCmd.StandardInput.WriteLine(cmd);
                 processCmd.StandardInput.Flush();
                 processCmd.StandardInput.Close();
                 processCmd.WaitForExit();

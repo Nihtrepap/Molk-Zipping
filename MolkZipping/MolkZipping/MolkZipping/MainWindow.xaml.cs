@@ -136,22 +136,50 @@ namespace MolkZipping
         {
             try
             {
-                string line;
-                string type = "";
-                FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
-                StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
-
-                while ((line = streamR.ReadLine()) != null)
+                if (Unpack.Visibility == Visibility.Visible)
                 {
-                    string[] split = line.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-                    string name = split[0];
-                    if (split.Length != 2) { type = "folder"; }
-                    else { type = split[1]; }
+          
+                    TxtInsideMolk.Text = File.ReadAllText(tmp, Encoding.UTF8);
+                    string line;
+                    string type = "";
+                    FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
+                    StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
 
-                    packList.Add(new Pack(name, type));
-                    GridPack.Items.Refresh();
+                    line = streamR.ReadLine();
+                    
+                    string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    string name = split[0];
+                    if (split.Length != 2) { type = "molk"; }
+                    else { type = split[1]; }
+                    string[] splitTwo = type.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                    name = splitTwo[0];
+                    type = splitTwo[1];
+
+
+                        packList.Add(new Pack(name, type));
+                        GridPack.Items.Refresh();
+                    
                 }
+                else
+                {
+
+                    string line;
+                    string type = "";
+                    FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
+                    StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
+
+                    while ((line = streamR.ReadLine()) != null)
+                    {
+                        string[] split = line.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                        string name = split[0];
+                        if (split.Length != 2) { type = "folder"; }
+                        else { type = split[1]; }
+
+                        packList.Add(new Pack(name, type));
+                        GridPack.Items.Refresh();
+                    }
                 fStream.Close();
+                }
             }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n"+e,"Molk found error",MessageBoxButton.OK,MessageBoxImage.Error); }
         }
 
