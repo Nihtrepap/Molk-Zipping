@@ -414,7 +414,7 @@
                     <SolidColorBrush Color="#FF688CAF" Opacity="0"/>
                 </DataGrid.BorderBrush>
             </DataGrid>
-            <TextBlock x:Name="TxtInsideMolk" HorizontalAlignment="Left" Margin="25,140,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="242" Width="506" Foreground="#FF1F1526" Background="#FFC0BCC4" Cursor="Pen" IsEnabled="False"/>
+            <TextBlock x:Name="TxtInsideMolk" HorizontalAlignment="Left" Margin="25,140,0,0" TextWrapping="Wrap" Text="Files inside" VerticalAlignment="Top" Height="242" Width="506" Foreground="#FF1F1526" Background="#FFC0BCC4" Cursor="Pen" IsEnabled="False"/>
 
         </Grid>
         <!-- THIS IS THE ADVANCED SECTION -->
