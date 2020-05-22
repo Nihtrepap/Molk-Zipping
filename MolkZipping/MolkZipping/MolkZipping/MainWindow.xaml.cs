@@ -40,23 +40,23 @@ namespace MolkZipping
         {
             if (sender is Button btn)
             {
-                if (btn.Name == "BtnPack") { Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
-                else if (btn.Name == "BtnUnpack") { Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
+                if (btn.Name == "BtnPack") { this.Title = "Molk pack"; Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
+                else if (btn.Name == "BtnUnpack") { this.Title = "Molk unpack"; Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
                 else if (btn.Name == "BtnSaveTo") { dia.Save_File_Dialog(); }
                 else if (btn.Name == "BtnMenu") 
                 {
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
-                else if (btn.Name == "BtnBackUnPack") { Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
+                else if (btn.Name == "BtnBackUnPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnUnPackFiles") 
                 { 
                     dia.Save_File_Dialog(); 
-                    if (dia.saveFile == true) { Cmd_UnPack(); whyYouLoop = 0; } 
+                    if (dia.saveFile == true) { Unpack.Visibility = Visibility.Hidden; Loading.Visibility = Visibility.Visible; Cmd_UnPack(); whyYouLoop = 0; } 
                 }
                 else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
                 else if(btn.Name == "BtnClearUnPackData") { TxtInsideMolk.Text = ""; packList.Clear(); GridUnpack.Items.Refresh();  }
 
-                else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
+                else if (btn.Name == "BtnBackPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog();  }   
                 else if (btn.Name == "BtnClearPackData") { packList.Clear(); GridPack.Items.Refresh();  }
                 else if(btn.Name == "BtnPackFiles") 

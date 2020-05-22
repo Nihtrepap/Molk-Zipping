@@ -121,11 +121,67 @@
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChooseUnpackFiles">
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
                 </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtChooseUnpack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtChooseUnpack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnUnPackFiles">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="194"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnUnPackFiles">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="2"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackUnPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-159"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearUnPackData">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-200"/>
+                </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="BtnUnpacking">
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnUnPackFiles">
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
                 </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtStartUnpack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtStartUnpack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChooseUnpackFiles">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="194"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackUnPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-167"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearUnPackData">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-216"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnDeleteDataUnpack">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnClearUnPackData">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtDeleteUnpack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtDeleteUnpack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChooseUnpackFiles">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="202.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnUnPackFiles">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="202.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackUnPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-151.5"/>
+                </DoubleAnimationUsingKeyFrames>
             </Storyboard>
 
         </ResourceDictionary>
@@ -190,6 +246,12 @@
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Loading">
             <BeginStoryboard x:Name="LoadingBalls_BeginStoryboard1" Storyboard="{StaticResource LoadingBalls}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnClearUnPackData">
+            <BeginStoryboard x:Name="BtnDeleteDataUnpack_BeginStoryboard" Storyboard="{StaticResource BtnDeleteDataUnpack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnClearUnPackData">
+            <RemoveStoryboard BeginStoryboardName="BtnDeleteDataUnpack_BeginStoryboard"/>
+        </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnPackFiles">
             <BeginStoryboard x:Name="BtnPackChoosenFile_BeginStoryboard" Storyboard="{StaticResource BtnPackChoosenFile}"/>
         </EventTrigger>
@@ -231,6 +293,12 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnUnPackFiles">
             <RemoveStoryboard BeginStoryboardName="BtnUnpacking_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChooseUnpackFiles">
+            <BeginStoryboard x:Name="BtnChooseUnpack_BeginStoryboard1" Storyboard="{StaticResource BtnChooseUnpack}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnChooseUnpackFiles">
+            <RemoveStoryboard BeginStoryboardName="BtnChooseUnpack_BeginStoryboard"/>
         </EventTrigger>
     </Window.Triggers>
 
@@ -327,7 +395,7 @@
 
         </Grid>
         <!-- THIS IS THE PACK SECTION -->
-        <Grid x:Name="Pack" Visibility="Visible">
+        <Grid x:Name="Pack" Visibility="Hidden">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0"
@@ -386,20 +454,44 @@
 
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
-        <Grid x:Name="Unpack" Visibility="Hidden">
+        <Grid x:Name="Unpack" Visibility="Visible">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnUnPackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
-                Background="#403273" Margin="662,387,10,0">
+                Background="#403273" Margin="662,387,10,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
                 <Image Source="Assets/OrientationIcons/unpack.png" Width="88"/>
             </Button>
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnChooseUnpackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
-                Background="#403273" Margin="527,387,135,0">
+                Background="#403273" Margin="527,387,135,0" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
                 <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
             </Button>
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnClearUnPackData" Style="{StaticResource RadiusButton}" 
-                Background="#403273" Margin="594,0,68,199" Height="122" VerticalAlignment="Bottom">
-                <Image Source="Assets/OrientationIcons/clearGrid.png" Width="88"/>
+                Background="#403273" Margin="483,0,261,379" Height="42" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/clearGrid.png" Width="38" Height="29"/>
             </Button>
             <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
                    VerticalAlignment="Top" Height="81" 
@@ -411,8 +503,25 @@
                Height="80" Margin="25,409,0,0"
                VerticalAlignment="Top" Width="80"
                Click="Button_Click" 
-                    Style="{StaticResource RadiusButton}">
-                <Image Source="Assets/OrientationIcons/backBtn.png" Width="68" OpacityMask="Black"/>
+                    Style="{StaticResource RadiusButton}" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image x:Name="image1" Source="Assets/OrientationIcons/backBtn.png" Width="68" OpacityMask="Black" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
             </Button>
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
@@ -423,7 +532,18 @@
                 </DataGrid.BorderBrush>
             </DataGrid>
             <TextBlock x:Name="TxtInsideMolk" HorizontalAlignment="Left" Margin="25,140,0,0" TextWrapping="Wrap" Text="Files inside" VerticalAlignment="Top" Height="242" Width="506" Foreground="#FF1F1526" Background="#FFC0BCC4" Cursor="Pen" IsEnabled="False"/>
-
+            <TextBlock x:Name="TxtDeleteUnpack" HorizontalAlignment="Left" Margin="570,100,0,0" TextWrapping="Wrap" Text="Delete datatable" VerticalAlignment="Top" Width="188" Foreground="#FF040404"  Height="37"  
+                   FontFamily="Tahoma"
+                   FontSize="20" FontWeight="Thin" 
+                   Padding="0" Opacity="0"/>
+            <TextBlock x:Name="TxtChooseUnpack" HorizontalAlignment="Left" Margin="536,336,0,0" TextWrapping="Wrap" Text="Choose file" VerticalAlignment="Top" Width="102" Foreground="#FF040404"  Height="37"  
+                   FontFamily="Tahoma"
+                   FontSize="20" FontWeight="Thin" 
+                   Padding="0" Opacity="0"/>
+            <TextBlock x:Name="TxtStartUnpack" HorizontalAlignment="Left" Margin="674,336,0,0" TextWrapping="Wrap" Text="Unpack file" VerticalAlignment="Top" Width="108" Foreground="#FF040404"  Height="37"  
+                   FontFamily="Tahoma"
+                   FontSize="20" FontWeight="Thin" 
+                   Padding="0" Opacity="0"/>
         </Grid>
         <!-- THIS IS THE ADVANCED SECTION -->
         <Grid x:Name="Advanced" Visibility="Hidden" Margin="0,0,600,0" Background="#7F403273" MouseLeave="Mouse_Leave_Menu"  >
