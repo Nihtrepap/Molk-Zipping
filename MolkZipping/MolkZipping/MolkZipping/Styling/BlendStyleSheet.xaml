@@ -4,7 +4,248 @@
 
 
 
+    <Storyboard x:Key="LoadingBalls" RepeatBehavior="Forever">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="3.499"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.051"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-1.934"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.053"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallOne">
 
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="57"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="56"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-10"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-80"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-138"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-142"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-113.333"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-36"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="51.333"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="56.666"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="0.666"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BallOne">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.5"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="107"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="207"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="192.333"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="106.333"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-41.001"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-131.668"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-145.001"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-121.668"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0.332"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-3.001"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BallTwo">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="56.5"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="55"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-35.667"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-104.334"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="-143.667"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-142.333"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-88.333"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-10.333"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="52.334"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="56.334"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1.001"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BallTwo">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="2"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="107.5"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="180.167"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="159.5"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="54.833"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="-93.833"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-167.833"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="-169.833"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-120.5"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="2.833"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="-1.167"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BtnChooseFilePack">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChoosePackFile">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnPackFiles">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="142.398"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-117.786"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearPackData">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-106.359"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFolder">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260.184"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260.184"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectChoose">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260.184"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtChoosePack">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtChoosePack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BtnPackChoosenFile">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnPackFiles">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChoosePackFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="143.277"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-119.544"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearPackData">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-112.512"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFolder">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="258.426"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="258.426"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectChoose">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="258.426"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtStartPack">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtStartPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BtnSaveTo"/>
+    <Storyboard x:Key="RadioFolder">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFolder">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="RadioFile">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFile">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(Brush.Opacity)" Storyboard.TargetName="SelectFolder">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BtnChooseUnpack">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChooseUnpackFiles">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtChooseUnpack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtChooseUnpack">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnUnPackFiles">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="194"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnUnPackFiles">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="2"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackUnPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-159"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearUnPackData">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-200"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BtnUnpacking">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnUnPackFiles">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtStartUnpack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtStartUnpack">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChooseUnpackFiles">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="194"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackUnPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-167"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearUnPackData">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-216"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BtnDeleteDataUnpack">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnClearUnPackData">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtDeleteUnpack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtDeleteUnpack">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChooseUnpackFiles">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="202.5"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnUnPackFiles">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="202.5"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image1">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackUnPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-151.5"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BtnClearPackData">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtDeleteUnPack">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtDeleteUnPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnPackFiles">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="142.398"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChoosePackFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="141.519"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackPack">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-116.028"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectChoose">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="253.152"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFolder">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="255.789"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFile">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="256.668"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnClearPackData">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
     <Storyboard x:Key="BtnPack">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnUnpack">
             <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="316.5"/>

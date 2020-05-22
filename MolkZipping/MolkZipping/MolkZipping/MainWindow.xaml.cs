@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,21 +16,22 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Pack> packList = new List<Pack>();
+        DispatcherTimer loadingTimer = new DispatcherTimer();
+        Dialog dia;
+        PackMethods packMethod;
+
+        public List<Pack> packList = new List<Pack>();
+
         private bool menuClick = false;
         private int whyYouLoop = 0;
         public bool folderPick = true; 
-
-        DispatcherTimer loadingTimer = new DispatcherTimer();
-        PackMethods packMethod;
-        Dialog dia;
 
         public MainWindow()
         {
             InitializeComponent();
             dia = new Dialog(this);
             packMethod = new PackMethods(dia, this);
-            OpenMolkFile();
+            dia.Open_Molk_File();
         }
         
         /// <summary>
@@ -49,21 +51,23 @@ namespace MolkZipping
                     if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
                 }
                 else if (btn.Name == "BtnBackUnPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
+                else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; GridUnpack.Items.Refresh(); }
                 else if (btn.Name == "BtnUnPackFiles") 
                 { 
                     dia.Save_File_Dialog(); 
-                    if (dia.saveFile == true) { Cmd_UnPack(); whyYouLoop = 0; } 
+                    if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_UnPack(); whyYouLoop = 0; }
+                    else { MessageBox.Show("Could not find any files to unpack. Please try again.", "Molk unpacking tool", MessageBoxButton.OK, MessageBoxImage.Information); }
                 }
-                else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; GridUnpack.Items.Refresh(); }
                 else if(btn.Name == "BtnClearUnPackData") { TxtInsideMolk.Text = ""; packList.Clear(); GridUnpack.Items.Refresh();  }
 
                 else if (btn.Name == "BtnBackPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
                 else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog();  }   
                 else if (btn.Name == "BtnClearPackData") { packList.Clear(); GridPack.Items.Refresh();  }
-                else if(btn.Name == "BtnPackFiles") 
+                else if(btn.Name == "BtnPackFiles")
                 {
                     dia.Save_File_Dialog();
-                    if (dia.saveFile == true) { packMethod.Cmd_Pack(); whyYouLoop = 0; }
+                    if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_Pack(); whyYouLoop = 0; }
+                    else { MessageBox.Show("Could not find any files to pack. Please try again.", "Molk packing tool", MessageBoxButton.OK, MessageBoxImage.Information); }
                 }
             }
             else if (sender is Image btnImage)
@@ -103,72 +107,6 @@ namespace MolkZipping
         {
             Advanced.Visibility = Visibility.Hidden;
             menuClick = false;
-        }
-
-        /// <summary>
-        /// Simple ReadAllText method from File class.
-        /// Reads programs tmp.txt file to get value into string.
-        /// </summary>
-        /// <param name="tmp">Path for program tmp file</param>
-        public void File_Reader(string tmp)
-        {
-            string read;
-            read = File.ReadAllText(tmp, Encoding.UTF8);           
-        }
-
-        /// <summary>
-        /// Reads the programs tmp file to gain information from
-        /// the chosen file in the file dialog window.
-        /// Adds the info into the datagrid view.
-        /// </summary>
-        /// <param name="tmp">Contains tmp.txt data</param>
-        public void Get_Fileinfo(string tmp)
-        {
-            try
-            {
-                if (Unpack.Visibility == Visibility.Visible)
-                {
-          
-                    TxtInsideMolk.Text = File.ReadAllText(tmp, Encoding.UTF8);
-                    string line;
-                    string type = "";
-                    FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
-                    StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
-
-                    line = streamR.ReadLine();
-                    
-                    string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    string name = split[0];
-                    if (split.Length != 2) { type = "molk"; }
-                    else { type = split[1]; }
-                    string[] splitTwo = type.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-                    name = splitTwo[0];
-                    type = splitTwo[1];
-
-                    packList.Add(new Pack(name, type));
-                    GridPack.Items.Refresh();
-                    
-                }
-                else
-                {
-                    string line;
-                    string type = "";
-                    FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);
-                    StreamReader streamR = new StreamReader(fStream, Encoding.UTF8);
-
-                    while ((line = streamR.ReadLine()) != null)
-                    {
-                        string[] split = line.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-                        string name = split[0];
-                        if (split.Length != 2) { type = "folder"; }
-                        else { type = split[1]; }
-
-                        packList.Add(new Pack(name, type));
-                        GridPack.Items.Refresh();
-                    }
-                fStream.Close();
-                }
-            }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n"+e,"Molk found error",MessageBoxButton.OK,MessageBoxImage.Error); }
         }
 
         /// <summary>
@@ -222,50 +160,6 @@ namespace MolkZipping
                 whyYouLoop++;
             }
             else return;
-        }
-
-        private void Cmd_UnPack()
-        {
-            try
-            {
-                //string _directory = "-r";
-                //string cmdFile = $@"molk {_directory} {saveTo} {opened}";
-               // string cmdFolder = $@"molk {_directory} {saveTo} {opened}\.*";
-
-                Process processCmd = new Process();
-
-                processCmd.StartInfo.FileName = "cmd.exe";
-                processCmd.StartInfo.RedirectStandardInput = true;
-                processCmd.StartInfo.RedirectStandardOutput = true;
-                processCmd.StartInfo.RedirectStandardError = true;
-                processCmd.StartInfo.CreateNoWindow = true;
-                processCmd.StartInfo.UseShellExecute = false;
-                processCmd.Start();
-
-                processCmd.StandardInput.WriteLine($@"unmolk {dia.opened} -d {dia.saveTo}");//-d {saveTo}");
-             
-                processCmd.StandardInput.Flush();
-                processCmd.StandardInput.Close();
-                processCmd.WaitForExit();
-
-                Loading_Screen();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-           
-        }
-        private void OpenMolkFile()
-        {
-            string[] args = Environment.GetCommandLineArgs();
-            if (args.Length > 1)
-            {
-                Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible;
-                dia.opened = args[0];
-                dia.Cmd_run(dia.opened);
-            }
-        }
+        }      
     }
 }
