@@ -53,7 +53,7 @@ namespace MolkZipping
                     dia.Save_File_Dialog(); 
                     if (dia.saveFile == true) { Unpack.Visibility = Visibility.Hidden; Loading.Visibility = Visibility.Visible; Cmd_UnPack(); whyYouLoop = 0; } 
                 }
-                else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
+                else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; GridUnpack.Items.Refresh(); }
                 else if(btn.Name == "BtnClearUnPackData") { TxtInsideMolk.Text = ""; packList.Clear(); GridUnpack.Items.Refresh();  }
 
                 else if (btn.Name == "BtnBackPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
