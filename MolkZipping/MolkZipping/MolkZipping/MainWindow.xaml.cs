@@ -69,22 +69,24 @@ namespace MolkZipping
                 else if (btn.Name == "BtnClearPackData") { packList.Clear(); GridPack.Items.Refresh();  }
                 else if(btn.Name == "BtnPackFiles") 
                 {
-                    if (dia.opened != null || dia.opened != "")
-                    {
-                        MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
-                        switch (answer)
-                        {
-                            case MessageBoxResult.Yes:
-                                packMethod.Cmd_Pack();
-                                whyYouLoop = 0;
-                                break;
-                            default: break;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Could not find any files to pack.\n Please check files and try again.", "Molk did not pack", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
+                    dia.Save_File_Dialog();
+                    if (dia.saveFile == true) { Pack.Visibility = Visibility.Hidden; Loading.Visibility = Visibility.Visible; packMethod.Cmd_Pack(); whyYouLoop = 0; }
+                    /* if (dia.opened != null || dia.opened != "")
+                     {
+                         MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                         switch (answer)
+                         {
+                             case MessageBoxResult.Yes:
+                                 packMethod.Cmd_Pack();
+                                 whyYouLoop = 0;
+                                 break;
+                             default: break;
+                         }
+                     }
+                     else
+                     {
+                         MessageBox.Show("Could not find any files to pack.\n Please check files and try again.", "Molk did not pack", MessageBoxButton.OK, MessageBoxImage.Information);
+                     }*/
                 }
             }
             else if (sender is Image btnImage)
