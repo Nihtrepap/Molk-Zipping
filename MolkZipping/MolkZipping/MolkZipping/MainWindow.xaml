@@ -387,7 +387,7 @@
     <Grid>
         <!-- THIS IS THE MAIN PAGE SECTION -->
 
-        <Grid x:Name="Main" Visibility="Hidden">
+        <Grid x:Name="Main" Visibility="Visible">
 
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -477,7 +477,7 @@
 
         </Grid>
         <!-- THIS IS THE PACK SECTION -->
-        <Grid x:Name="Pack" Visibility="Visible">
+        <Grid x:Name="Pack" Visibility="Hidden">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0" RenderTransformOrigin="0.5,0.5"

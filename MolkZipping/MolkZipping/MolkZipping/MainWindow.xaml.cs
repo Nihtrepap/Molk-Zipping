@@ -59,7 +59,7 @@ namespace MolkZipping
                 else if (btn.Name == "BtnUnPackFiles") 
                 { 
                     dia.Save_File_Dialog(); 
-                    if (dia.saveFile == true) { Unpack.Visibility = Visibility.Hidden; Loading.Visibility = Visibility.Visible; Cmd_UnPack(); whyYouLoop = 0; } 
+                    if (dia.saveFile == true) { Cmd_UnPack(); whyYouLoop = 0; } 
                 }
                 else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; GridUnpack.Items.Refresh(); }
                 else if(btn.Name == "BtnClearUnPackData") { TxtInsideMolk.Text = ""; packList.Clear(); GridUnpack.Items.Refresh();  }
@@ -70,7 +70,7 @@ namespace MolkZipping
                 else if(btn.Name == "BtnPackFiles") 
                 {
                     dia.Save_File_Dialog();
-                    if (dia.saveFile == true) { Pack.Visibility = Visibility.Hidden; Loading.Visibility = Visibility.Visible; packMethod.Cmd_Pack(); whyYouLoop = 0; }
+                    if (dia.saveFile == true) { packMethod.Cmd_Pack(); whyYouLoop = 0; }
                     /* if (dia.opened != null || dia.opened != "")
                      {
                          MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
