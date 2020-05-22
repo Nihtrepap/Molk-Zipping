@@ -14,6 +14,7 @@ namespace MolkZipping
     {
         public string saveTo;
         public string opened;
+        public Nullable<bool> saveFile;
         MainWindow main;
 
         public Dialog(MainWindow main)
@@ -32,7 +33,8 @@ namespace MolkZipping
             openSaveFile.Filter = "molk files (*.molk)|*.molk*";
             openSaveFile.FilterIndex = 1;
             openSaveFile.FileName = "Molkzipping";
-            openSaveFile.ShowDialog();
+            saveFile = openSaveFile.ShowDialog();
+            if (saveFile != true) return;
             
             saveTo = openSaveFile.FileName + ".molk";
             main.SaveToText.Text = $"{saveTo}";
@@ -81,10 +83,9 @@ namespace MolkZipping
                 processCmd.StartInfo.CreateNoWindow = true;
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
-
-                string cmd = $"dir /B \"{fileOpen}\" > {tmp}";
-
-                processCmd.StandardInput.WriteLine(cmd);
+                if (main.Unpack.Visibility == Visibility.Visible) { string cmd = $"unmolk -l \"{fileOpen}\" > {tmp}"; processCmd.StandardInput.WriteLine(cmd); }
+                else { string cmd = $"dir /B \"{fileOpen}\" > {tmp}"; processCmd.StandardInput.WriteLine(cmd); }
+              //  string cmd = $"dir /B \"{fileOpen}\" > {tmp}"; processCmd.StandardInput.WriteLine(cmd);
                 processCmd.StandardInput.Flush();
                 processCmd.StandardInput.Close();
                 processCmd.WaitForExit();

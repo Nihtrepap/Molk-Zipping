@@ -164,6 +164,7 @@
     <Resource Include="Assets\OrientationIcons\save.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\OrientationIcons\clearGrid.png" />
     <Resource Include="molkicon.ico" />
   </ItemGroup>
   <ItemGroup>
