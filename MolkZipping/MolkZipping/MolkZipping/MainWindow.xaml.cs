@@ -54,9 +54,11 @@ namespace MolkZipping
                     if (dia.saveFile == true) { Cmd_UnPack(); whyYouLoop = 0; } 
                 }
                 else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; }
+                else if(btn.Name == "BtnClearUnPackData") { TxtInsideMolk.Text = ""; packList.Clear(); GridUnpack.Items.Refresh();  }
 
                 else if (btn.Name == "BtnBackPack") { Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog();  }              
+                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog();  }   
+                else if (btn.Name == "BtnClearPackData") { packList.Clear(); GridPack.Items.Refresh();  }
                 else if(btn.Name == "BtnPackFiles") 
                 {
                     if (dia.opened != null || dia.opened != "")
@@ -68,6 +70,7 @@ namespace MolkZipping
                                 packMethod.Cmd_Pack();
                                 whyYouLoop = 0;
                                 break;
+                            default: break;
                         }
                     }
                     else
@@ -155,14 +158,12 @@ namespace MolkZipping
                     name = splitTwo[0];
                     type = splitTwo[1];
 
-
-                        packList.Add(new Pack(name, type));
-                        GridPack.Items.Refresh();
+                    packList.Add(new Pack(name, type));
+                    GridPack.Items.Refresh();
                     
                 }
                 else
                 {
-
                     string line;
                     string type = "";
                     FileStream fStream = new FileStream(tmp, FileMode.Open, FileAccess.Read);

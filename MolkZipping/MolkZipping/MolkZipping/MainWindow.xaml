@@ -327,7 +327,7 @@
 
         </Grid>
         <!-- THIS IS THE PACK SECTION -->
-        <Grid x:Name="Pack" Visibility="Hidden">
+        <Grid x:Name="Pack" Visibility="Visible">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0"
@@ -377,12 +377,16 @@
                     Style="{StaticResource RadiusButton}">
                 <Image Source="Assets/OrientationIcons/save.png" Width="20" />
             </Button>
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnClearPackData" Style="{StaticResource RadiusButton}" 
+                Background="#403273" Margin="594,0,68,157" Height="122" VerticalAlignment="Bottom">
+                <Image Source="Assets/OrientationIcons/clearGrid.png" Width="88"/>
+            </Button>
             <TextBlock x:Name="SaveToText" HorizontalAlignment="Left" Margin="548,198,0,0" Text="Select a folder to save your molk file" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" Width="226" Height="42" FontSize="11"/>
 
 
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
-        <Grid x:Name="Unpack" Visibility="Visible">
+        <Grid x:Name="Unpack" Visibility="Hidden">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnUnPackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0">
@@ -392,6 +396,10 @@
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="527,387,135,0">
                 <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88"/>
+            </Button>
+            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnClearUnPackData" Style="{StaticResource RadiusButton}" 
+                Background="#403273" Margin="594,0,68,199" Height="122" VerticalAlignment="Bottom">
+                <Image Source="Assets/OrientationIcons/clearGrid.png" Width="88"/>
             </Button>
             <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
                    VerticalAlignment="Top" Height="81" 
