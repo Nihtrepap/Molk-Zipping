@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MolkZipping"
         x:Class="MolkZipping.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="550" Width="800" Background="White" Foreground="White" MaxWidth="800" MaxHeight="550" MinHeight="550" MinWidth="800">
+        Title="Molk tool"  Height="550" Width="800" Background="White" Foreground="White" MaxWidth="800" MaxHeight="550" MinHeight="550" MinWidth="800">
 
     <Window.Resources>
         <ResourceDictionary>
