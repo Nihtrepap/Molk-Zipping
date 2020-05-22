@@ -19,7 +19,7 @@ namespace MolkZipping
         private bool menuClick = false;
         private int whyYouLoop = 0;
         public bool folderPick = true;
-        String [] args = Environment.GetCommandLineArgs();
+        String[] args; 
 
         DispatcherTimer loadingTimer = new DispatcherTimer();
         PackMethod packMethod;
@@ -30,13 +30,8 @@ namespace MolkZipping
             InitializeComponent();
             dia = new Dialog(this);
             packMethod = new PackMethod(dia, this);
-            if(args.Length > 1)
-            {
-                Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible;
-                dia.opened = args[0];
-                dia.Cmd_run(dia.opened);
-                
-            }
+            args = Environment.GetCommandLineArgs();
+            if (args.Length > 1) { OpenMolkFile(args); }
         }
         
         /// <summary>
@@ -71,22 +66,6 @@ namespace MolkZipping
                 {
                     dia.Save_File_Dialog();
                     if (dia.saveFile == true) { packMethod.Cmd_Pack(); whyYouLoop = 0; }
-                    /* if (dia.opened != null || dia.opened != "")
-                     {
-                         MessageBoxResult answer = MessageBox.Show("Do you really want to pack files?", "title", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
-                         switch (answer)
-                         {
-                             case MessageBoxResult.Yes:
-                                 packMethod.Cmd_Pack();
-                                 whyYouLoop = 0;
-                                 break;
-                             default: break;
-                         }
-                     }
-                     else
-                     {
-                         MessageBox.Show("Could not find any files to pack.\n Please check files and try again.", "Molk did not pack", MessageBoxButton.OK, MessageBoxImage.Information);
-                     }*/
                 }
             }
             else if (sender is Image btnImage)
@@ -277,6 +256,15 @@ namespace MolkZipping
             {
                 MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+           
+        }
+        private void OpenMolkFile(string[] args)
+        {
+            this.args = args;
+            Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible;
+            dia.opened = args[0];
+            dia.Cmd_run(dia.opened);
         }
     }
 }
