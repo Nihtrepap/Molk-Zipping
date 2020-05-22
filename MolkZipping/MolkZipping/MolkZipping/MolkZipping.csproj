@@ -160,5 +160,8 @@
   <ItemGroup>
     <Resource Include="Assets\OrientationIcons\save.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\OrientationIcons\clearGrid.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
