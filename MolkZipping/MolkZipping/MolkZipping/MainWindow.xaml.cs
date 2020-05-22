@@ -19,6 +19,7 @@ namespace MolkZipping
         private bool menuClick = false;
         private int whyYouLoop = 0;
         public bool folderPick = true;
+        String [] args = Environment.GetCommandLineArgs();
 
         DispatcherTimer loadingTimer = new DispatcherTimer();
         PackMethod packMethod;
@@ -29,6 +30,13 @@ namespace MolkZipping
             InitializeComponent();
             dia = new Dialog(this);
             packMethod = new PackMethod(dia, this);
+            if(args.Length > 1)
+            {
+                Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible;
+                dia.opened = args[0];
+                dia.Cmd_run(dia.opened);
+                
+            }
         }
         
         /// <summary>

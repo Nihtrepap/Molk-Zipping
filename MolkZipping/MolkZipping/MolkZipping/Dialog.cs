@@ -37,7 +37,6 @@ namespace MolkZipping
             if (saveFile != true) return;
             
             saveTo = openSaveFile.FileName + ".molk";
-            main.SaveToText.Text = $"{saveTo}";
         }
 
         /// <summary>
