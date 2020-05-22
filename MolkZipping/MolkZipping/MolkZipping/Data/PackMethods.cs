@@ -3,6 +3,7 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,9 @@ using System.Windows;
 
 namespace MolkZipping
 {
-    public class PackMethods 
+    public class PackMethods
     {
+
         MainWindow main;
         Dialog dia;
 
@@ -28,7 +30,7 @@ namespace MolkZipping
             try
             {
                 string _directory = "-r";
-                
+
                 Process processCmd = new Process();
 
                 processCmd.StartInfo.FileName = "cmd.exe";
@@ -53,5 +55,34 @@ namespace MolkZipping
                 MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        public void Cmd_UnPack()
+        {
+            try
+            {
+
+                Process processCmd = new Process();
+
+                processCmd.StartInfo.FileName = "cmd.exe";
+                processCmd.StartInfo.RedirectStandardInput = true;
+                processCmd.StartInfo.RedirectStandardOutput = true;
+                processCmd.StartInfo.RedirectStandardError = true;
+                processCmd.StartInfo.CreateNoWindow = true;
+                processCmd.StartInfo.UseShellExecute = false;
+                processCmd.Start();
+
+                processCmd.StandardInput.WriteLine($@"unmolk {dia.opened} -d {dia.saveTo}");
+
+                processCmd.StandardInput.Flush();
+                processCmd.StandardInput.Close();
+                processCmd.WaitForExit();
+
+                main.Loading_Screen();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+      
     }
 }
