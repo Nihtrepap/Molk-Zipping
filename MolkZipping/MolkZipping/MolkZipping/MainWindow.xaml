@@ -372,16 +372,16 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnClearPackData">
             <RemoveStoryboard BeginStoryboardName="BtnChooseFilePack_BeginStoryboard1"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChoosePackFile">
-            <BeginStoryboard x:Name="BtnChooseFilePack_BeginStoryboard2" Storyboard="{StaticResource BtnChooseFilePack}"/>
+        <!--<EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChoosePackFile">
+            <BeginStoryboard x:Name="BtnChooseFilePack_BeginStoryboard2" Storyboard="{StaticResource BtnChooseFilePack}"/>-->
 
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChooseUnpackFiles">
+        <!--<EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChooseUnpackFiles">
             <BeginStoryboard x:Name="BtnChooseUnpack_BeginStoryboard1" Storyboard="{StaticResource BtnChooseUnpack}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnChooseUnpackFiles">
             <RemoveStoryboard BeginStoryboardName="BtnChooseUnpack_BeginStoryboard"/>
 
-        </EventTrigger>
+        </EventTrigger>-->
     </Window.Triggers>
 
     <Grid>
