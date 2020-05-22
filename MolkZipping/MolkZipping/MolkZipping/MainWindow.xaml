@@ -81,17 +81,61 @@
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnChoosePackFile">
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
                 </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnPackFiles">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="142.398"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-117.786"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearPackData">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-106.359"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260.184"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260.184"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectChoose">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="260.184"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtChoosePack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtChoosePack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="BtnPackChoosenFile">
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnPackFiles">
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
                 </ColorAnimationUsingKeyFrames>
-            </Storyboard>
-            <Storyboard x:Key="BtnSaveTo">
-                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnSaveTo">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChoosePackFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="143.277"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-119.544"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnClearPackData">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-112.512"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="258.426"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="258.426"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectChoose">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="258.426"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtStartPack">
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
                 </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtStartPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
             </Storyboard>
+            <Storyboard x:Key="BtnSaveTo"/>
             <Storyboard x:Key="RadioFolder">
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="SelectFolder">
                     <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFD1521B"/>
@@ -124,6 +168,35 @@
             </Storyboard>
             <Storyboard x:Key="BtnUnpacking">
                 <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnUnPackFiles">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="BtnClearPackData">
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TxtDeleteUnPack">
+                    <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
+                </ColorAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TxtDeleteUnPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnPackFiles">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="142.398"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="BtnChoosePackFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="141.519"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="BtnBackPack">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-116.028"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectChoose">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="253.152"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFolder">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="255.789"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SelectFile">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="256.668"/>
+                </DoubleAnimationUsingKeyFrames>
+                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnClearPackData">
                     <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFD1521B"/>
                 </ColorAnimationUsingKeyFrames>
             </Storyboard>
@@ -190,6 +263,7 @@
         <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Loading">
             <BeginStoryboard x:Name="LoadingBalls_BeginStoryboard1" Storyboard="{StaticResource LoadingBalls}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnPackFiles">
             <BeginStoryboard x:Name="BtnPackChoosenFile_BeginStoryboard" Storyboard="{StaticResource BtnPackChoosenFile}"/>
         </EventTrigger>
@@ -201,12 +275,6 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnChoosePackFile">
             <RemoveStoryboard BeginStoryboardName="BtnChooseFilePack_BeginStoryboard"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnSaveTo">
-            <BeginStoryboard x:Name="BtnSaveTo_BeginStoryboard1" Storyboard="{StaticResource BtnSaveTo}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnSaveTo">
-            <RemoveStoryboard BeginStoryboardName="BtnSaveTo_BeginStoryboard1"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SelectFile">
             <BeginStoryboard x:Name="RadioFile_BeginStoryboard" Storyboard="{StaticResource RadioFile}"/>
@@ -231,6 +299,15 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnUnPackFiles">
             <RemoveStoryboard BeginStoryboardName="BtnUnpacking_BeginStoryboard"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnClearPackData">
+            <BeginStoryboard x:Name="BtnChooseFilePack_BeginStoryboard1" Storyboard="{StaticResource BtnClearPackData}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="BtnClearPackData">
+            <RemoveStoryboard BeginStoryboardName="BtnChooseFilePack_BeginStoryboard1"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="BtnChoosePackFile">
+            <BeginStoryboard x:Name="BtnChooseFilePack_BeginStoryboard2" Storyboard="{StaticResource BtnChooseFilePack}"/>
         </EventTrigger>
     </Window.Triggers>
 
@@ -330,13 +407,29 @@
         <Grid x:Name="Pack" Visibility="Visible">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnPackFiles"  Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
-                Background="#403273" Margin="662,387,10,0"
+                Background="#403273" Margin="662,387,10,0" RenderTransformOrigin="0.5,0.5"
                     >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
                 <Image Source="Assets/OrientationIcons/pack.png" Width="88"/>
             </Button>
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnChoosePackFile" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
-                Background="#403273" Margin="527,387,135,0" >
+                Background="#403273" Margin="527,387,135,0" RenderTransformOrigin="0.5,0.5" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
                 <Image Source="Assets/OrientationIcons/chooseFile.png" Width="88" />
             </Button>
             <TextBlock HorizontalAlignment="Left" Margin="130,22,0,0"  
@@ -350,8 +443,16 @@
                Height="80" Margin="25,409,0,0" 
                VerticalAlignment="Top" Width="80"
                Click="Button_Click"
-                    Style="{StaticResource RadiusButton}"
+                    Style="{StaticResource RadiusButton}" RenderTransformOrigin="0.5,0.5"
                     >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
                 <Image Source="Assets/OrientationIcons/backBtn.png" Width="68" OpacityMask="Black"/>
             </Button>
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
@@ -366,22 +467,61 @@
                       GridLinesVisibility="Vertical"
                       RowBackground="#C0BCC4" RowHeaderWidth="0"/>
 
-            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFolder" Content="Folder" HorizontalAlignment="Left" Margin="548,95,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273" />
-            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFile" Content="File" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273"/>
-            <TextBlock HorizontalAlignment="Left" Margin="548,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SelectChoose" Text="Choose how to open:" Foreground="#FF403273"/>
-
-            <TextBlock HorizontalAlignment="Left" Margin="548,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SaveToBigText" Text="Save to directory." Foreground="#FF403273"/>
-            <Button Click="Button_Click" Cursor="Hand" x:Name="BtnSaveTo"  
-                VerticalAlignment="Top" Height="30" 
-                Background="#403273" Margin="548,168,174,0" 
-                    Style="{StaticResource RadiusButton}">
-                <Image Source="Assets/OrientationIcons/save.png" Width="20" />
-            </Button>
+            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFolder" Content="Folder" HorizontalAlignment="Left" Margin="548,95,0,0" VerticalAlignment="Top" IsChecked="True" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273" RenderTransformOrigin="0.5,0.5" >
+                <RadioButton.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </RadioButton.RenderTransform>
+            </RadioButton>
+            <RadioButton GroupName="Select_Folder_File" x:Name="SelectFile" Content="File" HorizontalAlignment="Left" Margin="548,111,0,0" VerticalAlignment="Top" Checked="Radiobutton_Checked" FontWeight="Bold" Foreground="#FF403273" RenderTransformOrigin="0.5,0.5">
+                <RadioButton.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </RadioButton.RenderTransform>
+            </RadioButton>
+            <TextBlock HorizontalAlignment="Left" Margin="548,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" FontWeight="Bold" FontSize="14" Name="SelectChoose" Text="Choose how to open:" Foreground="#FF403273" RenderTransformOrigin="0.5,0.5"  >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnClearPackData" Style="{StaticResource RadiusButton}" 
-                Background="#403273" Margin="594,0,68,157" Height="122" VerticalAlignment="Bottom">
-                <Image Source="Assets/OrientationIcons/clearGrid.png" Width="88"/>
+                Background="#403273" Margin="473,0,271,445" Height="42" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Image Source="Assets/OrientationIcons/clearGrid.png" Width="38" Height="29"/>
             </Button>
-            <TextBlock x:Name="SaveToText" HorizontalAlignment="Left" Margin="548,198,0,0" Text="Select a folder to save your molk file" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF403273" Width="226" Height="42" FontSize="11"/>
+
+            <TextBlock x:Name="TxtStartPack" HorizontalAlignment="Left" Margin="662,336,0,0" TextWrapping="Wrap" Text="Unpack file" VerticalAlignment="Top" Width="120" Foreground="#FF040404"  Height="37"
+                   FontFamily="Tahoma"
+                   FontSize="20" FontWeight="Thin" 
+                   Padding="0" Opacity="0"/>
+            <TextBlock x:Name="TxtChoosePack" HorizontalAlignment="Left" Margin="536,336,0,0" TextWrapping="Wrap" Text="Choose file" VerticalAlignment="Top" Width="121" Foreground="#FF040404"  Height="37"
+                   FontFamily="Tahoma"
+                   FontSize="20" FontWeight="Thin" 
+                   Padding="0" Opacity="0"/>
+            <TextBlock x:Name="TxtDeleteUnPack" HorizontalAlignment="Left" Margin="544,34,0,0" TextWrapping="Wrap" Text="Delete datatable" VerticalAlignment="Top" Width="188" Foreground="#FF040404"  Height="37"
+                   FontFamily="Tahoma"
+                   FontSize="20" FontWeight="Thin" 
+                   Padding="0" Opacity="0"/>
 
 
         </Grid>
