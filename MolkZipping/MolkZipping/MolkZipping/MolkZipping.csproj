@@ -88,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pack.cs" />
-    <Compile Include="PackMethod.cs" />
+    <Compile Include="PackMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

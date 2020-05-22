@@ -21,14 +21,14 @@ namespace MolkZipping
         public bool folderPick = true; 
 
         DispatcherTimer loadingTimer = new DispatcherTimer();
-        PackMethod packMethod;
+        PackMethods packMethod;
         Dialog dia;
 
         public MainWindow()
         {
             InitializeComponent();
             dia = new Dialog(this);
-            packMethod = new PackMethod(dia, this);
+            packMethod = new PackMethods(dia, this);
             OpenMolkFile();
         }
         

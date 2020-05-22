@@ -10,14 +10,14 @@ using System.Windows;
 
 namespace MolkZipping
 {
-    public class PackMethod 
+    public class PackMethods 
     {
         MainWindow main;
         Dialog dia;
 
-        public PackMethod() { }
+        public PackMethods() { }
 
-        public PackMethod(Dialog dia, MainWindow main)
+        public PackMethods(Dialog dia, MainWindow main)
         {
             this.dia = dia;
             this.main = main;
