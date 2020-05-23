@@ -24,14 +24,14 @@ namespace MolkZipping
         public void Pack_files()
         {
             dia.Save_File_Dialog();
-            if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_Pack(); main.whyYouLoop = 0; }
+            if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_Pack(); packMethod.whyYouLoop = 0; }
             else { MessageBox.Show("Could not find any files to pack. Please try again.", "Molk packing tool", MessageBoxButton.OK, MessageBoxImage.Information); }
         }
 
         public void Unpack_Files()
         {
             dia.Save_File_Dialog();
-            if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_UnPack(); main.whyYouLoop = 0; }
+            if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_UnPack(); packMethod.whyYouLoop = 0; }
             else { MessageBox.Show("Could not find any files to unpack. Please try again.", "Molk unpacking tool", MessageBoxButton.OK, MessageBoxImage.Information); }
         }
 

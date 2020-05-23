@@ -16,7 +16,6 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer loadingTimer = new DispatcherTimer();
         Dialog dia;
         PackMethods packMethod;
         ButtonClick btnClick;
@@ -24,7 +23,6 @@ namespace MolkZipping
         public List<FileInfo> packList = new List<FileInfo>();
 
         public bool menuClick = false;
-        public int whyYouLoop = 0;
         public bool folderPick = true;
 
         public MainWindow()
@@ -101,60 +99,6 @@ namespace MolkZipping
             Advanced.Visibility = Visibility.Hidden;
             menuClick = false;
         }
-
-        /// <summary>
-        /// Handles screen switch when loading.
-        /// Starts a timer.
-        /// </summary>
-        public void Loading_Screen()
-        {
-            if (Pack.Visibility == Visibility.Visible)
-            {
-                Pack.Visibility = Visibility.Hidden;
-                Loading.Visibility = Visibility.Visible;
-                loadingTimer.Tick += Done_Loading;
-                loadingTimer.Interval = new TimeSpan(0, 0, 3);
-
-                loadingTimer.Start();
-                loadingTimer.IsEnabled = true;
-                packList.Clear();
-                GridPack.Items.Refresh();
-            }
-            else
-            {
-                loadingTimer.Start();
-                Unpack.Visibility = Visibility.Hidden;
-                Loading.Visibility = Visibility.Visible;
-                loadingTimer.Tick += Done_Loading;
-                loadingTimer.Interval = new TimeSpan(0, 0, 3);
-
-                loadingTimer.IsEnabled = true;
-                TxtInsideMolk.Text = "";
-                packList.Clear();
-                GridUnpack.Items.Refresh();
-            }
-        }
-
-        /// <summary>
-        /// Handles events to occure when loading is done.
-        /// </summary>
-        /// <param name="timer"></param>
-        /// <param name="e"></param>
-        public void Done_Loading(object timer, EventArgs e)
-        {
-            if (whyYouLoop == 0)
-            {
-                Main.Visibility = Visibility.Visible;
-                Loading.Visibility = Visibility.Hidden;
-                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {dia.saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
-                dia.saveTo = "";
-                dia.opened = "";
-                loadingTimer.IsEnabled = false;
-                loadingTimer.Stop();
-                whyYouLoop++;
-            }
-            else return;
-        }
+    
     }
-
 }

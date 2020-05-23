@@ -4,14 +4,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace MolkZipping
 {
     public class PackMethods
     {
+        DispatcherTimer loadingTimer = new DispatcherTimer();
 
         MainWindow main;
         Dialog dia;
+
+        public int whyYouLoop = 0;
 
         string tmp = @"tmp.txt";
         string tmpErr = @"tmpErr.txt";
@@ -88,7 +92,61 @@ namespace MolkZipping
             string output;
             output = File.ReadAllText(tmpErr, Encoding.UTF8);
             if (check.Any(output.Contains)) { MessageBox.Show("The file cannot be found. Please try and choose file again", "Molk cannot find file", MessageBoxButton.OK, MessageBoxImage.Information); dia.Clear_Datatables(); }
-            else main.Loading_Screen();
-        }           
+            else Loading_Screen();
+        }
+
+        /// <summary>
+        /// Handles screen switch when loading.
+        /// Starts a timer.
+        /// </summary>
+        public void Loading_Screen()
+        {
+            if (main.Pack.Visibility == Visibility.Visible)
+            {
+                main.Pack.Visibility = Visibility.Hidden;
+                main.Loading.Visibility = Visibility.Visible;
+                loadingTimer.Tick += Done_Loading;
+                loadingTimer.Interval = new TimeSpan(0, 0, 3);
+
+                loadingTimer.Start();
+                loadingTimer.IsEnabled = true;
+                main.packList.Clear();
+                main.GridPack.Items.Refresh();
+            }
+            else
+            {
+                loadingTimer.Start();
+                main.Unpack.Visibility = Visibility.Hidden;
+                main.Loading.Visibility = Visibility.Visible;
+                loadingTimer.Tick += Done_Loading;
+                loadingTimer.Interval = new TimeSpan(0, 0, 3);
+
+                loadingTimer.IsEnabled = true;
+                main.TxtInsideMolk.Text = "";
+                main.packList.Clear();
+                main.GridUnpack.Items.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Handles events to occure when loading is done.
+        /// </summary>
+        /// <param name="timer"></param>
+        /// <param name="e"></param>
+        public void Done_Loading(object timer, EventArgs e)
+        {
+            if (whyYouLoop == 0)
+            {
+                main.Main.Visibility = Visibility.Visible;
+                main.Loading.Visibility = Visibility.Hidden;
+                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {dia.saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
+                dia.saveTo = "";
+                dia.opened = "";
+                loadingTimer.IsEnabled = false;
+                loadingTimer.Stop();
+                whyYouLoop++;
+            }
+            else return;
+        }
     }
 }
