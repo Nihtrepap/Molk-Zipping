@@ -9,12 +9,12 @@ namespace MolkZipping
     /// <summary>
     /// Used to get filename and filetype.
     /// </summary>
-    public class Pack
+    public class FileInfo
     {
         public string Name { get; private set; }
         public string Type { get; private set; }
 
-        public Pack(string name, string type)
+        public FileInfo(string name, string type)
         {
             Name = name;
             Type = type;

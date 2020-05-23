@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MolkZipping
 {
@@ -47,7 +48,7 @@ namespace MolkZipping
         /// Saves the chosen file path.
         /// </summary>
         /// <seealso cref="Cmd_run(string)"/>
-        public void Open_File_Dialog()
+        public void Open_File_Dialog(Button btn)
         {           
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
             openFileWindow.EnsureFileExists = true;
@@ -59,6 +60,9 @@ namespace MolkZipping
             else opened = openFileWindow.FileName;
 
             Cmd_run(opened);
+
+            if(btn.Name == "BtnChooseUnpackFiles") { main.GridUnpack.ItemsSource = main.packList; main.GridUnpack.Items.Refresh(); }
+            else  { main.GridPack.ItemsSource = main.packList; main.GridPack.Items.Refresh(); } 
         }
 
         /// <summary>
@@ -165,7 +169,7 @@ namespace MolkZipping
             name = splitTwo[0];
             type = splitTwo[1];
 
-            main.packList.Add(new Pack(name, type));
+            main.packList.Add(new FileInfo(name, type));
             main.GridPack.Items.Refresh();
         }
 
@@ -183,11 +187,10 @@ namespace MolkZipping
                 if (split.Length != 2) { type = "folder"; }
                 else { type = split[1]; }
 
-                main.packList.Add(new Pack(name, type));
+                main.packList.Add(new FileInfo(name, type));
                 main.GridPack.Items.Refresh();
             }
             fStream.Close();
         }
     }
 }
-
