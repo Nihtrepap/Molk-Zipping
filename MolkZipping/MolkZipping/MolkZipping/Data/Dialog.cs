@@ -160,17 +160,20 @@ namespace MolkZipping
 
         private void Split_Unpack(string line)
         {
-            string type = "";
-            string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string name = split[0];
-            if (split.Length != 2) { type = "molk"; }
-            else { type = split[1]; }
-            string[] splitTwo = type.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            name = splitTwo[0];
-            type = splitTwo[1];
+            try
+            {
+                string type = "";
+                string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                string name = split[0];
+                if (split.Length != 2) { type = "molk"; }
+                else { type = split[1]; }
+                string[] splitTwo = type.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                name = splitTwo[0];
+                type = splitTwo[1];
 
-            main.packList.Add(new FileInfo(name, type));
-            main.GridPack.Items.Refresh();
+                main.packList.Add(new FileInfo(name, type));
+                main.GridPack.Items.Refresh();
+            }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
         private void Get_Folder_Split(string tmp)
@@ -191,6 +194,13 @@ namespace MolkZipping
                 main.GridPack.Items.Refresh();
             }
             fStream.Close();
+        }
+        public void Clear_Datatables()
+        {
+            main.TxtInsideMolk.Text = "";
+            main.packList.Clear();
+            main.GridUnpack.Items.Refresh();
+            main.GridPack.Items.Refresh();
         }
     }
 }

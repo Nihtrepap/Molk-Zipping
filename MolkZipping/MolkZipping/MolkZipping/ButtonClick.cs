@@ -35,26 +35,6 @@ namespace MolkZipping
             else { MessageBox.Show("Could not find any files to unpack. Please try again.", "Molk unpacking tool", MessageBoxButton.OK, MessageBoxImage.Information); }
         }
 
-        public void Clear_Datatables(Button btn)
-        {
-            switch (btn.Name)
-            {
-                case "BtnClearUnPackData":
-                    main.TxtInsideMolk.Text = ""; main.packList.Clear(); main.GridUnpack.Items.Refresh();
-                    break;
-
-            }
-        }
-
-        public void Clear_Datatables()
-        {
-            main.TxtInsideMolk.Text = "";
-            main.packList.Clear();
-            main.GridUnpack.Items.Refresh();
-            main.GridPack.Items.Refresh();
-
-        }
-
         public void Open_Page(Button btn)
         {
             if (btn.Name == "BtnPack") { main.Title = "Molk pack"; main.Main.Visibility = Visibility.Hidden; main.Pack.Visibility = Visibility.Visible; }
@@ -65,7 +45,7 @@ namespace MolkZipping
         {
             if (btn.Name == "BtnBackUnPack") { main.Title = "Molk tool"; main.Main.Visibility = Visibility.Visible; main.Unpack.Visibility = Visibility.Hidden; }
             else { main.Title = "Molk tool"; main.Main.Visibility = Visibility.Visible; main.Pack.Visibility = Visibility.Hidden; }
-            Clear_Datatables();
+            dia.Clear_Datatables();
         }
     }
 }

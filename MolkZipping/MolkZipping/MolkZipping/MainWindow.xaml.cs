@@ -47,7 +47,7 @@ namespace MolkZipping
             {
                 switch (btn.Name)
                 {
-                    case "BtnClearUnPackData": btnClick.Clear_Datatables(); break;
+                    case "BtnClearUnPackData": dia.Clear_Datatables(); break;
                     case "BtnPack": btnClick.Open_Page(btn); break;
                     case "BtnUnpack": btnClick.Open_Page(btn); break;
                     case "BtnMenu": { if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; } } break;
@@ -56,7 +56,7 @@ namespace MolkZipping
                     case "BtnUnPackFiles": btnClick.Unpack_Files(); break;
                     case "BtnBackPack": btnClick.Get_Back(btn); break;
                     case "BtnChoosePackFile": dia.Open_File_Dialog(btn); break;
-                    case "BtnClearPackData": btnClick.Clear_Datatables(); break;
+                    case "BtnClearPackData": dia.Clear_Datatables(); break;
                     case "BtnPackFiles": btnClick.Pack_files(); break;
                 }
             }
@@ -71,40 +71,6 @@ namespace MolkZipping
                     case "Web": System.Diagnostics.Process.Start("https://www.molk.se/"); break;
                 }
             }
-
-            //if (sender is Button btn)
-            //{
-            //  ##  if (btn.Name == "BtnPack") { this.Title = "Molk pack"; Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
-            //   ## else if (btn.Name == "BtnUnpack") { this.Title = "Molk unpack"; Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
-            //   ## else if (btn.Name == "BtnSaveTo") { dia.Save_File_Dialog(); }
-            //   ## else if (btn.Name == "BtnMenu")
-            //    {
-            //        if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
-            //    }
-            //   ## else if (btn.Name == "BtnBackUnPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
-            //   ## else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; GridUnpack.Items.Refresh(); }
-            //   ## else if (btn.Name == "BtnUnPackFiles")
-            //    {
-            //        Unpack_Files();
-            //    }
-            //   ## else if (btn.Name == "BtnClearUnPackData") { TxtInsideMolk.Text = ""; packList.Clear(); GridUnpack.Items.Refresh(); }
-
-            //   ## else if (btn.Name == "BtnBackPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
-            //   ## else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog(); }
-            //   ##else if (btn.Name == "BtnClearPackData") { packList.Clear(); GridPack.Items.Refresh(); }
-            //   ## #else if (btn.Name == "BtnPackFiles")
-            //    {
-            //        Pack_files();
-            //    }
-            //}
-            //else if (sender is Image btnImage)
-            //{
-            //    if (btnImage.Name == "question") { System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/"); }
-            //    else if (btnImage.Name == "Exit") { Application.Current.Shutdown(); }
-            //    else if (btnImage.Name == "Instagram") { System.Diagnostics.Process.Start("https://www.instagram.com/molkutbildning/"); }
-            //    else if (btnImage.Name == "Facebook") { System.Diagnostics.Process.Start("https://www.facebook.com/molkutbildning/"); }
-            //    else if (btnImage.Name == "Web") { System.Diagnostics.Process.Start("https://www.molk.se/"); }
-            //}
         }
 
         /// <summary>
@@ -163,6 +129,7 @@ namespace MolkZipping
                 loadingTimer.Interval = new TimeSpan(0, 0, 3);
 
                 loadingTimer.IsEnabled = true;
+                TxtInsideMolk.Text = "";
                 packList.Clear();
                 GridUnpack.Items.Refresh();
             }
