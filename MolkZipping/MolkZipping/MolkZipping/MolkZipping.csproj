@@ -72,7 +72,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Dialog.cs" />
+    <Compile Include="ButtonClick.cs" />
+    <Compile Include="Data\Dialog.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -87,8 +88,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pack.cs" />
-    <Compile Include="PackMethod.cs" />
+    <Compile Include="Data\FileInfo.cs" />
+    <Compile Include="Data\PackMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -118,9 +119,9 @@
   <ItemGroup>
     <Resource Include="Assets\SocialIcons\facebook.png" />
     <Resource Include="Assets\SocialIcons\instagram.png" />
-    <Resource Include="Assets\OrientationIcons\Pack.png" />
-    <Resource Include="Assets\OrientationIcons\question.png" />
-    <Resource Include="Assets\OrientationIcons\unpack.png" />
+    <Resource Include="Assets\NavigationIcons\Pack.png" />
+    <Resource Include="Assets\NavigationIcons\question.png" />
+    <Resource Include="Assets\NavigationIcons\unpack.png" />
     <Resource Include="Assets\SocialIcons\web.png" />
   </ItemGroup>
   <ItemGroup>
@@ -133,23 +134,23 @@
     <Folder Include="Assets\AttributeIcons\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\gear.png" />
+    <Resource Include="Assets\NavigationIcons\gear.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\exit.png" />
-    <Resource Include="Assets\OrientationIcons\hem.png" />
+    <Resource Include="Assets\NavigationIcons\exit.png" />
+    <Resource Include="Assets\NavigationIcons\hem.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\chooseFile.png" />
+    <Resource Include="Assets\NavigationIcons\chooseFile.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\packText.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\backBtn.png" />
+    <Resource Include="Assets\NavigationIcons\backBtn.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\menu.png" />
+    <Resource Include="Assets\NavigationIcons\menu.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\molkLoading.png" />
@@ -161,14 +162,10 @@
     <Resource Include="Assets\Images\loadingTwo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\save.png" />
+    <Resource Include="Assets\NavigationIcons\save.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\OrientationIcons\clearGrid.png" />
-    <Resource Include="molkicon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="icon.ico" />
+    <Resource Include="Assets\NavigationIcons\clearGrid.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="molkicon1.ico" />
