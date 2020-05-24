@@ -56,6 +56,11 @@ namespace MolkZipping
                     case "BtnChoosePackFile": dia.Open_File_Dialog(btn); break;
                     case "BtnClearPackData": dia.Clear_Datatables(); break;
                     case "BtnPackFiles": btnClick.Pack_files(); break;
+                    default:
+                        MessageBox.Show("Strange things have happend here. Contact dev support.", "Strange things.",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                        dia.Clear_Datatables(); break;
                 }
             }
             else if (sender is Image imgBtn)
@@ -67,6 +72,11 @@ namespace MolkZipping
                     case "Instagram": System.Diagnostics.Process.Start("https://www.instagram.com/molkutbildning/"); break;
                     case "Facebook": System.Diagnostics.Process.Start("https://www.facebook.com/molkutbildning/"); break;
                     case "Web": System.Diagnostics.Process.Start("https://www.molk.se/"); break;
+                    default:
+                        MessageBox.Show("Strange things have happend here. Contact dev support.", "Strange things.",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                        dia.Clear_Datatables(); break;
                 }
             }
         }
