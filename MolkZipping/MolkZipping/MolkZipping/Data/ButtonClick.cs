@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace MolkZipping
@@ -24,14 +19,14 @@ namespace MolkZipping
         public void Pack_files()
         {
             dia.Save_File_Dialog();
-            if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_Pack(); packMethod.whyYouLoop = 0; }
+            if (dia.SaveFile == true && dia.FileOpen != null) { packMethod.Cmd_Pack(); packMethod.WhyYouLoop = 0; }
             else { MessageBox.Show("Could not find any files to pack. Please try again.", "Molk packing tool", MessageBoxButton.OK, MessageBoxImage.Information); }
         }
 
         public void Unpack_Files()
         {
             dia.Save_File_Dialog();
-            if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_UnPack(); packMethod.whyYouLoop = 0; }
+            if (dia.SaveFile == true && dia.FileOpen != null) { packMethod.Cmd_UnPack(); packMethod.WhyYouLoop = 0; }
             else { MessageBox.Show("Could not find any files to unpack. Please try again.", "Molk unpacking tool", MessageBoxButton.OK, MessageBoxImage.Information); }
         }
 
@@ -41,7 +36,7 @@ namespace MolkZipping
             else { main.Title = "Molk unpack"; main.Main.Visibility = Visibility.Hidden; main.Unpack.Visibility = Visibility.Visible; }
         }
 
-        public void Get_Back(Button btn)
+        public void Go_Back(Button btn)
         {
             if (btn.Name == "BtnBackUnPack") { main.Title = "Molk tool"; main.Main.Visibility = Visibility.Visible; main.Unpack.Visibility = Visibility.Hidden; }
             else { main.Title = "Molk tool"; main.Main.Visibility = Visibility.Visible; main.Pack.Visibility = Visibility.Hidden; }

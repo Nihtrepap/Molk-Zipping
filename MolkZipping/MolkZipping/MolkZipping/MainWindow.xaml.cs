@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace MolkZipping
 {
@@ -20,10 +14,10 @@ namespace MolkZipping
         PackMethods packMethod;
         ButtonClick btnClick;
 
-        public List<FileInfo> packList = new List<FileInfo>();
+        public List<FileInfo> PackList = new List<FileInfo>();
 
-        public bool menuClick = false;
-        public bool folderPick = true;
+        public bool MenuClick = false;
+        public bool FolderPick = true;
 
         public MainWindow()
         {
@@ -48,11 +42,11 @@ namespace MolkZipping
                     case "BtnClearUnPackData": dia.Clear_Datatables(); break;
                     case "BtnPack": btnClick.Open_Page(btn); break;
                     case "BtnUnpack": btnClick.Open_Page(btn); break;
-                    case "BtnMenu": { if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; } } break;
-                    case "BtnBackUnPack": btnClick.Get_Back(btn); break;
+                    case "BtnMenu": { if (!MenuClick) { Advanced.Visibility = Visibility.Visible; MenuClick = true; } } break;
+                    case "BtnBackUnPack": btnClick.Go_Back(btn); break;
                     case "BtnChooseUnpackFiles": dia.Open_File_Dialog(btn); break;
                     case "BtnUnPackFiles": btnClick.Unpack_Files(); break;
-                    case "BtnBackPack": btnClick.Get_Back(btn); break;
+                    case "BtnBackPack": btnClick.Go_Back(btn); break;
                     case "BtnChoosePackFile": dia.Open_File_Dialog(btn); break;
                     case "BtnClearPackData": dia.Clear_Datatables(); break;
                     case "BtnPackFiles": btnClick.Pack_files(); break;
@@ -90,11 +84,11 @@ namespace MolkZipping
         {
             if (SelectFolder.IsChecked == true)
             {
-                folderPick = true;
+                FolderPick = true;
             }
             else if (SelectFile.IsChecked == true)
             {
-                folderPick = false;
+                FolderPick = false;
             }
         }
 
@@ -107,8 +101,8 @@ namespace MolkZipping
         private void Mouse_Leave_Menu(object sender, MouseEventArgs e)
         {
             Advanced.Visibility = Visibility.Hidden;
-            menuClick = false;
+            MenuClick = false;
         }
-    
+
     }
 }

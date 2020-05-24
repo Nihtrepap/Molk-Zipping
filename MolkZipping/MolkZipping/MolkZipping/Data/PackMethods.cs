@@ -15,7 +15,7 @@ namespace MolkZipping
         MainWindow main;
         Dialog dia;
 
-        public int whyYouLoop = 0;
+        public int WhyYouLoop = 0;
 
         string tmp = @"tmp.txt";
         string tmpErr = @"tmpErr.txt";
@@ -44,7 +44,7 @@ namespace MolkZipping
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
 
-                string cmd = $@"molk {_directory} {dia.saveTo} {dia.opened} > {tmp} 2> {tmpErr}";
+                string cmd = $@"molk {_directory} {dia.SaveTo} {dia.FileOpen} > {tmp} 2> {tmpErr}";
 
                 processCmd.StandardInput.WriteLine(cmd);
                 processCmd.StandardInput.Flush();
@@ -71,14 +71,13 @@ namespace MolkZipping
                 processCmd.StartInfo.CreateNoWindow = true;
                 processCmd.StartInfo.UseShellExecute = false;
                 processCmd.Start();
-                processCmd.StandardInput.WriteLine($"unmolk \"{dia.opened}\" -d {dia.saveTo} > {tmp} 2> {tmpErr}");
+                processCmd.StandardInput.WriteLine($"unmolk \"{dia.FileOpen}\" -d {dia.SaveTo} > {tmp} 2> {tmpErr}");
                 processCmd.StandardInput.Flush();
                 processCmd.StandardInput.Close();
                 processCmd.WaitForExit();
 
                 Check_File_Exist();
-
-               
+              
             }
             catch (Exception e)
             {
@@ -110,20 +109,20 @@ namespace MolkZipping
 
                 loadingTimer.Start();
                 loadingTimer.IsEnabled = true;
-                main.packList.Clear();
+                main.PackList.Clear();
                 main.GridPack.Items.Refresh();
             }
             else
             {
-                loadingTimer.Start();
                 main.Unpack.Visibility = Visibility.Hidden;
                 main.Loading.Visibility = Visibility.Visible;
                 loadingTimer.Tick += Done_Loading;
                 loadingTimer.Interval = new TimeSpan(0, 0, 3);
 
+                loadingTimer.Start();
                 loadingTimer.IsEnabled = true;
                 main.TxtInsideMolk.Text = "";
-                main.packList.Clear();
+                main.PackList.Clear();
                 main.GridUnpack.Items.Refresh();
             }
         }
@@ -135,18 +134,19 @@ namespace MolkZipping
         /// <param name="e"></param>
         public void Done_Loading(object timer, EventArgs e)
         {
-            if (whyYouLoop == 0)
+            if (WhyYouLoop == 0)
             {
                 main.Main.Visibility = Visibility.Visible;
                 main.Loading.Visibility = Visibility.Hidden;
-                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {dia.saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
-                dia.saveTo = "";
-                dia.opened = "";
+                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {dia.SaveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
+                dia.SaveTo = "";
+                dia.FileOpen = "";
                 loadingTimer.IsEnabled = false;
                 loadingTimer.Stop();
-                whyYouLoop++;
+                WhyYouLoop++;
             }
             else return;
         }
+  
     }
 }
