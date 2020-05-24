@@ -128,7 +128,7 @@
 
     <Grid>
         <!-- THIS IS THE MAIN PAGE SECTION -->
-        <Grid x:Name="Main" Visibility="Visible">
+        <Grid x:Name="Main" Visibility="Hidden">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="White" Offset="0.651"/>
@@ -333,7 +333,7 @@
 
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
-        <Grid x:Name="Unpack" Visibility="Hidden">
+        <Grid x:Name="Unpack" Visibility="Visible">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnUnPackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0" RenderTransformOrigin="0.5,0.5">
@@ -405,12 +405,12 @@
             <Image Source="Assets/Images/molk.png" HorizontalAlignment="Left" 
                Height="100" Margin="25,20,0,0" 
                VerticalAlignment="Top" Width="100"/>
-            <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="42" MinRowHeight="30" VerticalAlignment="Top" Width="295" Margin="25,93,0,0" Focusable="False" HeadersVisibility="Column" GridLinesVisibility="Vertical" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FF1F1526" MinColumnWidth="30">
+            <DataGrid x:Name="GridUnpack" HorizontalAlignment="Left" Height="72" MinRowHeight="30" VerticalAlignment="Top" Width="453" Margin="25,68,0,0" Focusable="False" HeadersVisibility="Column" GridLinesVisibility="Vertical" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FF1F1526" MinColumnWidth="30">
                 <DataGrid.BorderBrush>
                     <SolidColorBrush Color="#FF688CAF" Opacity="0"/>
                 </DataGrid.BorderBrush>
             </DataGrid>
-            <TextBlock x:Name="TxtInsideMolk" HorizontalAlignment="Left" Margin="25,140,0,0" TextWrapping="Wrap" Text="Files inside" VerticalAlignment="Top" Height="242" Width="506" Foreground="#FF1F1526" Background="#FFC0BCC4" Cursor="Pen" IsEnabled="False"/>
+            <TextBlock x:Name="TxtInsideMolk" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Margin="25,140,0,0" TextWrapping="Wrap" Text="Files inside" VerticalAlignment="Top" Height="242" Width="506" Foreground="#FF1F1526" Background="#FFC0BCC4" Cursor="Pen" IsEnabled="False"/>
             <TextBlock x:Name="TxtDeleteUnpack" HorizontalAlignment="Left" Margin="570,100,0,0" TextWrapping="Wrap" Text="Delete datatable" VerticalAlignment="Top" Width="188" Foreground="#FF040404"  Height="37"  
                    FontFamily="Tahoma"
                    FontSize="20" FontWeight="Thin" 
