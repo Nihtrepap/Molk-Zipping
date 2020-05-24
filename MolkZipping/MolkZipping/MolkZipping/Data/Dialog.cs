@@ -1,12 +1,9 @@
 ﻿using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,16 +11,15 @@ namespace MolkZipping
 {
     public class Dialog
     {
-        public string saveTo;
-        public string opened;
-        public Nullable<bool> saveFile;
+        public string SaveTo;
+        public string FileOpen;
+        public Nullable<bool> SaveFile;
         MainWindow main;
         PackMethods pack = new PackMethods();
 
         public Dialog(MainWindow main)
         {
-            this.main = main;
-           
+            this.main = main;         
         }
 
         /// <summary>
@@ -37,10 +33,11 @@ namespace MolkZipping
             openSaveFile.Filter = "molk files (*.molk)|*.molk*";
             openSaveFile.FilterIndex = 1;
             openSaveFile.FileName = "Molkzipping";
-            saveFile = openSaveFile.ShowDialog();
-            if (saveFile != true) return;
-            
-            saveTo = openSaveFile.FileName + ".molk";
+            SaveFile = openSaveFile.ShowDialog();
+            if (SaveFile != true) return;
+
+            if (main.Pack.Visibility == Visibility.Visible) SaveTo = openSaveFile.FileName + ".molk";
+            else SaveTo = openSaveFile.FileName;
         }
 
         /// <summary>
@@ -54,15 +51,15 @@ namespace MolkZipping
             openFileWindow.EnsureFileExists = true;
             
             openFileWindow.Title = "Choose file(s) or folder(s)";
-            if (main.Pack.Visibility == Visibility.Visible) { openFileWindow.IsFolderPicker = main.folderPick; }
+            if (main.Pack.Visibility == Visibility.Visible) { openFileWindow.IsFolderPicker = main.FolderPick; }
             else { openFileWindow.IsFolderPicker = false; openFileWindow.Filters.Add(new CommonFileDialogFilter("molk Files","*.molk")); }
             if (openFileWindow.ShowDialog() != CommonFileDialogResult.Ok) return;
-            else opened = openFileWindow.FileName;
+            else FileOpen = openFileWindow.FileName;
 
-            Cmd_run(opened);
+            Cmd_run(FileOpen);
 
-            if(btn.Name == "BtnChooseUnpackFiles") { main.GridUnpack.ItemsSource = main.packList; main.GridUnpack.Items.Refresh(); }
-            else  { main.GridPack.ItemsSource = main.packList; main.GridPack.Items.Refresh(); } 
+            if(btn.Name == "BtnChooseUnpackFiles") { main.GridUnpack.ItemsSource = main.PackList; main.GridUnpack.Items.Refresh(); }
+            else  { main.GridPack.ItemsSource = main.PackList; main.GridPack.Items.Refresh(); } 
         }
 
         /// <summary>
@@ -97,7 +94,7 @@ namespace MolkZipping
 
                 File_Reader(tmp);
 
-               Get_Fileinfo(tmp);
+                Get_Fileinfo(tmp);
 
             }
             catch (Exception e)
@@ -105,6 +102,7 @@ namespace MolkZipping
                 MessageBox.Show("WRONG - Give this message to the developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         /// <summary>
         /// Simple ReadAllText method from File class.
         /// Reads programs tmp.txt file to get value into string.
@@ -112,8 +110,10 @@ namespace MolkZipping
         /// <param name="tmp">Path for program tmp file</param>
         public void File_Reader(string tmp)
         {
+            
             string read;
-            read = File.ReadAllText(tmp, Encoding.UTF8);
+            read = File.ReadAllText(tmp, Encoding.Default);
+            if(read == "") { MessageBox.Show("Something strange happend. Please try and choose other file. Check characters in file name and try again.", "Molk found something strange", MessageBoxButton.OK, MessageBoxImage.Information); return; }
         }
 
         /// <summary>
@@ -151,15 +151,20 @@ namespace MolkZipping
         {
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
-            {
+            {               
                 main.Main.Visibility = Visibility.Hidden; main.Unpack.Visibility = Visibility.Visible;
-                opened = args[0];
-                Cmd_run(opened);
+                FileOpen = args[0];
+                Cmd_run(FileOpen);
             }
         }
-
+        /// <summary>
+        /// Splits the chosen file into 2 strings.
+        /// Sends the strings to a List<FileInfo> wich is connected to the datagrid.
+        /// </summary>
+        /// <param name="line">tmp.txt text</param>
         private void Split_Unpack(string line)
         {
+            if (line == null) line = "";
             try
             {
                 string type = "";
@@ -171,11 +176,16 @@ namespace MolkZipping
                 name = splitTwo[0];
                 type = splitTwo[1];
 
-                main.packList.Add(new FileInfo(name, type));
+                main.PackList.Add(new FileInfo(name, type));
                 main.GridPack.Items.Refresh();
             }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
+        /// <summary>
+        /// Splits the chosen folder into 2 strings.
+        /// Sends the strings to a List<FileInfo> wich is connected to the datagrid.
+        /// </summary>
+        /// <param name="tmp">tmp.txt text</param>
         private void Get_Folder_Split(string tmp)
         {
             string line;
@@ -190,15 +200,16 @@ namespace MolkZipping
                 if (split.Length != 2) { type = "folder"; }
                 else { type = split[1]; }
 
-                main.packList.Add(new FileInfo(name, type));
+                main.PackList.Add(new FileInfo(name, type));
                 main.GridPack.Items.Refresh();
             }
             fStream.Close();
         }
+
         public void Clear_Datatables()
         {
             main.TxtInsideMolk.Text = "";
-            main.packList.Clear();
+            main.PackList.Clear();
             main.GridUnpack.Items.Refresh();
             main.GridPack.Items.Refresh();
         }
