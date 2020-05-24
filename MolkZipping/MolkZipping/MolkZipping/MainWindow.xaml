@@ -128,7 +128,7 @@
 
     <Grid>
         <!-- THIS IS THE MAIN PAGE SECTION -->
-        <Grid x:Name="Main" Visibility="Hidden">
+        <Grid x:Name="Main" Visibility="Visible">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="White" Offset="0.651"/>
@@ -333,7 +333,7 @@
 
         </Grid>
         <!-- THIS IS THE UNPACK SECTION -->
-        <Grid x:Name="Unpack" Visibility="Visible">
+        <Grid x:Name="Unpack" Visibility="Hidden">
             <Button Click="Button_Click" Cursor="Hand" x:Name="BtnUnPackFiles" Style="{StaticResource RadiusButton}" 
                 VerticalAlignment="Top" Height="122" 
                 Background="#403273" Margin="662,387,10,0" RenderTransformOrigin="0.5,0.5">
