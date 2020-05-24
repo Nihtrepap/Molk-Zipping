@@ -72,6 +72,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ButtonClick.cs" />
     <Compile Include="Data\Dialog.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -87,7 +88,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Pack.cs" />
+    <Compile Include="Data\FileInfo.cs" />
     <Compile Include="Data\PackMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

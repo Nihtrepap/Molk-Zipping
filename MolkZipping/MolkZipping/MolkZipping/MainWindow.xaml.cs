@@ -16,24 +16,24 @@ namespace MolkZipping
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer loadingTimer = new DispatcherTimer();
         Dialog dia;
         PackMethods packMethod;
+        ButtonClick btnClick;
 
-        public List<Pack> packList = new List<Pack>();
+        public List<FileInfo> packList = new List<FileInfo>();
 
-        private bool menuClick = false;
-        private int whyYouLoop = 0;
-        public bool folderPick = true; 
+        public bool menuClick = false;
+        public bool folderPick = true;
 
         public MainWindow()
         {
             InitializeComponent();
             dia = new Dialog(this);
             packMethod = new PackMethods(dia, this);
+            btnClick = new ButtonClick(dia, this, packMethod);
             dia.Open_Molk_File();
         }
-        
+
         /// <summary>
         /// Handles all click events
         /// </summary>
@@ -43,40 +43,41 @@ namespace MolkZipping
         {
             if (sender is Button btn)
             {
-                if (btn.Name == "BtnPack") { this.Title = "Molk pack"; Main.Visibility = Visibility.Hidden; Pack.Visibility = Visibility.Visible; }
-                else if (btn.Name == "BtnUnpack") { this.Title = "Molk unpack"; Main.Visibility = Visibility.Hidden; Unpack.Visibility = Visibility.Visible; }
-                else if (btn.Name == "BtnSaveTo") { dia.Save_File_Dialog(); }
-                else if (btn.Name == "BtnMenu") 
+                switch (btn.Name)
                 {
-                    if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; }
-                }
-                else if (btn.Name == "BtnBackUnPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Unpack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnChooseUnpackFiles") { dia.Open_File_Dialog(); GridUnpack.ItemsSource = packList; GridUnpack.Items.Refresh(); }
-                else if (btn.Name == "BtnUnPackFiles") 
-                { 
-                    dia.Save_File_Dialog(); 
-                    if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_UnPack(); whyYouLoop = 0; }
-                    else { MessageBox.Show("Could not find any files to unpack. Please try again.", "Molk unpacking tool", MessageBoxButton.OK, MessageBoxImage.Information); }
-                }
-                else if(btn.Name == "BtnClearUnPackData") { TxtInsideMolk.Text = ""; packList.Clear(); GridUnpack.Items.Refresh();  }
-
-                else if (btn.Name == "BtnBackPack") { this.Title = "Molk tool"; Main.Visibility = Visibility.Visible; Pack.Visibility = Visibility.Hidden; }
-                else if (btn.Name == "BtnChoosePackFile") { GridPack.ItemsSource = packList; dia.Open_File_Dialog();  }   
-                else if (btn.Name == "BtnClearPackData") { packList.Clear(); GridPack.Items.Refresh();  }
-                else if(btn.Name == "BtnPackFiles")
-                {
-                    dia.Save_File_Dialog();
-                    if (dia.saveFile == true && dia.opened != null) { packMethod.Cmd_Pack(); whyYouLoop = 0; }
-                    else { MessageBox.Show("Could not find any files to pack. Please try again.", "Molk packing tool", MessageBoxButton.OK, MessageBoxImage.Information); }
+                    case "BtnClearUnPackData": dia.Clear_Datatables(); break;
+                    case "BtnPack": btnClick.Open_Page(btn); break;
+                    case "BtnUnpack": btnClick.Open_Page(btn); break;
+                    case "BtnMenu": { if (!menuClick) { Advanced.Visibility = Visibility.Visible; menuClick = true; } } break;
+                    case "BtnBackUnPack": btnClick.Get_Back(btn); break;
+                    case "BtnChooseUnpackFiles": dia.Open_File_Dialog(btn); break;
+                    case "BtnUnPackFiles": btnClick.Unpack_Files(); break;
+                    case "BtnBackPack": btnClick.Get_Back(btn); break;
+                    case "BtnChoosePackFile": dia.Open_File_Dialog(btn); break;
+                    case "BtnClearPackData": dia.Clear_Datatables(); break;
+                    case "BtnPackFiles": btnClick.Pack_files(); break;
+                    default:
+                        MessageBox.Show("Strange things have happend here. Contact dev support.", "Strange things.",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                        dia.Clear_Datatables(); break;
                 }
             }
-            else if (sender is Image btnImage)
+            else if (sender is Image imgBtn)
             {
-                if (btnImage.Name == "question") { System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/"); }
-                else if (btnImage.Name == "Exit") { Application.Current.Shutdown(); }
-                else if(btnImage.Name == "Instagram") { System.Diagnostics.Process.Start("https://www.instagram.com/molkutbildning/"); }
-                else if(btnImage.Name == "Facebook") { System.Diagnostics.Process.Start("https://www.facebook.com/molkutbildning/"); }
-                else if(btnImage.Name == "Web") { System.Diagnostics.Process.Start("https://www.molk.se/"); }
+                switch (imgBtn.Name)
+                {
+                    case "question": System.Diagnostics.Process.Start("https://testpalatset.wordpress.com/"); break;
+                    case "Exit": Application.Current.Shutdown(); break;
+                    case "Instagram": System.Diagnostics.Process.Start("https://www.instagram.com/molkutbildning/"); break;
+                    case "Facebook": System.Diagnostics.Process.Start("https://www.facebook.com/molkutbildning/"); break;
+                    case "Web": System.Diagnostics.Process.Start("https://www.molk.se/"); break;
+                    default:
+                        MessageBox.Show("Strange things have happend here. Contact dev support.", "Strange things.",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                        dia.Clear_Datatables(); break;
+                }
             }
         }
 
@@ -108,58 +109,6 @@ namespace MolkZipping
             Advanced.Visibility = Visibility.Hidden;
             menuClick = false;
         }
-
-        /// <summary>
-        /// Handles screen switch when loading.
-        /// Starts a timer.
-        /// </summary>
-        public void Loading_Screen()
-        {
-            if (Pack.Visibility == Visibility.Visible)
-            {
-                Pack.Visibility = Visibility.Hidden;
-                Loading.Visibility = Visibility.Visible;
-                loadingTimer.Tick += Done_Loading;
-                loadingTimer.Interval = new TimeSpan(0, 0, 3);
-
-                loadingTimer.Start();
-                loadingTimer.IsEnabled = true;
-                packList.Clear();
-                GridPack.Items.Refresh();
-            }
-            else
-            {
-                loadingTimer.Start();
-                Unpack.Visibility = Visibility.Hidden;
-                Loading.Visibility = Visibility.Visible;
-                loadingTimer.Tick += Done_Loading;
-                loadingTimer.Interval = new TimeSpan(0, 0, 3);
-
-                loadingTimer.IsEnabled = true;
-                packList.Clear();
-                GridUnpack.Items.Refresh();
-            }
-        }
-
-        /// <summary>
-        /// Handles events to occure when loading is done.
-        /// </summary>
-        /// <param name="timer"></param>
-        /// <param name="e"></param>
-        public void Done_Loading(object timer, EventArgs e)
-        {
-            if (whyYouLoop == 0)
-            {
-                Main.Visibility = Visibility.Visible;
-                Loading.Visibility = Visibility.Hidden;
-                MessageBox.Show($"File(s) succesfully molked!\n File saved at: {dia.saveTo} ", "Molk zipping tool", MessageBoxButton.OK, MessageBoxImage.Information);
-                dia.saveTo = "";
-                dia.opened = "";
-                loadingTimer.IsEnabled = false;
-                loadingTimer.Stop();
-                whyYouLoop++;
-            }
-            else return;
-        }      
+    
     }
 }

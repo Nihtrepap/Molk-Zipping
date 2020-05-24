@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace MolkZipping
 {
@@ -47,7 +48,7 @@ namespace MolkZipping
         /// Saves the chosen file path.
         /// </summary>
         /// <seealso cref="Cmd_run(string)"/>
-        public void Open_File_Dialog()
+        public void Open_File_Dialog(Button btn)
         {           
             CommonOpenFileDialog openFileWindow = new CommonOpenFileDialog();
             openFileWindow.EnsureFileExists = true;
@@ -59,6 +60,9 @@ namespace MolkZipping
             else opened = openFileWindow.FileName;
 
             Cmd_run(opened);
+
+            if(btn.Name == "BtnChooseUnpackFiles") { main.GridUnpack.ItemsSource = main.packList; main.GridUnpack.Items.Refresh(); }
+            else  { main.GridPack.ItemsSource = main.packList; main.GridPack.Items.Refresh(); } 
         }
 
         /// <summary>
@@ -156,17 +160,20 @@ namespace MolkZipping
 
         private void Split_Unpack(string line)
         {
-            string type = "";
-            string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            string name = split[0];
-            if (split.Length != 2) { type = "molk"; }
-            else { type = split[1]; }
-            string[] splitTwo = type.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-            name = splitTwo[0];
-            type = splitTwo[1];
+            try
+            {
+                string type = "";
+                string[] split = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                string name = split[0];
+                if (split.Length != 2) { type = "molk"; }
+                else { type = split[1]; }
+                string[] splitTwo = type.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                name = splitTwo[0];
+                type = splitTwo[1];
 
-            main.packList.Add(new Pack(name, type));
-            main.GridPack.Items.Refresh();
+                main.packList.Add(new FileInfo(name, type));
+                main.GridPack.Items.Refresh();
+            }catch(Exception e) { MessageBox.Show("WRONG - Give this message to the Developers ===>\n" + e, "Molk found error", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
         private void Get_Folder_Split(string tmp)
@@ -183,11 +190,17 @@ namespace MolkZipping
                 if (split.Length != 2) { type = "folder"; }
                 else { type = split[1]; }
 
-                main.packList.Add(new Pack(name, type));
+                main.packList.Add(new FileInfo(name, type));
                 main.GridPack.Items.Refresh();
             }
             fStream.Close();
         }
+        public void Clear_Datatables()
+        {
+            main.TxtInsideMolk.Text = "";
+            main.packList.Clear();
+            main.GridUnpack.Items.Refresh();
+            main.GridPack.Items.Refresh();
+        }
     }
 }
-
